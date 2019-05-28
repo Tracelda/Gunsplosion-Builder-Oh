@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private float lifeSpan;
+
+    //bounce logic
     private float bounceCooldown;
     private float maxBounceCoolDown;
     private bool bounceOnCooldown;
@@ -80,8 +82,9 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.up * currentType.bulletSpeed;
         if (!bounceOnCooldown)
         {
-            var hit = Physics2D.CircleCast(transform.position, 2, Vector2.up);
-            print(hit.collider);
+            int layer_mask = LayerMask.GetMask("Enemy");
+            var hit = Physics2D.CircleCast(transform.position, currentType.homingRaduis, Vector2.up,0,layer_mask);
+            //print(hit.collider);
             if (hit)
             {
                 if (hit.collider.gameObject)
@@ -90,7 +93,7 @@ public class Bullet : MonoBehaviour
                     {
                         Quaternion toRotation = lookAt2D(hit.point);
                         //transform.rotation = toRotation;
-                        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.0f * Time.deltaTime);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
                         bounceOnCooldown = true;
                     }
                 }

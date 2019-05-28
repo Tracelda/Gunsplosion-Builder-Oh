@@ -27,6 +27,8 @@ public class Weapon : MonoBehaviour
         public float bulletSpeed;
         public Sprite bulletSprite;
         public float lifeSpan;
+        public float homingRaduis;
+        public float homingSpeed;
     }
     public weaponStats Straight, Bounce, Homing;
     public BulletType StraightShot, BounceShot, HomingShot;
