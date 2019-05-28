@@ -226,5 +226,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpForce: 300
-  distFromGround: 1
-  GroundLayer: Ground
+  distFromGround: 0.5
+  GroundLayer: Block

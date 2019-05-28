@@ -354,22 +354,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6379640770938787315, guid: 5e634075877c04a4db6a7af1327b64ff,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: jumpForce
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: distFromGround
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: GroundLayer
-      value: Ground
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}

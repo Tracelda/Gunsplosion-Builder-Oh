@@ -37,9 +37,14 @@ public class Moving_Entity : MonoBehaviour
 
     private bool CanJump()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, distFromGround, LayerMask.NameToLayer(GroundLayer));
+        playerCollider.enabled = false;
 
-        Debug.DrawLine(transform.position, -Vector3.up * distFromGround, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, distFromGround);
+
+        playerCollider.enabled = true;
+
+        Debug.DrawLine(transform.position, hit.point, Color.red);
+        Debug.Log(hit.collider != null);
 
         return (hit.collider != null);
     }
