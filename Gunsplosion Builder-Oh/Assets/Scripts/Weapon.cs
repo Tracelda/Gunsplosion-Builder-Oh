@@ -54,7 +54,7 @@ public class Weapon : MonoBehaviour
         {
             GameObject shot = Instantiate(bulletPrefab);
             bulletList.Add(shot);
-            shot.transform.parent = transform;
+            shot.transform.SetParent(transform);
         }
     }
 

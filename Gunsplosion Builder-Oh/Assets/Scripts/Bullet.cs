@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviour
         spriteRenderer.sprite = currentType.bulletSprite;
         lifeSpan = currentType.lifeSpan;
         gameObject.transform.localPosition = position; //= position;
-        lookAt2D(aimDirection);
+        transform.rotation = lookAt2D(aimDirection);
         //gameObject.transform.localRotation = ;
     }
     public void deActivate()
@@ -68,19 +68,33 @@ public class Bullet : MonoBehaviour
     }
     private void homingShot()
     {
-
+        rb.velocity = transform.up * currentType.bulletSpeed;
+        var hit = Physics2D.CircleCast(transform.position, 2, Vector2.up);
+        print(hit.collider);
+        if(hit)
+        {
+            if(hit.collider.gameObject)
+            {
+                if (hit.collider.gameObject.GetComponent<Health>())
+                {
+                    Quaternion toRotation = lookAt2D(hit.point);
+                    //transform.rotation = toRotation;
+                    transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.0f * Time.deltaTime);
+                }
+            }
+        }
     }
     private void bounceShot()
     {
 
     }
 
-    private void lookAt2D(Vector2 WorldPos)
+    private Quaternion lookAt2D(Vector2 WorldPos)
     {
         Vector3 tempDirection = WorldPos;
         var dir = tempDirection - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        return Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void OnTriggerEnter(Collider other)
