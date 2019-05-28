@@ -109,8 +109,8 @@ public class Bullet : MonoBehaviour
     private void bounceShot()
     {
         rb.velocity = transform.up * currentType.bulletSpeed;
-
-        var hit = Physics2D.Raycast(transform.position, transform.up, Time.deltaTime * (currentType.bulletSpeed*2));
+        int layer_mask = LayerMask.GetMask("Block");
+        var hit = Physics2D.Raycast(transform.position, transform.up, Time.deltaTime * (currentType.bulletSpeed*2), layer_mask);
         if(hit)
         {
             Vector2 reflect = Vector2.Reflect(transform.up, hit.normal);
