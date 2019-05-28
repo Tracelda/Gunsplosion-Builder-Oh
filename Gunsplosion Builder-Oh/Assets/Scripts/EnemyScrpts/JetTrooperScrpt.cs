@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoombaScrpt : MonoBehaviour
+public class JetTrooperScrpt : MonoBehaviour
 {
     public Vector2 leftNodePos, rightNodePos;
     public GameObject leftNode, rightNode;

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6176662771515229548}
   - component: {fileID: 8651032730193013458}
+  - component: {fileID: 1333062399}
   m_Layer: 0
   m_Name: LeftNode
   m_TagString: Untagged
@@ -79,6 +80,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1333062399
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26074739441718250}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1858108348648591574
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7091373876111512966}
   - component: {fileID: 49947391845474903}
+  - component: {fileID: 821194937}
   m_Layer: 0
   m_Name: RightNode
   m_TagString: Untagged
@@ -158,6 +181,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &821194937
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858108348648591574}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4066955448605500130
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +215,7 @@ GameObject:
   - component: {fileID: 8960941661549272789}
   - component: {fileID: 6510581726498126667}
   - component: {fileID: 6237264114948495478}
+  - component: {fileID: 502819373865828604}
   - component: {fileID: 7076199832787008274}
   m_Layer: 0
   m_Name: Goomba
@@ -281,10 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3076cd46d1e3118468d6a1972c71b2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 5
   jumpForce: 0
   distFromGround: 0.5
-  GroundLayer: 
 --- !u!114 &6237264114948495478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +341,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efa24b8c8abbbc4690e2aacd1b1e49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftNode: {fileID: 0}
-  rightNode: {fileID: 0}
+  leftNodePos: {x: 0, y: 0}
+  rightNodePos: {x: 0, y: 0}
+  leftNode: {fileID: 26074739441718250}
+  rightNode: {fileID: 1858108348648591574}
+  MovingRight: 0
+--- !u!114 &502819373865828604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4066955448605500130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780bc44723cf945439f04d1211c7fd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &7076199832787008274
 Rigidbody2D:
   serializedVersion: 4

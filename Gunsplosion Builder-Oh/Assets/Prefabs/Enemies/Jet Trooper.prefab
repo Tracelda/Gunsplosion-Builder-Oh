@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1429703075835184522}
   - component: {fileID: 988525663909093730}
+  - component: {fileID: 8792575460078821687}
   m_Layer: 0
   m_Name: RightNode
   m_TagString: Untagged
@@ -79,6 +80,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &8792575460078821687
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850593170221197526}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2237493634432396815
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3464123198612512267}
   - component: {fileID: 8206266107021521326}
+  - component: {fileID: 7832901414644579074}
   m_Layer: 0
   m_Name: LeftNode
   m_TagString: Untagged
@@ -158,6 +181,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &7832901414644579074
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237493634432396815}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5542708144076776593
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +213,9 @@ GameObject:
   - component: {fileID: 5288547600910472685}
   - component: {fileID: 8882428025402696239}
   - component: {fileID: 3567492005013410035}
+  - component: {fileID: 2374212522784466956}
+  - component: {fileID: 611939302385101947}
+  - component: {fileID: 5486951973366808962}
   - component: {fileID: 213205900482597}
   m_Layer: 0
   m_Name: Jet Trooper
@@ -267,6 +314,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2374212522784466956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542708144076776593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3076cd46d1e3118468d6a1972c71b2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 50
+  distFromGround: 0.5
+--- !u!114 &611939302385101947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542708144076776593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb39a64b5d6ec644ea4743cf2ee9a653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftNodePos: {x: 0, y: 0}
+  rightNodePos: {x: 0, y: 0}
+  leftNode: {fileID: 2237493634432396815}
+  rightNode: {fileID: 1850593170221197526}
+  MovingRight: 0
+--- !u!114 &5486951973366808962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542708144076776593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780bc44723cf945439f04d1211c7fd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &213205900482597
 Rigidbody2D:
   serializedVersion: 4

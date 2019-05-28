@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoombaScrpt : MonoBehaviour
+public class FlyingEnemyScrpt : MonoBehaviour
 {
     public Vector2 leftNodePos, rightNodePos;
     public GameObject leftNode, rightNode;
@@ -25,7 +25,7 @@ public class GoombaScrpt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mirrorPatroling)
+        if(mirrorPatroling)
         {
             ReversePatrolling(gameObject.transform.position);
         }
