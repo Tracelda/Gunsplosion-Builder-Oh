@@ -6,28 +6,92 @@ public class Player : Moving_Entity
 {
     public float    jumpDuration,
                     jetPackDuration,
+                    jetPackForce,
                     rechargeSpeed;
 
     private float   currentJumpDuration,
                     currentJetPackDuration;
+    private bool    jetPacking,
+                    canJetPack,
+                    rechargingJetPack;
+
+    private void Start()
+    {
+        base.Start();
+        canJetPack = true;
+    }
 
     private void FixedUpdate()
     {
         PlayerInput();
+        RechargeJetPack();
+
+        Debug.Log(rechargingJetPack);
+        Debug.Log(currentJetPackDuration);
     }
 
     private void PlayerInput()
     {
         Move(Input.GetAxis("Horizontal"));
 
-        if (Input.GetButtonDown("Jump"))
+        if (!CanJump() &&
+            !jetPacking)
+        {
+            // Timer for jump duration
+            if (currentJumpDuration < jumpDuration)
+                currentJumpDuration += Time.deltaTime;
+
+            // Jetpack
+            else if (Input.GetButton("Jump"))
+            {
+                FireJetPack();
+            }
+        }
+
+        // Jump
+        else if (Input.GetButtonDown("Jump") &&
+            CanJump())
         {
             Jump();
+
+            currentJumpDuration = 0.0f;
         }
     }
 
-    private void StartJumpDuration()
+    private void FireJetPack()
     {
+        if (canJetPack &&
+            currentJetPackDuration < jetPackDuration)
+        {
+            // Fire upwards
+            rb.AddForce(Vector2.up * jetPackForce);
 
+            // Countdown jetpack duration
+            currentJetPackDuration += Time.deltaTime;
+        }
+    }
+
+    private void RechargeJetPack()
+    {
+        if (CanJump() &&
+            currentJetPackDuration >= jetPackDuration)
+            rechargingJetPack = true;
+
+        if (rechargingJetPack &&
+            currentJetPackDuration > 0.0f)
+        {
+            // Recharge jetpack
+            canJetPack = false;
+            currentJetPackDuration -= Time.deltaTime * rechargeSpeed;
+
+            // Stop recharging
+            if (currentJetPackDuration < 0.0f)
+            {
+                currentJetPackDuration = 0.0f;
+
+                rechargingJetPack = false;
+                canJetPack = true;
+            }
+        }
     }
 }

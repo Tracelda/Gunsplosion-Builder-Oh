@@ -8,11 +8,12 @@ public class Moving_Entity : MonoBehaviour
                             jumpForce,
                             distFromGround;
 
+    internal Rigidbody2D    rb;
+
     private float           currentMoveSpeed;
-    private Rigidbody2D     rb;
     private BoxCollider2D   playerCollider;
 
-    private void Start()
+    public void Start()
     {
         currentMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -32,11 +33,10 @@ public class Moving_Entity : MonoBehaviour
 
     internal void Jump()
     {
-        if (CanJump())
-            rb.AddForce(Vector3.up * jumpForce);
+        rb.AddForce(Vector3.up * jumpForce);
     }
 
-    private bool CanJump()
+    internal bool CanJump()
     {
         playerCollider.enabled = false;
 
@@ -45,7 +45,6 @@ public class Moving_Entity : MonoBehaviour
         playerCollider.enabled = true;
 
         Debug.DrawLine(transform.position, hit.point, Color.red);
-        Debug.Log(hit.collider != null);
 
         return (hit.collider != null);
     }
