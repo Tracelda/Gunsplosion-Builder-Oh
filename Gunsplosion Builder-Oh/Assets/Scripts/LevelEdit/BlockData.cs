@@ -13,6 +13,7 @@ public class BlockData : ScriptableObject
     public BlockTypes blockType;
     public GameObject gameObject;
     public BlockInfo blockInfo;
+    public Sprite icon;
 }
 
 [System.Serializable]

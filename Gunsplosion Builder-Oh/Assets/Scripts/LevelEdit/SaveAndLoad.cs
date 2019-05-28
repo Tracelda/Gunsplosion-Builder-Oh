@@ -75,6 +75,9 @@ public class SaveAndLoad : MonoBehaviour
                     Quaternion newRot = Quaternion.Euler(0, 0, block.rotation.z);
                     GameObject newObject = Instantiate(Resources.Load(blockPrefabAddress + block.objectname) as GameObject, newPos, newRot);
                     blockData.gameObject = newObject;
+                    blockData.blockInfo = block;
+
+                    print(newPos);
                 }
 
                 if (levelData.blockData.ContainsKey(block.position.ToVector3()))
