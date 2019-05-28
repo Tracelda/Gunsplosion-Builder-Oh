@@ -9,12 +9,19 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private float lifeSpan;
+    private float bounceCooldown;
+    private float maxBounceCoolDown;
+    private bool bounceOnCooldown;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         active = false;
+
+        bounceCooldown = 0.2f;
+        maxBounceCoolDown = bounceCooldown;
+        bounceOnCooldown = false;
     }
 
     // Update is called once per frame
@@ -53,6 +60,8 @@ public class Bullet : MonoBehaviour
         lifeSpan = currentType.lifeSpan;
         gameObject.transform.localPosition = position; //= position;
         transform.rotation = lookAt2D(aimDirection);
+
+        //GetComponent<PolygonCollider2D>().
         //gameObject.transform.localRotation = ;
     }
     public void deActivate()
@@ -69,18 +78,31 @@ public class Bullet : MonoBehaviour
     private void homingShot()
     {
         rb.velocity = transform.up * currentType.bulletSpeed;
-        var hit = Physics2D.CircleCast(transform.position, 2, Vector2.up);
-        print(hit.collider);
-        if(hit)
+        if (!bounceOnCooldown)
         {
-            if(hit.collider.gameObject)
+            var hit = Physics2D.CircleCast(transform.position, 2, Vector2.up);
+            print(hit.collider);
+            if (hit)
             {
-                if (hit.collider.gameObject.GetComponent<Health>())
+                if (hit.collider.gameObject)
                 {
-                    Quaternion toRotation = lookAt2D(hit.point);
-                    //transform.rotation = toRotation;
-                    transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.0f * Time.deltaTime);
+                    if (hit.collider.gameObject.GetComponent<Health>())
+                    {
+                        Quaternion toRotation = lookAt2D(hit.point);
+                        //transform.rotation = toRotation;
+                        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.0f * Time.deltaTime);
+                        bounceOnCooldown = true;
+                    }
                 }
+            }
+        }
+        else
+        {
+            bounceCooldown -= Time.deltaTime;
+            if(bounceCooldown<0)
+            {
+                bounceOnCooldown = false;
+                bounceCooldown = maxBounceCoolDown;
             }
         }
     }
@@ -88,12 +110,14 @@ public class Bullet : MonoBehaviour
     {
         rb.velocity = transform.up * currentType.bulletSpeed;
 
-        var hit = Physics2D.Raycast(transform.position, transform.up, Time.deltaTime * currentType.bulletSpeed);
+        var hit = Physics2D.Raycast(transform.position, transform.up, Time.deltaTime * (currentType.bulletSpeed*2));
         if(hit)
         {
             Vector2 reflect = Vector2.Reflect(transform.up, hit.normal);
-            float rot = Mathf.Atan2(reflect.y, reflect.x) * Mathf.Rad2Deg -90;
-            transform.eulerAngles = new Vector2(0, rot);
+            float rot =  Mathf.Atan2(reflect.y, reflect.x) * Mathf.Rad2Deg -90f;
+            transform.eulerAngles = new Vector3(0,0, rot);
+
+            //transform.rotation = lookAt2D(reflect);
         }
     }
 
