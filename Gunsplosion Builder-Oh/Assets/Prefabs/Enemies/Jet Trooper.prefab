@@ -161,15 +161,15 @@ SpriteRenderer:
 --- !u!1 &5542708144076776593
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4428170945386329885, guid: b2cee65485ebb53439b685f2c8849d88,
-    type: 3}
-  m_PrefabInstance: {fileID: 4478357336730327790}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5288547600910472685}
   - component: {fileID: 8882428025402696239}
   - component: {fileID: 3567492005013410035}
+  - component: {fileID: 213205900482597}
   m_Layer: 0
   m_Name: Jet Trooper
   m_TagString: Untagged
@@ -180,9 +180,8 @@ GameObject:
 --- !u!4 &5288547600910472685
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-    type: 3}
-  m_PrefabInstance: {fileID: 4478357336730327790}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5542708144076776593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -197,9 +196,8 @@ Transform:
 --- !u!212 &8882428025402696239
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6550561776103087269, guid: b2cee65485ebb53439b685f2c8849d88,
-    type: 3}
-  m_PrefabInstance: {fileID: 4478357336730327790}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5542708144076776593}
   m_Enabled: 1
@@ -246,9 +244,8 @@ SpriteRenderer:
 --- !u!61 &3567492005013410035
 BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1815281286461370334, guid: b2cee65485ebb53439b685f2c8849d88,
-    type: 3}
-  m_PrefabInstance: {fileID: 4478357336730327790}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5542708144076776593}
   m_Enabled: 1
@@ -270,72 +267,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1001 &4478357336730327790
-PrefabInstance:
+--- !u!50 &213205900482597
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4428170945386329885, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_Name
-      value: Jet Trooper
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.5905778
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.9594202
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293657841791997905, guid: b2cee65485ebb53439b685f2c8849d88,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2cee65485ebb53439b685f2c8849d88, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542708144076776593}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
