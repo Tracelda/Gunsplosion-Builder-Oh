@@ -66,6 +66,10 @@ public class Moving_Entity : MonoBehaviour
         if (x != 0.0f || y != 0.0f)
         {
             Vector2 newPos = new Vector2(x, y);
+            newPos *= gunLength;
+
+            Debug.Log(newPos);
+
             firingPoint.transform.position = newPos;
             //firingPoint.transform.position *= gunLength;
         }

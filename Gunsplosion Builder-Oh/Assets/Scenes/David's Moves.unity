@@ -312,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661406301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.046999995, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.18466, y: 0.18466, z: 0.18466}
   m_Children: []
   m_Father: {fileID: 1855708535}
@@ -441,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
       propertyPath: gunLength
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
       propertyPath: firingPoint
