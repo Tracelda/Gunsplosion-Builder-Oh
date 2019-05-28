@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3738995486937336614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6000262279327922407}
+  m_Layer: 0
+  m_Name: aimTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6000262279327922407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738995486937336614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6336735886851500702}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6336735886851500672
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +57,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6000262279327922407}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,22 +79,40 @@ MonoBehaviour:
     fireRate: 0
     active: 0
     currentSlot: 0
-    weaponSprite: {fileID: 0}
+    weaponSprite: {fileID: 21300000, guid: 913160e62ee85f5459263b9baafd6891, type: 3}
     shotStartPosition: {x: 0, y: 0, z: 0}
+    bulletType:
+      weaponType: 0
+      damage: 0
+      bulletSpeed: 0
+      bulletSprite: {fileID: 0}
+      lifeSpan: 0
   Bounce:
-    type: 0
+    type: 1
     fireRate: 0
     active: 0
     currentSlot: 0
     weaponSprite: {fileID: 0}
     shotStartPosition: {x: 0, y: 0, z: 0}
+    bulletType:
+      weaponType: 0
+      damage: 0
+      bulletSpeed: 0
+      bulletSprite: {fileID: 0}
+      lifeSpan: 0
   Homing:
-    type: 0
+    type: 2
     fireRate: 0
     active: 0
     currentSlot: 0
-    weaponSprite: {fileID: 0}
+    weaponSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     shotStartPosition: {x: 0, y: 0, z: 0}
+    bulletType:
+      weaponType: 0
+      damage: 0
+      bulletSpeed: 0
+      bulletSprite: {fileID: 0}
+      lifeSpan: 0
   StraightShot:
     weaponType: 0
     damage: 0
@@ -77,11 +126,12 @@ MonoBehaviour:
     bulletSprite: {fileID: 0}
     lifeSpan: 0
   HomingShot:
-    weaponType: 0
+    weaponType: 2
     damage: 0
-    bulletSpeed: 0
-    bulletSprite: {fileID: 0}
-    lifeSpan: 0
+    bulletSpeed: 0.2
+    bulletSprite: {fileID: 21300000, guid: 30c5b9aa87098fd499411ddaa220e14b, type: 3}
+    lifeSpan: 2
   bulletPrefab: {fileID: 2814997921029683012, guid: c7b1ab40e86ac5e498100e830f8db392,
     type: 3}
   bulletPoolSize: 10
+  aimDirection: {fileID: 3738995486937336614}

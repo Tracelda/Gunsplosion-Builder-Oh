@@ -386,45 +386,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
-      propertyPath: HomingShot.bulletSpeed
-      value: 0.2
+      propertyPath: Straight.fireRate
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
-      propertyPath: HomingShot.bulletSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 30c5b9aa87098fd499411ddaa220e14b,
-        type: 3}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: HomingShot.lifeSpan
-      value: 2
+      propertyPath: bulletPoolSize
+      value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: HomingShot.weaponType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: Bounce.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: Homing.type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: Homing.weaponSprite
-      value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: Straight.weaponSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 913160e62ee85f5459263b9baafd6891,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5, type: 3}

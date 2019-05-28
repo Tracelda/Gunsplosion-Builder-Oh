@@ -45,13 +45,15 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void activate(Weapon.BulletType type, Vector2 position)
+    public void activate(Weapon.BulletType type, Vector2 position, Vector2 aimDirection)
     {
         active = true;
         currentType = type;
         spriteRenderer.sprite = currentType.bulletSprite;
         lifeSpan = currentType.lifeSpan;
-        gameObject.transform.localPosition = position;
+        gameObject.transform.localPosition = position; //= position;
+        lookAt2D(aimDirection);
+        //gameObject.transform.localRotation = ;
     }
     public void deActivate()
     {
@@ -62,7 +64,7 @@ public class Bullet : MonoBehaviour
 
     private void straightShot()
     {
-        rb.velocity = Vector2.up * currentType.bulletSpeed;
+        rb.velocity = transform.up * currentType.bulletSpeed;
     }
     private void homingShot()
     {
@@ -73,7 +75,13 @@ public class Bullet : MonoBehaviour
 
     }
 
-
+    private void lookAt2D(Vector2 WorldPos)
+    {
+        Vector3 tempDirection = WorldPos;
+        var dir = tempDirection - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

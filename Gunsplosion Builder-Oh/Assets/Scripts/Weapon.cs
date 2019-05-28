@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
         public Sprite weaponSprite;
         public Vector3 shotStartPosition;
         public BulletType bulletType;
+        public float currentShotCooldown;
     }
     [System.Serializable]
     public struct BulletType
@@ -37,6 +38,7 @@ public class Weapon : MonoBehaviour
     public int bulletPoolSize;
 
     private SpriteRenderer spriteRenderer;
+    public GameObject aimDirection;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,18 +61,30 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < heldWeapons.Length; i++)
+        {
+            if(heldWeapons[i].currentShotCooldown>0)
+            {
+                heldWeapons[i].currentShotCooldown -= Time.deltaTime;
+            }
+        }
         
     }
 
     public void fire()
     {
-        for (int i = 0; i < bulletPoolSize; i++)
+        if (heldWeapons[0].currentShotCooldown <= 0)
         {
-           if (!bulletList[i].GetComponent<Bullet>().active)
-           {
-                bulletList[i].GetComponent<Bullet>().activate(heldWeapons[0].bulletType, Vector2.zero);
-                break;
-           }
+            for (int i = 0; i < bulletPoolSize; i++)
+            {
+                if (!bulletList[i].GetComponent<Bullet>().active)
+                {
+                    bulletList[i].GetComponent<Bullet>().activate(heldWeapons[0].bulletType,
+                        heldWeapons[0].shotStartPosition, aimDirection.transform.position);
+                    heldWeapons[0].currentShotCooldown = heldWeapons[0].fireRate;
+                    break;
+                }
+            }
         }
     }
 
