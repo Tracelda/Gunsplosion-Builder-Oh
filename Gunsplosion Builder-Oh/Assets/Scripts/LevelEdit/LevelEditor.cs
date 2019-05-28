@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 public class LevelEditor : MonoBehaviour
@@ -27,7 +28,7 @@ public class LevelEditor : MonoBehaviour
         SerialiseVector3Int serialisedPosition = new SerialiseVector3Int(tilePosition.x, tilePosition.y, 0);
         SerialiseVector3Int serialisedRotation = new SerialiseVector3Int(0, 0, Mathf.RoundToInt(currentRotation.eulerAngles.z));
 
-        if (currentBlock != null)
+        if (currentBlock != null && EventSystem.current.currentSelectedGameObject == null && !EventSystem.current.IsPointerOverGameObject())
         {
             brushBlock.transform.position = newPosition;
             brushBlock.transform.rotation = currentRotation;
@@ -61,7 +62,7 @@ public class LevelEditor : MonoBehaviour
 
         if (Input.GetButton("Fire2") && levelData.tilemap.HasTile(tilePosition)) {
             levelData.tilemap.SetTile(tilePosition, null);
-            levelData.tileData.Remove(serialisedPosition);
+            levelData.tileData.Add(serialisedPosition, -2);
             if (levelData.blockData.ContainsKey(tilePosition) && levelData.blockData[tilePosition].blockType == BlockData.BlockTypes.Object) {
                 Destroy(levelData.blockData[tilePosition].gameObject);
             }
@@ -84,13 +85,6 @@ public class LevelEditor : MonoBehaviour
         {
             SelectBlock(3);
         }
-
-        if (Input.GetKeyDown("s"))
-        {
-            SaveAndLoad.instance.SaveLevel(levelData, SaveAndLoad.instance.fileName);
-            print(levelData.blockData.Count);
-        }
-
     }
 
     private void SelectBlock(int id)

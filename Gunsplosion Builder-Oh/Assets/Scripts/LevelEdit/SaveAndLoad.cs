@@ -19,6 +19,7 @@ public class SaveAndLoad : MonoBehaviour
     }
 
     public string fileName;
+    public string levelName;
     public LevelData levelData;
 
     public const string blockPrefabAddress = "Blocks/Prefab/";
@@ -53,6 +54,7 @@ public class SaveAndLoad : MonoBehaviour
 
     public void LoadLevel(string fileName)
     {
+        levelName = fileName;
         SaveData data = new SaveData();
         if (File.Exists(Application.persistentDataPath + "/levels/" + fileName + ".dat"))
         {
@@ -70,13 +72,14 @@ public class SaveAndLoad : MonoBehaviour
 
                 if (blockData.blockType == BlockData.BlockTypes.Object) {
                     Vector3 newPos = new Vector3(block.position.x, block.position.y, block.position.z);
-                    Quaternion newRot = new Quaternion(block.rotation.x, block.rotation.y, block.rotation.z, 0);
+                    Quaternion newRot = Quaternion.Euler(0, 0, block.rotation.z);
                     GameObject newObject = Instantiate(Resources.Load(blockPrefabAddress + block.objectname) as GameObject, newPos, newRot);
                     blockData.gameObject = newObject;
                 }
 
-                if (!levelData.blockData.ContainsKey(block.position.ToVector3()))
-                    levelData.blockData.Add(block.position.ToVector3(), blockData);
+                if (levelData.blockData.ContainsKey(block.position.ToVector3()))
+                    levelData.blockData.Remove(block.position.ToVector3());
+                levelData.blockData.Add(block.position.ToVector3(), blockData);
             }
 
             foreach(var tile in data.tileData)
@@ -85,22 +88,19 @@ public class SaveAndLoad : MonoBehaviour
                 Tile newTile;
                 if (tile.Value >= 0) {
                     newTile = levelData.blocks[tile.Value].tile;
+                    levelData.tileData.Add(SerialiseVector3Int.FromVector3(position), tile.Value);
+                }
+                else if (tile.Value == -1){
+                    newTile = levelData.emptyTile;
+                    levelData.tileData.Add(SerialiseVector3Int.FromVector3(position), -1);
                 }
                 else {
-                    newTile = levelData.emptyTile;
+                    newTile = null;
+                    levelData.tileData.Add(SerialiseVector3Int.FromVector3(position), -2);
                 }
                 levelData.tilemap.SetTile(position, newTile);
-                print(tile.Value);
             }
 
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("l"))
-        {
-            LoadLevel(fileName);
         }
     }
 }
