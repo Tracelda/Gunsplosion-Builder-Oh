@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Player : Moving_Entity
 {
-    public float    jumpDuration,
-                    jetPackDuration,
-                    jetPackForce,
-                    rechargeSpeed;
+    public float        jumpDuration,
+                        jetPackDuration,
+                        jetPackForce,
+                        rechargeSpeed;
 
-    private float   currentJumpDuration,
-                    currentJetPackDuration;
-    private bool    jetPacking,
-                    canJetPack,
-                    rechargingJetPack;
+    private float       currentJumpDuration,
+                        currentJetPackDuration;
+    private bool        jetPacking,
+                        canJetPack,
+                        rechargingJetPack;
 
     private void Start()
     {
@@ -25,9 +25,6 @@ public class Player : Moving_Entity
     {
         PlayerInput();
         RechargeJetPack();
-
-        Debug.Log(rechargingJetPack);
-        Debug.Log(currentJetPackDuration);
     }
 
     private void PlayerInput()
@@ -56,6 +53,9 @@ public class Player : Moving_Entity
 
             currentJumpDuration = 0.0f;
         }
+
+        // Aim gun
+        Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
     }
 
     private void FireJetPack()

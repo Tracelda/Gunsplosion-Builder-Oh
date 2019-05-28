@@ -6,7 +6,9 @@ public class Moving_Entity : MonoBehaviour
 {
     public float            moveSpeed,
                             jumpForce,
-                            distFromGround;
+                            distFromGround,
+                            gunLength;
+    public GameObject       firingPoint;
 
     internal Rigidbody2D    rb;
 
@@ -47,5 +49,25 @@ public class Moving_Entity : MonoBehaviour
         Debug.DrawLine(transform.position, hit.point, Color.red);
 
         return (hit.collider != null);
+    }
+
+    internal void Aim(float x, float y)
+    {
+        if (x < 0.0f)
+            x = -1.0f;
+        else if (x > 0.0f)
+            x = 1.0f;
+
+        if (y < 0.0f)
+            y = -1.0f;
+        else if (y > 0.0f)
+            y = 1.0f;
+
+        if (x != 0.0f || y != 0.0f)
+        {
+            Vector2 newPos = new Vector2(x, y);
+            firingPoint.transform.position = newPos;
+            //firingPoint.transform.position *= gunLength;
+        }
     }
 }
