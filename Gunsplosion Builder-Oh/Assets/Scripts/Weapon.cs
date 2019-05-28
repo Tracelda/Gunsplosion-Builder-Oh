@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
         Bounce.bulletType = BounceShot;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-        heldWeapons[0] = Straight;
+        heldWeapons[0] = Bounce;
         heldWeapons[1] = Homing;
 
         for (int i = 0; i < bulletPoolSize; i++)

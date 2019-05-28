@@ -86,7 +86,15 @@ public class Bullet : MonoBehaviour
     }
     private void bounceShot()
     {
+        rb.velocity = transform.up * currentType.bulletSpeed;
 
+        var hit = Physics2D.Raycast(transform.position, transform.up, Time.deltaTime * currentType.bulletSpeed);
+        if(hit)
+        {
+            Vector2 reflect = Vector2.Reflect(transform.up, hit.normal);
+            float rot = Mathf.Atan2(reflect.y, reflect.x) * Mathf.Rad2Deg -90;
+            transform.eulerAngles = new Vector2(0, rot);
+        }
     }
 
     private Quaternion lookAt2D(Vector2 WorldPos)
