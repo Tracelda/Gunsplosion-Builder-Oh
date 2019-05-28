@@ -23,17 +23,26 @@ public class Weapon : MonoBehaviour
     [System.Serializable]
     public struct bulletType
     {
-        public Weapon.weaponType type;
+        public Weapon.weaponType weaponType;
         public float damage;
-        public Sprite bulletShot;
-        public float lifespan;
+        public float bulletSpeed;
+        public Sprite bulletSprite;
+        public float lifeSpan;
     }
     public bulletType StraightShot, BounceShot, HomingShot;
 
+    public GameObject bulletPrefab;
+    private List<GameObject> bulletList = new List<GameObject>();
+    public int bulletPoolSize;
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < bulletPoolSize; i++)
+        {
+            GameObject shot = Instantiate(bulletPrefab);
+            bulletList.Add(shot);
+            shot.transform.parent = transform;
+        }
     }
 
     // Update is called once per frame
@@ -42,8 +51,15 @@ public class Weapon : MonoBehaviour
         
     }
 
-    protected virtual void fire()
+    public void fire()
     {
-
+        for (int i = 0; i < bulletPoolSize; i++)
+        {
+           if (!bulletList[i].GetComponent<Bullet>().active)
+           {
+                bulletList[i].GetComponent<Bullet>().activate(StraightShot, Vector2.zero);
+                break;
+           }
+        }
     }
 }
