@@ -16,3 +16,13 @@ MonoBehaviour:
   tile: {fileID: 0}
   blockType: 1
   gameObject: {fileID: 0}
+  blockInfo:
+    objectname: GravityBlock
+    position:
+      x: 0
+      y: 0
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 0

@@ -18,7 +18,7 @@ public class BlockData : ScriptableObject
 [System.Serializable]
 public class BlockInfo
 {
-    public string prefabname;
-    public SerialiseVector3 position;
-    public SerialiseVector3 rotation;
+    public string objectname;
+    public SerialiseVector3Int position;
+    public SerialiseVector3Int rotation;
 }

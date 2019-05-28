@@ -8,10 +8,7 @@ public class LevelEditor : MonoBehaviour
     private int currentBlockID;
     private GameObject brushBlock;
     private Camera mainCamera;
-    public Tilemap tileMap;
-    public Tile emptyTile;
     public LevelData levelData;
-    public List<BlockData> blocks;
     private BlockData currentBlock;
     private Quaternion currentRotation;
 
@@ -22,45 +19,37 @@ public class LevelEditor : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        newPosition.x = Mathf.Round(newPosition.x);
+        newPosition.y = Mathf.Round(newPosition.y);
+        newPosition.z = 0;
+        Vector3Int tilePosition = new Vector3Int(Mathf.RoundToInt(newPosition.x), Mathf.RoundToInt(newPosition.y), 0);
+        SerialiseVector3Int serialisedPosition = new SerialiseVector3Int(tilePosition.x, tilePosition.y, 0);
+        SerialiseVector3Int serialisedRotation = new SerialiseVector3Int(0, 0, Mathf.RoundToInt(currentRotation.eulerAngles.z));
+
         if (currentBlock != null)
         {
-            Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            newPosition.x = Mathf.Round(newPosition.x);
-            newPosition.y = Mathf.Round(newPosition.y);
-            newPosition.z = 0;
             brushBlock.transform.position = newPosition;
             brushBlock.transform.rotation = currentRotation;
-            Vector3Int tilePosition = new Vector3Int(Mathf.RoundToInt(newPosition.x), Mathf.RoundToInt(newPosition.y), 0);
-            SerialiseVector3 serialisedPosition = new SerialiseVector3(tilePosition.x, tilePosition.y, 0);
-            SerialiseVector3 serialisedRotation = new SerialiseVector3(currentRotation.eulerAngles.x, currentRotation.eulerAngles.y, currentRotation.eulerAngles.z);
 
-            if (Input.GetButtonDown("Fire1") && !tileMap.HasTile(tilePosition))
+            if (Input.GetButton("Fire1") && !levelData.tilemap.HasTile(tilePosition))
             {
                 if (currentBlock.blockType == BlockData.BlockTypes.Tile)
                 {
-                    tileMap.SetTile(tilePosition, blocks[currentBlockID].tile);
-                    levelData.blockData[serialisedPosition] = blocks[currentBlockID];
+                    levelData.tilemap.SetTile(tilePosition, levelData.blocks[currentBlockID].tile);
+                    levelData.tileData.Add(serialisedPosition, currentBlockID);
+                    levelData.blockData[tilePosition] = levelData.blocks[currentBlockID];
                 }
                 else
                 {
-                    tileMap.SetTile(tilePosition, emptyTile);
-                    levelData.blockData[serialisedPosition] = Instantiate(currentBlock);
+                    levelData.tilemap.SetTile(tilePosition, levelData.emptyTile);
+                    levelData.tileData.Add(serialisedPosition, -1);
+                    levelData.blockData[tilePosition] = Instantiate(currentBlock);
                     currentBlock = null;
                 }
-                levelData.blockData[serialisedPosition].blockInfo.position = serialisedPosition;
-                levelData.blockData[serialisedPosition].blockInfo.rotation = serialisedRotation;
+                levelData.blockData[tilePosition].blockInfo.position = serialisedPosition;
+                levelData.blockData[tilePosition].blockInfo.rotation = serialisedRotation;
                 SelectBlock(currentBlockID);
-            }
-
-            if (Input.GetButtonDown("Fire2") && tileMap.HasTile(tilePosition))
-            {
-                tileMap.SetTile(tilePosition, null);
-                if (levelData.blockData[serialisedPosition].blockType == BlockData.BlockTypes.Object)
-                {
-                    Destroy(levelData.blockData[serialisedPosition].gameObject);
-                    SelectBlock(currentBlockID);
-                }
-                levelData.blockData.Remove(serialisedPosition);
             }
 
             if (Input.GetKeyDown("r"))
@@ -68,6 +57,15 @@ public class LevelEditor : MonoBehaviour
                 brushBlock.gameObject.transform.Rotate(0, 0, -90);
                 currentRotation = brushBlock.gameObject.transform.rotation;
             }
+        }
+
+        if (Input.GetButton("Fire2") && levelData.tilemap.HasTile(tilePosition)) {
+            levelData.tilemap.SetTile(tilePosition, null);
+            levelData.tileData.Remove(serialisedPosition);
+            if (levelData.blockData.ContainsKey(tilePosition) && levelData.blockData[tilePosition].blockType == BlockData.BlockTypes.Object) {
+                Destroy(levelData.blockData[tilePosition].gameObject);
+            }
+            levelData.blockData.Remove(tilePosition);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -107,9 +105,9 @@ public class LevelEditor : MonoBehaviour
         newPosition.x = Mathf.Round(newPosition.x);
         newPosition.y = Mathf.Round(newPosition.y);
         newPosition.z = 0;
-        brushBlock = Instantiate(blocks[id].prefab, newPosition, currentRotation);
+        brushBlock = Instantiate(levelData.blocks[id].prefab, newPosition, currentRotation);
         currentBlockID = id;
-        currentBlock = blocks[id];
+        currentBlock = levelData.blocks[id];
         currentBlock.gameObject = brushBlock;
     }
 }

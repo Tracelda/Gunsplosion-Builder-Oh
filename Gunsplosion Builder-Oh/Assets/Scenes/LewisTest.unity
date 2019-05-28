@@ -739,14 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3882fbb7a6344654687ce5cff85e8a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMap: {fileID: 1425899844}
-  emptyTile: {fileID: 11400000, guid: b7e0ee0f0355f144fa3c378e8fe1371c, type: 2}
   levelData: {fileID: 992293480}
-  blocks:
-  - {fileID: 11400000, guid: c50244f8ef7116540b4310a01b454348, type: 2}
-  - {fileID: 11400000, guid: 5867be1535be2b14b89de384cf91283e, type: 2}
-  - {fileID: 11400000, guid: 393821d72fa46e948a5ac921e6c42d12, type: 2}
-  - {fileID: 11400000, guid: 5bba8524eb96f114e95d167a9e990753, type: 2}
 --- !u!4 &525841679
 Transform:
   m_ObjectHideFlags: 0
@@ -930,8 +923,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1425899842}
-  m_Father: {fileID: 1575945139}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &644812186 stripped
 Transform:
@@ -1370,6 +1363,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1425899844}
+  blocks:
+  - {fileID: 11400000, guid: c50244f8ef7116540b4310a01b454348, type: 2}
+  - {fileID: 11400000, guid: 5867be1535be2b14b89de384cf91283e, type: 2}
+  - {fileID: 11400000, guid: 393821d72fa46e948a5ac921e6c42d12, type: 2}
+  - {fileID: 11400000, guid: 5bba8524eb96f114e95d167a9e990753, type: 2}
+  emptyTile: {fileID: 11400000, guid: b7e0ee0f0355f144fa3c378e8fe1371c, type: 2}
 --- !u!4 &992293481
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,8 +1380,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1575945139}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &992293482
 MonoBehaviour:
@@ -2666,38 +2665,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1322926917}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1575945138
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1575945139}
-  m_Layer: 0
-  m_Name: LevelPrefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1575945139
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575945138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 641071818}
-  - {fileID: 992293481}
-  m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1702156420
