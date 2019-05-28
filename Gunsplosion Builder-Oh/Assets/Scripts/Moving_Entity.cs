@@ -7,23 +7,24 @@ public class Moving_Entity : MonoBehaviour
     public float            moveSpeed,
                             jumpForce,
                             distFromGround;
-    public string           GroundLayer;
 
+    private float           currentMoveSpeed;
     private Rigidbody2D     rb;
     private BoxCollider2D   playerCollider;
 
     private void Start()
     {
+        currentMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
     }
 
-    internal void Move(float direction, float speed)
+    internal void Move(float direction)
     {
         Vector2 newVel = rb.velocity;
 
         // Set x as movement
-        newVel.x = direction * speed;
+        newVel.x = direction * currentMoveSpeed;
 
         // Set new velocity
         rb.velocity = newVel;
