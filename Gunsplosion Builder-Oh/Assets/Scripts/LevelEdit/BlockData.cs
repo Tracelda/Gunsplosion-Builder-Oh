@@ -12,4 +12,13 @@ public class BlockData : ScriptableObject
     public enum BlockTypes { Tile, Object };
     public BlockTypes blockType;
     public GameObject gameObject;
+    public BlockInfo blockInfo;
+}
+
+[System.Serializable]
+public class BlockInfo
+{
+    public string prefabname;
+    public SerialiseVector3 position;
+    public SerialiseVector3 rotation;
 }

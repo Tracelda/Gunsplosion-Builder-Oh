@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 9113171965019618602, guid: 54c9fb1c23e76f64c810f6b2dc6ca49d, type: 3}
   tile: {fileID: 11400000, guid: 7cf9019c205eba244a3bece5fcfa514c, type: 2}
-  blockType: 0
+  blockType: 1
   gameObject: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
