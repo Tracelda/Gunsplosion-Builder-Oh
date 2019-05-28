@@ -181,6 +181,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &518241230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336735886851500672, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6336735886757286222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &518241233
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518241230}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &849610028
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,30 +386,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
-      propertyPath: StraightShot.bulletSpeed
+      propertyPath: HomingShot.bulletSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+        type: 3}
+      propertyPath: HomingShot.bulletSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 30c5b9aa87098fd499411ddaa220e14b,
+        type: 3}
+    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+        type: 3}
+      propertyPath: HomingShot.lifeSpan
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+        type: 3}
+      propertyPath: HomingShot.weaponType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+        type: 3}
+      propertyPath: Bounce.type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
-      propertyPath: StraightShot.bulletSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 26974f4fb11d90b48be8d2a355e7071f,
-        type: 3}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: StraightShot.lifeSpan
-      value: 4
+      propertyPath: Homing.type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
-      propertyPath: bulletPoolSize
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: Homing.weaponSprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
-      propertyPath: bulletPrefab
+      propertyPath: Straight.weaponSprite
       value: 
-      objectReference: {fileID: 2814997921029683012, guid: c7b1ab40e86ac5e498100e830f8db392,
+      objectReference: {fileID: 21300000, guid: 913160e62ee85f5459263b9baafd6891,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5, type: 3}

@@ -16,12 +16,10 @@ public class Weapon : MonoBehaviour
 
         public Sprite weaponSprite;
         public Vector3 shotStartPosition;
+        public BulletType bulletType;
     }
-
-    public weaponStats Straight, Bounce, Homing;
-
     [System.Serializable]
-    public struct bulletType
+    public struct BulletType
     {
         public Weapon.weaponType weaponType;
         public float damage;
@@ -29,14 +27,27 @@ public class Weapon : MonoBehaviour
         public Sprite bulletSprite;
         public float lifeSpan;
     }
-    public bulletType StraightShot, BounceShot, HomingShot;
+    public weaponStats Straight, Bounce, Homing;
+    public BulletType StraightShot, BounceShot, HomingShot;
+
+    weaponStats[] heldWeapons = new weaponStats[2]; 
 
     public GameObject bulletPrefab;
     private List<GameObject> bulletList = new List<GameObject>();
     public int bulletPoolSize;
+
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
+        Straight.bulletType = StraightShot;
+        Homing.bulletType = HomingShot;
+        Bounce.bulletType = BounceShot;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        heldWeapons[0] = Straight;
+        heldWeapons[1] = Homing;
+
         for (int i = 0; i < bulletPoolSize; i++)
         {
             GameObject shot = Instantiate(bulletPrefab);
@@ -57,9 +68,22 @@ public class Weapon : MonoBehaviour
         {
            if (!bulletList[i].GetComponent<Bullet>().active)
            {
-                bulletList[i].GetComponent<Bullet>().activate(StraightShot, Vector2.zero);
+                bulletList[i].GetComponent<Bullet>().activate(heldWeapons[0].bulletType, Vector2.zero);
                 break;
            }
         }
+    }
+
+    public void changeWeapon()
+    {
+
+    }
+    public void swapActiveWeapon()
+    {
+        weaponStats temp = heldWeapons[0];
+        heldWeapons[0] = heldWeapons[1];
+        heldWeapons[1] = temp;
+
+        spriteRenderer.sprite = heldWeapons[0].weaponSprite;
     }
 }

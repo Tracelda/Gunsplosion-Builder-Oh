@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Weapon.bulletType currentType;
+    public Weapon.BulletType currentType;
     public bool active;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -45,12 +45,13 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void activate(Weapon.bulletType type, Vector2 position)
+    public void activate(Weapon.BulletType type, Vector2 position)
     {
         active = true;
         currentType = type;
         spriteRenderer.sprite = currentType.bulletSprite;
         lifeSpan = currentType.lifeSpan;
+        gameObject.transform.localPosition = position;
     }
     public void deActivate()
     {

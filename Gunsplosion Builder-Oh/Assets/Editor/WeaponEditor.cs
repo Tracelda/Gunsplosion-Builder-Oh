@@ -16,5 +16,9 @@ public class WeaponEditor : Editor
         {
             weapon.fire();
         }
+        if (GUILayout.Button("swap active weapon"))
+        {
+            weapon.swapActiveWeapon();
+        }
     }
 }
