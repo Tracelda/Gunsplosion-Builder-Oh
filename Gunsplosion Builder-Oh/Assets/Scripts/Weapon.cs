@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour
 
         for (int i = 0; i < bulletPoolSize; i++)
         {
-            GameObject shot = Instantiate(bulletPrefab);
+            GameObject shot = Instantiate(bulletPrefab, new Vector3(float.MaxValue, float.MaxValue), Quaternion.identity);
             bulletList.Add(shot);
             shot.transform.SetParent(transform);
         }
