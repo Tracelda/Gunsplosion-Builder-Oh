@@ -80,8 +80,6 @@ public class Moving_Entity : MonoBehaviour
             Vector2 newPos = new Vector2(x, y);
             newPos *= gunLength;
 
-            Debug.Log(newPos);
-
             firingPoint.transform.localPosition = newPos;
 
             weaponScript.fire();

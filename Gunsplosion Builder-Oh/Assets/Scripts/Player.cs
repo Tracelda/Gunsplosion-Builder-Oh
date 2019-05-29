@@ -29,6 +29,7 @@ public class Player : Moving_Entity
 
     private void PlayerInput()
     {
+        // Move left abd right
         Move(Input.GetAxis("Horizontal"));
 
         if (!CanJump() &&
@@ -56,6 +57,10 @@ public class Player : Moving_Entity
 
         // Aim gun
         Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
+
+        // Switch weapon
+        if (Input.GetButtonDown("Switch Weapon"))
+            weaponScript.swapActiveWeapon();
     }
 
     private void FireJetPack()
