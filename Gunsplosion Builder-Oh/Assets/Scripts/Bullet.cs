@@ -96,18 +96,40 @@ public class Bullet : MonoBehaviour
     private void homingShot()
     {
         rb.velocity = transform.up * currentType.bulletSpeed;
-        if (!bounceOnCooldown)
+        //if (!bounceOnCooldown)
+        //{
+        int layer_mask = LayerMask.GetMask("Enemy");
+        var hit = Physics2D.CircleCast(transform.position, currentType.homingRaduis, Vector2.up,0.1f,layer_mask);
+        var multiHit = Physics2D.CircleCastAll(transform.position, currentType.homingRaduis, Vector2.up, 0.1f, layer_mask);
+        //print(hit.collider);
+        if (hit)
         {
-            int layer_mask = LayerMask.GetMask("Enemy");
-            var hit = Physics2D.CircleCast(transform.position, currentType.homingRaduis, Vector2.up,0,layer_mask);
-            //print(hit.collider);
-            if (hit)
+            print("Bam");
+            if (hit.collider.gameObject)
             {
-                if (hit.collider.gameObject)
+                print("jam");
+                if (hit.collider.gameObject.GetComponent<Health>())
                 {
-                    if (hit.collider.gameObject.GetComponent<Health>())
+                    print("ham");
+                    Quaternion toRotation = lookAt2D(hit.point);
+                    //transform.rotation = toRotation;
+                    transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
+                    bounceOnCooldown = true;
+                }
+            }
+        }
+        if (multiHit.Length > 1)
+        {
+            if (multiHit[0])
+            {
+                print("Bam2");
+                if (multiHit[0].collider.gameObject)
+                {
+                    print("jam2");
+                    if (multiHit[0].collider.gameObject.GetComponent<Health>())
                     {
-                        Quaternion toRotation = lookAt2D(hit.point);
+                        print("ham2");
+                        Quaternion toRotation = lookAt2D(multiHit[0].point);
                         //transform.rotation = toRotation;
                         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
                         bounceOnCooldown = true;
@@ -115,15 +137,16 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            bounceCooldown -= Time.deltaTime;
-            if(bounceCooldown<0)
-            {
-                bounceOnCooldown = false;
-                bounceCooldown = maxBounceCoolDown;
-            }
-        }
+        //}
+        //else
+        //{
+        //    bounceCooldown -= Time.deltaTime;
+        //    if(bounceCooldown<0)
+        //    {
+        //        bounceOnCooldown = false;
+        //        bounceCooldown = maxBounceCoolDown;
+        //    }
+        //}
     }
     private void bounceShot()
     {
@@ -160,6 +183,13 @@ public class Bullet : MonoBehaviour
                     {
                         print("we are hurting");
                         other.gameObject.GetComponent<Health>().takeDamage(currentType.damage);
+                        deActivate();
+                    }
+                }
+                else if(currentType.weaponType != Weapon.weaponType.Bounce)
+                {
+                    if(other.gameObject.CompareTag("Block"))
+                    {
                         deActivate();
                     }
                 }

@@ -154,12 +154,12 @@ MonoBehaviour:
   HomingShot:
     weaponType: 2
     damage: 1
-    bulletSpeed: 20
+    bulletSpeed: 2
     bulletSprite: {fileID: 21300092, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
     animatorController: {fileID: 9100000, guid: 71f32a47a3f3c4a4a8609ce592c302f8,
       type: 2}
     lifeSpan: 10
-    homingRaduis: 1000
+    homingRaduis: 10
     homingSpeed: 1000
     damageTag: 
   bulletPrefab: {fileID: 2964954051675385954, guid: c7b1ab40e86ac5e498100e830f8db392,
