@@ -143,3 +143,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exploded: 0
   goBoom: 0
+  sprite: {fileID: 4880726111576414373}
+  collider: {fileID: 5111595161859337720}

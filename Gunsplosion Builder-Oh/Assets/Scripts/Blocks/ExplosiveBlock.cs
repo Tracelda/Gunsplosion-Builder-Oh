@@ -3,14 +3,31 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ExplosiveBlock : MonoBehaviour
+public class ExplosiveBlock : BlockResetBase
 {
     public bool exploded;
     public bool goBoom;
+    public SpriteRenderer sprite;
+    public Collider2D collider;
+
+    public void StartGame()
+    {
+        exploded = false;
+        sprite.enabled = true;
+        collider.enabled = true;
+    }
+
+    public void ResetToEdit()
+    {
+        StartGame();
+    }
 
     private void Update() {
         if (goBoom)
+        {
             StartExplode();
+            goBoom = false;
+        }
     }
 
     public void StartExplode() {
@@ -36,7 +53,8 @@ public class ExplosiveBlock : MonoBehaviour
             }
         }
 
-        gameObject.SetActive(false);
+        sprite.enabled = false;
+        collider.enabled = false;
     }
 
     IEnumerator DelayedExplosion() {
