@@ -80,7 +80,7 @@ MonoBehaviour:
     fireRate: 0.5
     active: 0
     currentSlot: 0
-    weaponSprite: {fileID: 21300000, guid: 913160e62ee85f5459263b9baafd6891, type: 3}
+    weaponSprite: {fileID: 0}
     shotStartPosition: {x: 0, y: 0, z: 0}
     bulletType:
       weaponType: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
     fireRate: 0.5
     active: 0
     currentSlot: 0
-    weaponSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    weaponSprite: {fileID: 0}
     shotStartPosition: {x: 0, y: 0, z: 0}
     bulletType:
       weaponType: 0
@@ -132,8 +132,8 @@ MonoBehaviour:
   StraightShot:
     weaponType: 0
     damage: 1
-    bulletSpeed: 1
-    bulletSprite: {fileID: 21300000, guid: 26974f4fb11d90b48be8d2a355e7071f, type: 3}
+    bulletSpeed: 30
+    bulletSprite: {fileID: 0}
     animatorController: {fileID: 9100000, guid: 71f32a47a3f3c4a4a8609ce592c302f8,
       type: 2}
     lifeSpan: 4
@@ -144,7 +144,7 @@ MonoBehaviour:
     weaponType: 1
     damage: 10
     bulletSpeed: 30
-    bulletSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    bulletSprite: {fileID: 0}
     animatorController: {fileID: 9100000, guid: 62620e8b56449554bbbef3084523d835,
       type: 2}
     lifeSpan: 30
@@ -154,13 +154,13 @@ MonoBehaviour:
   HomingShot:
     weaponType: 2
     damage: 1
-    bulletSpeed: 1
-    bulletSprite: {fileID: 21300000, guid: 30c5b9aa87098fd499411ddaa220e14b, type: 3}
+    bulletSpeed: 20
+    bulletSprite: {fileID: 0}
     animatorController: {fileID: 9100000, guid: 71f32a47a3f3c4a4a8609ce592c302f8,
       type: 2}
     lifeSpan: 10
-    homingRaduis: 10
-    homingSpeed: 2
+    homingRaduis: 1000
+    homingSpeed: 1000
     damageTag: 
   bulletPrefab: {fileID: 2964954051675385954, guid: c7b1ab40e86ac5e498100e830f8db392,
     type: 3}
