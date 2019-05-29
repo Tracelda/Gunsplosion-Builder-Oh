@@ -43,6 +43,9 @@ public class Weapon : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public GameObject aimDirection;
     public string OnlyDamageTag;
+
+
+    private List<weaponStats> allWeapons = new List<weaponStats>();
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,10 @@ public class Weapon : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         heldWeapons[0] = Bounce;
         heldWeapons[1] = Homing;
+
+        allWeapons.Add(Straight);
+        allWeapons.Add(Bounce);
+        allWeapons.Add(Homing);
 
         for (int i = 0; i < bulletPoolSize; i++)
         {
@@ -98,9 +105,28 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void changeWeapon()
+    public int changeWeapon(int index)
     {
+        int result = int.MaxValue;
+        if(heldWeapons[0].type != allWeapons[index].type)
+        {
+            for (int i = 0; i < allWeapons.Count; i++)
+            {
+                if(allWeapons[i].type == heldWeapons[0].type)
+                {
+                    heldWeapons[0] = allWeapons[index];
+                    spriteRenderer.sprite = heldWeapons[0].weaponSprite;
+                    return i;
+                }
+            }
+            
+        }
+        else
+        {
+            return int.MaxValue;
+        }
 
+        return result;
     }
     public void swapActiveWeapon()
     {
