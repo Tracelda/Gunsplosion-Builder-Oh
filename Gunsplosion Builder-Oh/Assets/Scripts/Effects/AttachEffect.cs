@@ -7,8 +7,10 @@ public class AttachEffect : MonoBehaviour
     public Transform target;
     public List<ParticleSystem> particleEmitter = new List<ParticleSystem>();
     private bool active;
+    private Animator anim;
 
     private void Start() {
+        anim = GetComponent<Animator>();
         active = true;
     }
 
@@ -24,7 +26,7 @@ public class AttachEffect : MonoBehaviour
                     target = null;
                 }
             }
-            else {
+            else if (!anim){
                 active = false;
                 float maxLifetime = 0;
                 foreach (ParticleSystem particle in particleEmitter) {
@@ -36,6 +38,9 @@ public class AttachEffect : MonoBehaviour
                     }
                 }
                 Destroy(gameObject, maxLifetime);
+            }
+            else {
+                Destroy(gameObject, 1);
             }
         }
     }

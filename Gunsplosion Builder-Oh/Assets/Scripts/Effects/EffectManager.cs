@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EffectManager : MonoBehaviour
 {
-    public enum ParticleTypes { StraightShot, BounceShot, HomingShot};
-    public GameObject straightShot, bounceShot, homingShot;
+    public enum ParticleTypes { StraightShot, BounceShot, HomingShot, SmallExplosion, LargeExplosion, SmallDust, LargeDust};
+    public GameObject straightShot, bounceShot, homingShot, smallExplosion, largeExplosion, smallDust, largeDust;
 
     public static EffectManager instance;
 
@@ -23,6 +23,12 @@ public class EffectManager : MonoBehaviour
         }
     }
 
+    public void PlaceParticle(Vector3 position, ParticleTypes type) {
+        if (GetPrefab(type)) {
+            Instantiate(GetPrefab(type), position, Quaternion.identity);
+        }
+    }
+
     private GameObject GetPrefab(ParticleTypes type) {
         switch (type) {
             case ParticleTypes.StraightShot:
@@ -31,6 +37,14 @@ public class EffectManager : MonoBehaviour
                 return bounceShot;
             case ParticleTypes.HomingShot:
                 return homingShot;
+            case ParticleTypes.SmallExplosion:
+                return smallExplosion;
+            case ParticleTypes.LargeExplosion:
+                return largeExplosion;
+            case ParticleTypes.SmallDust:
+                return smallDust;
+            case ParticleTypes.LargeDust:
+                return largeDust;
         }
         return null;
     }

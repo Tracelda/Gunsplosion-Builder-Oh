@@ -181,6 +181,7 @@ public class Bullet : MonoBehaviour
                 {
                     if (other.gameObject.CompareTag(currentType.damageTag))
                     {
+                        EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.SmallExplosion);
                         print("we are hurting");
                         other.gameObject.GetComponent<Health>().takeDamage(currentType.damage);
                         deActivate();
@@ -190,6 +191,7 @@ public class Bullet : MonoBehaviour
                 {
                     if(other.gameObject.CompareTag("Block"))
                     {
+                        EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.SmallExplosion);
                         deActivate();
                     }
                 }
