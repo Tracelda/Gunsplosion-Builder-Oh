@@ -27,6 +27,9 @@ public class Player : Moving_Entity
         RechargeJetPack();
     }
 
+    /////////////////////////////////////////////////////////
+    // Runs functions from input
+    ////////////////////////////////////////////////////////
     private void PlayerInput()
     {
         // Move left abd right
@@ -63,6 +66,9 @@ public class Player : Moving_Entity
             weaponScript.swapActiveWeapon();
     }
 
+    /////////////////////////////////////////////////////////
+    // Boost upwards
+    ////////////////////////////////////////////////////////
     private void FireJetPack()
     {
         if (canJetPack &&
@@ -76,6 +82,9 @@ public class Player : Moving_Entity
         }
     }
 
+    /////////////////////////////////////////////////////////
+    // Increase jetpack duration
+    ////////////////////////////////////////////////////////
     private void RechargeJetPack()
     {
         if (CanJump() &&

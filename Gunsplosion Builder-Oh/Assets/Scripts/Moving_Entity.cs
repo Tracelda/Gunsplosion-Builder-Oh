@@ -33,7 +33,10 @@ public class Moving_Entity : MonoBehaviour
         entityHealth = GetComponent<Health>();
         entityHealth.health = maxHealth;
     }
-    
+
+    /////////////////////////////////////////////////////////
+    // Moves along x axis
+    ////////////////////////////////////////////////////////
     internal void Move(float direction)
     {
         Vector2 newVel = rb.velocity;
@@ -45,11 +48,17 @@ public class Moving_Entity : MonoBehaviour
         rb.velocity = newVel;
     }
 
+    /////////////////////////////////////////////////////////
+    // Jump
+    ////////////////////////////////////////////////////////
     internal void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce);
     }
 
+    /////////////////////////////////////////////////////////
+    // Checks if centity is grounded
+    ////////////////////////////////////////////////////////
     internal bool CanJump()
     {
         playerCollider.enabled = false;
@@ -58,11 +67,12 @@ public class Moving_Entity : MonoBehaviour
 
         playerCollider.enabled = true;
 
-        Debug.DrawLine(transform.position, hit.point, Color.red);
-
         return (hit.collider != null);
     }
 
+    /////////////////////////////////////////////////////////
+    // Aim in direction and fire
+    ////////////////////////////////////////////////////////
     internal void Aim(float x, float y)
     {
         if (x < 0.0f)
