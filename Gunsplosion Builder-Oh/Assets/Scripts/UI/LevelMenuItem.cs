@@ -13,10 +13,12 @@ public class LevelMenuItem : MonoBehaviour
     }
 
     public void PlayLevel() {
-
+        GameManager.instance.gameMode = GameManager.GameModes.Play;
+        GameManager.instance.PlayLevel(levelName);
     }
 
     public void EditLevel() {
+        GameManager.instance.gameMode = GameManager.GameModes.Edit;
         GameManager.instance.LoadLevel(levelName);
     }
 }

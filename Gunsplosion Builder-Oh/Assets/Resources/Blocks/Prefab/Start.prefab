@@ -94,3 +94,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 6379640770938787316, guid: 5e634075877c04a4db6a7af1327b64ff,
     type: 3}
+  sprite: {fileID: 4867183157381031476}

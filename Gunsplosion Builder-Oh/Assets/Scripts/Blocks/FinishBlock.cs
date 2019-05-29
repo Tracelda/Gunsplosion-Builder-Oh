@@ -7,7 +7,15 @@ public class FinishBlock : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
-            SceneManager.LoadScene(0);
+            switch (GameManager.instance.gameMode)
+            {
+                case GameManager.GameModes.Edit:
+                    MenuManager.instance.Edit();
+                    break;
+                case GameManager.GameModes.Play:
+                    SceneManager.LoadScene(0);
+                    break;
+            }
         }
     }
 }

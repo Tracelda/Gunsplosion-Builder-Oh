@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public List<GameObject> levelObjects = new List<GameObject>();
+    private bool levelLoaded;
+    public enum GameModes { Play, Edit };
+    public GameModes gameMode;
 
     private void Awake() {
         if (!instance)
@@ -21,6 +24,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadLevel(string levelName) {
+        levelLoaded = false;
         SceneManager.LoadScene(1);
         StartCoroutine(WaitLoadLevel(levelName));
     }
@@ -28,6 +32,7 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitLoadLevel(string levelName) {
         yield return new WaitForFixedUpdate();
         SaveAndLoad.instance.LoadLevel(levelName);
+        levelLoaded = true;
     }
 
     public void PlayLevel()
@@ -36,6 +41,20 @@ public class GameManager : MonoBehaviour
         {
             InvokeFunction("StartGame", obj);
         }
+    }
+
+    public void PlayLevel(string levelName)
+    {
+        StartCoroutine(WaitPlayLevel(levelName));
+    }
+    IEnumerator WaitPlayLevel(string levelName)
+    {
+        LoadLevel(levelName);
+        while (!levelLoaded)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        FindObjectOfType<MenuManager>().Play();
     }
 
     public void EditLevel()

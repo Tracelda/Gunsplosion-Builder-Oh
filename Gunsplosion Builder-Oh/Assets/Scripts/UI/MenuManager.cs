@@ -11,6 +11,16 @@ public class MenuManager : MonoBehaviour
     public GameObject grid;
     public Button playButton;
 
+    public static MenuManager instance;
+
+    private void Awake()
+    {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(this);
+    }
+
     public void Pause() {
         levelName.text = SaveAndLoad.instance.levelName;
         pauseCanvas.enabled = true;

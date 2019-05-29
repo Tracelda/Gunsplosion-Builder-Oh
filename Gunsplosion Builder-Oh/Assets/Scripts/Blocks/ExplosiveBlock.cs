@@ -9,6 +9,7 @@ public class ExplosiveBlock : BlockResetBase
     public bool goBoom;
     public SpriteRenderer sprite;
     public Collider2D collider;
+    public Health health;
 
     public void StartGame()
     {
@@ -28,6 +29,11 @@ public class ExplosiveBlock : BlockResetBase
             StartExplode();
             goBoom = false;
         }
+
+        if (health.health < 0)
+        {
+            StartExplode();
+        }
     }
 
     public void StartExplode() {
@@ -39,10 +45,10 @@ public class ExplosiveBlock : BlockResetBase
 
     public void Explode() {
         RaycastHit2D[] hits = new RaycastHit2D[4];
-        hits[0] = Physics2D.Raycast(transform.position + Vector3.right, Vector2.right, 0.01f);
-        hits[1] = Physics2D.Raycast(transform.position + Vector3.left, Vector2.left, 0.01f);
-        hits[2] = Physics2D.Raycast(transform.position + Vector3.down, Vector2.down, 0.01f);
-        hits[3] = Physics2D.Raycast(transform.position + Vector3.up, Vector2.up, 0.01f);
+        hits[0] = Physics2D.Raycast(transform.position, Vector2.right, 0.6f);
+        hits[1] = Physics2D.Raycast(transform.position, Vector2.left, 0.6f);
+        hits[2] = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
+        hits[3] = Physics2D.Raycast(transform.position, Vector2.up, 0.6f);
 
         foreach (RaycastHit2D hit in hits) {
             if (hit) {

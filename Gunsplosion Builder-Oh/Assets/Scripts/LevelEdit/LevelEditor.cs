@@ -46,7 +46,7 @@ public class LevelEditor : MonoBehaviour
                 brushBlock.transform.position = newPosition;
                 brushBlock.transform.rotation = currentRotation;
 
-                if (Input.GetButton("Fire1") && !levelData.tilemap.HasTile(tilePosition)) {
+                if (Input.GetButton("PlaceBlock") && !levelData.tilemap.HasTile(tilePosition)) {
                     if (currentBlock.blockType == BlockData.BlockTypes.Tile) {
                         levelData.tilemap.SetTile(tilePosition, levelData.blocks[currentBlockID].tile);
                         levelData.tileData.Add(serialisedPosition, currentBlockID);
@@ -74,7 +74,7 @@ public class LevelEditor : MonoBehaviour
                 }
             }
 
-            if (Input.GetButton("Fire2") && levelData.tilemap.HasTile(tilePosition)) {
+            if (Input.GetButton("DeleteBlock") && levelData.tilemap.HasTile(tilePosition)) {
                 levelData.tilemap.SetTile(tilePosition, null);
                 levelData.tileData.Add(serialisedPosition, -2);
                 if (levelData.blockData.ContainsKey(tilePosition) && levelData.blockData[tilePosition].blockType == BlockData.BlockTypes.Object) {
