@@ -16,6 +16,10 @@ public class Bullet : MonoBehaviour
     private float bounceCooldown;
     private float maxBounceCoolDown;
     private bool bounceOnCooldown;
+
+    // homing logic
+    private Transform homingTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +87,7 @@ public class Bullet : MonoBehaviour
         rb.velocity = Vector2.zero;
         animator.runtimeAnimatorController = null;
         setColliderActiveState(false);
+        homingTarget = null;
     }
     public void setColliderActiveState(bool input)
     {
@@ -99,44 +104,61 @@ public class Bullet : MonoBehaviour
         //if (!bounceOnCooldown)
         //{
         int layer_mask = LayerMask.GetMask("Enemy");
-        var hit = Physics2D.CircleCast(transform.position, currentType.homingRaduis, Vector2.up,0.1f,layer_mask);
-        var multiHit = Physics2D.CircleCastAll(transform.position, currentType.homingRaduis, Vector2.up, 0.1f, layer_mask);
-        //print(hit.collider);
-        if (hit)
-        {
-            print("Bam");
-            if (hit.collider.gameObject)
-            {
-                print("jam");
-                if (hit.collider.gameObject.GetComponent<Health>())
-                {
-                    print("ham");
-                    Quaternion toRotation = lookAt2D(hit.point);
-                    //transform.rotation = toRotation;
-                    transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
-                    bounceOnCooldown = true;
-                }
-            }
-        }
-        if (multiHit.Length > 1)
-        {
-            if (multiHit[0])
-            {
-                print("Bam2");
-                if (multiHit[0].collider.gameObject)
-                {
-                    print("jam2");
-                    if (multiHit[0].collider.gameObject.GetComponent<Health>())
-                    {
-                        print("ham2");
-                        Quaternion toRotation = lookAt2D(multiHit[0].point);
-                        //transform.rotation = toRotation;
-                        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
-                        bounceOnCooldown = true;
+        //var multiHit = Physics2D.CircleCastAll(transform.position, currentType.homingRaduis, Vector2.zero);
+        var multiHit = Physics2D.OverlapCircleAll(transform.position, currentType.homingRaduis);
+
+        if (!homingTarget) {
+            foreach (Collider2D hit in multiHit) {
+                if (hit) {
+                    if (hit.transform.CompareTag("Enemy")) {
+                        homingTarget = hit.transform;
                     }
                 }
             }
         }
+
+        if (homingTarget) {
+            Quaternion toRotation = lookAt2D(homingTarget.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
+            bounceOnCooldown = true;
+        }
+
+        //print(hit.collider);
+        //if (hit)
+        //{
+        //    print("Bam");
+        //    if (hit.collider.gameObject && hit.collider.CompareTag("Enemy"))
+        //    {
+        //        print("jam");
+        //        if (hit.collider.gameObject.GetComponent<Health>())
+        //        {
+        //            print("ham");
+        //            Quaternion toRotation = lookAt2D(hit.point);
+        //            //transform.rotation = toRotation;
+        //            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
+        //            bounceOnCooldown = true;
+        //        }
+        //    }
+        //}
+        //if (multiHit.Length > 1)
+        //{
+        //    if (multiHit[0])
+        //    {
+        //        print("Bam2");
+        //        if (multiHit[0].collider.gameObject)
+        //        {
+        //            print("jam2");
+        //            if (multiHit[0].collider.gameObject.GetComponent<Health>())
+        //            {
+        //                print("ham2");
+        //                Quaternion toRotation = lookAt2D(multiHit[0].point);
+        //                //transform.rotation = toRotation;
+        //                transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
+        //                bounceOnCooldown = true;
+        //            }
+        //        }
+        //    }
+        //}
         //}
         //else
         //{

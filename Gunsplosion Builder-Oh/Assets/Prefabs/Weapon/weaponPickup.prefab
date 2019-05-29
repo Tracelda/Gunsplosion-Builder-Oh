@@ -177,7 +177,7 @@ MonoBehaviour:
   possiblePickups:
   - {fileID: 21300022, guid: d170f2f82b2583d43a963b8eb0a587f9, type: 3}
   - {fileID: 21300006, guid: d170f2f82b2583d43a963b8eb0a587f9, type: 3}
-  - {fileID: 21300000, guid: 30c5b9aa87098fd499411ddaa220e14b, type: 3}
+  - {fileID: 21300092, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
   pickupIndex: 0
   spriteRenderer: {fileID: 2078058260196233744}
   spriteTooltip: {fileID: 1607747092721894768}

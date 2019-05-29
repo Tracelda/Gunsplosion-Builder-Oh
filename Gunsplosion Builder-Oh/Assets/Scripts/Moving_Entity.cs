@@ -89,7 +89,7 @@ public class Moving_Entity : MonoBehaviour
         if (x != 0.0f || y != 0.0f)
         {
             Vector2 newPos = new Vector2(x, y);
-            Debug.Log("newPos = " + newPos);
+            //Debug.Log("newPos = " + newPos);
             newPos *= gunLength;
 
             firingPoint.transform.localPosition = newPos;
