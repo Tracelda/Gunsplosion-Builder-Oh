@@ -57,7 +57,7 @@ public class EnemyTargeting : MonoBehaviour
     public void ShootAtPlayer()
     {
         //Moving_Entity.Aim(normShootDirection.x, normShootDirection.y);
-        Moving_Entity.Aim(shootDirection.x, shootDirection.y);
+        Moving_Entity.Aim(normShootDirection.x, normShootDirection.y);
         Debug.Log("Shooting at player");
     }
 

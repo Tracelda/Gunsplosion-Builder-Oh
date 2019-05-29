@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoombaScrpt : BlockResetBase
+public class GoombaScrpt : BaseEnemy
 {
     public Vector2 leftNodePos, rightNodePos;
     public GameObject leftNode, rightNode;
@@ -12,8 +12,9 @@ public class GoombaScrpt : BlockResetBase
 
     public bool MovingRight, mirrorPatroling = false;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         leftNodePos = leftNode.transform.position;
         rightNodePos = rightNode.transform.position;
         detectionRing = gameObject.GetComponent<CircleCollider2D>();
