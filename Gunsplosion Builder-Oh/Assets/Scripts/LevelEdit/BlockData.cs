@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 public class BlockData : ScriptableObject
 {
     public GameObject prefab;
-    public Tile tile;
+    public RuleTile tile;
     public enum BlockTypes { Tile, Object };
     public BlockTypes blockType;
     public GameObject gameObject;

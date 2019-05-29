@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: SquareBlock
   m_EditorClassIdentifier: 
   prefab: {fileID: 4867183157381031482, guid: 0fe8d9443e90bf04585ee29dd2f659e7, type: 3}
-  tile: {fileID: 11400000, guid: c011bea2215447d42b94e926a92efae6, type: 2}
+  tile: {fileID: 11400000, guid: 7e5b5b28a6f18084c81d5398e83fbc0a, type: 2}
   blockType: 0
   gameObject: {fileID: 0}
   blockInfo:
     objectname: SquareBlock
     position:
-      x: 9
-      y: 5
+      x: 16
+      y: 3
       z: 0
     rotation:
       x: 0
       y: 0
-      z: 270
-  icon: {fileID: 21300000, guid: dea5f2c0c9fff0b469bb099986d83d5d, type: 3}
+      z: 0
+  icon: {fileID: 21300000, guid: 4baa52f1e4c40c54fa4157c97524ed97, type: 3}

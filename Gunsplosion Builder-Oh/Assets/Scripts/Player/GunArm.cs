@@ -10,7 +10,6 @@ public class GunArm : MonoBehaviour
     void Update()
     {
         transform.right = target.position - transform.position;
-        print(transform.rotation.eulerAngles.z);
         if (transform.localRotation.eulerAngles.z == 135 || transform.localRotation.eulerAngles.z == 225) {
             sprite.flipY = true;
         }

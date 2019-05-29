@@ -10,5 +10,5 @@ public class LevelData : MonoBehaviour
     public Dictionary<SerialiseVector3Int, int> tileData = new Dictionary<SerialiseVector3Int, int>();
     public Tilemap tilemap;
     public List<BlockData> blocks;
-    public Tile emptyTile;
+    public RuleTile emptyTile;
 }

@@ -16,6 +16,7 @@ public class ExplosiveBlock : BlockResetBase
         exploded = false;
         sprite.enabled = true;
         collider.enabled = true;
+        health.health = 0;
     }
 
     public void ResetToEdit()

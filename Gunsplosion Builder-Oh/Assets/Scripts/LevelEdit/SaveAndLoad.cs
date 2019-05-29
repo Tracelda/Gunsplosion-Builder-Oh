@@ -88,7 +88,7 @@ public class SaveAndLoad : MonoBehaviour
             foreach(var tile in data.tileData)
             {
                 Vector3Int position = new Vector3Int((int)tile.Key.x, (int)tile.Key.y, (int)tile.Key.z);
-                Tile newTile;
+                RuleTile newTile;
                 if (tile.Value >= 0) {
                     newTile = levelData.blocks[tile.Value].tile;
                     levelData.tileData.Add(SerialiseVector3Int.FromVector3(position), tile.Value);

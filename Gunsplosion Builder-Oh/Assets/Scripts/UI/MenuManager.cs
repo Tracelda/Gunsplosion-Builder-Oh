@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public Canvas editMenu, playMenu;
     public GameObject grid;
     public Button playButton;
+    public EditCamera editCamera;
 
     public static MenuManager instance;
 
@@ -33,6 +34,7 @@ public class MenuManager : MonoBehaviour
         playMenu.enabled = true;
         playButton.enabled = false;
         grid.SetActive(false);
+        StartCoroutine(ChangeCamera());
     }
 
     public void Edit()
@@ -42,5 +44,11 @@ public class MenuManager : MonoBehaviour
         playMenu.enabled = false;
         playButton.enabled = true;
         grid.SetActive(true);
+        editCamera.ChangeToEdit();
+    }
+
+    IEnumerator ChangeCamera() {
+        yield return new WaitForSeconds(0.01f);
+        editCamera.ChangeToPlay(FindObjectOfType<Player>().transform);
     }
 }
