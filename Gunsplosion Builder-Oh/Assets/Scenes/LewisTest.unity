@@ -2209,8 +2209,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2055914661}
   m_HandleRect: {fileID: 2055914660}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3153,7 +3153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000023983419, y: 0}
+  m_AnchoredPosition: {x: 0.0000022129097, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1136516036
@@ -3861,7 +3861,7 @@ GameObject:
   - component: {fileID: 1425899847}
   - component: {fileID: 1425899846}
   - component: {fileID: 1425899845}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5692,6 +5692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelObjects: []
+  gameMode: 0
 --- !u!4 &1881283635
 Transform:
   m_ObjectHideFlags: 0

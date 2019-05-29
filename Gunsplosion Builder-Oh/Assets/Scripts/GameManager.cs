@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
         if (!instance)
             instance = this;
         else
-            Destroy(this);
+            Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
 
     public void NewLevel() {
+        gameMode = GameModes.Edit;
         SceneManager.LoadScene(1);
     }
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayLevel()
     {
+        LevelEditor.instance.SelectBlock(0);
         foreach(GameObject obj in levelObjects)
         {
             InvokeFunction("StartGame", obj);

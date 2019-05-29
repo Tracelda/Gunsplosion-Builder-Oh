@@ -31,4 +31,9 @@ public class LevelSelector : MonoBehaviour
         path = path.Replace(@"/", @"\");
         System.Diagnostics.Process.Start("explorer.exe", path);
     }
+
+    public void NewLevel()
+    {
+        GameManager.instance.NewLevel();
+    }
 }
