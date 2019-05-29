@@ -112,25 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &271735289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 271735289, guid: 5e634075877c04a4db6a7af1327b64ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 6379640769237223559}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &271735290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271735289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a7c92db5f5aed40a77a955509af848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 2
 --- !u!1001 &314805467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -414,38 +395,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: groundPoundDuration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: groundPoundCollider
-      value: 
-      objectReference: {fileID: 271735289}
-    - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: groundPoundSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855708536, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: groundPoundForce
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 271735289, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 271735290, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 271735291, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 271735291, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}
-      propertyPath: m_Radius
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e634075877c04a4db6a7af1327b64ff, type: 3}

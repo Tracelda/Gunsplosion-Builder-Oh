@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 271735290}
   - component: {fileID: 271735291}
+  - component: {fileID: 8011598301947134525}
   m_Layer: 0
   m_Name: Ground Pound Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &271735290
 Transform:
   m_ObjectHideFlags: 0
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271735289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.055, z: 0}
+  m_LocalPosition: {x: 0, y: -0.36, z: 0}
   m_LocalScale: {x: 0.26819503, y: 0.26819503, z: 0.26819503}
   m_Children: []
   m_Father: {fileID: 6379640770938787312}
@@ -38,7 +39,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271735289}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -46,7 +47,20 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 3
+--- !u!114 &8011598301947134525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271735289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a7c92db5f5aed40a77a955509af848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!1 &463951171
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +237,8 @@ GameObject:
   - component: {fileID: 1855708536}
   - component: {fileID: 6379640770938787317}
   - component: {fileID: 6379640770938787318}
+  - component: {fileID: 6379640770938787319}
+  - component: {fileID: 8534135130323521438}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -363,11 +379,9 @@ MonoBehaviour:
   firingPoint: {fileID: 1661406301}
   maxHealth: 100
   jumpDuration: 0.2
-  jetPackDuration: 1
-  jetPackForce: 15
-  rechargeSpeed: 0.5
-  groundPoundDuration: 0
-  groundPoundCollider: {fileID: 0}
+  groundPoundDuration: 0.2
+  groundPoundForce: 300
+  groundPoundCollider: {fileID: 271735289}
 --- !u!114 &6379640770938787317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +414,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6379640770938787319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379640770938787316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841a5479f59ad9b47803175e7e59f839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxJetpackFuel: 1
+  jetPackForce: 15
+  rechargeSpeed: 0.2
+--- !u!114 &8534135130323521438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379640770938787316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30426edc83937504f931d33c46ff4423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1001 &6379640769536839243
 PrefabInstance:
   m_ObjectHideFlags: 0

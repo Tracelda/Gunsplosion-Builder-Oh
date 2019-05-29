@@ -5,42 +5,42 @@ using UnityEngine;
 public class Player : Moving_Entity
 {
     public float            jumpDuration,
-                            jetPackDuration,
-                            jetPackForce,
-                            rechargeSpeed,
                             groundPoundDuration,
                             groundPoundForce;
     public GameObject       groundPoundCollider;
 
     private float           currentJumpDuration,
-                            currentJetPackDuration,
                             currentGroundPoundDuration;
     private bool            jetPacking,
-                            canJetPack,
-                            rechargingJetPack,
                             canInput,
                             groundPounding;
     private Animator        playerAnimator;
     private SpriteRenderer  playerSprite;
+    private Jetpack         jetPack;
+    private Abilities       ability;
 
     private void Start()
     {
         base.Start();
 
         canInput = true;
-        canJetPack = true;
 
         currentGroundPoundDuration = 0.0f;
         playerAnimator = GetComponent<Animator>();
         playerSprite = GetComponent<SpriteRenderer>();
+
+        ability = GetComponent<Abilities>();
+        jetPack = GetComponent<Jetpack>();
     }
 
     private void FixedUpdate()
     {
         PlayerInput();
-        RechargeJetPack();
         UpdateAnimation();
         GroundPound();
+
+        if (CanJump())
+            jetPack.StartRecharging();
     }
 
     /////////////////////////////////////////////////////////
@@ -65,7 +65,8 @@ public class Player : Moving_Entity
                 }
             }
 
-            if (!CanJump() &&
+            if (ability.type == Abilities.abilityType.JETPACK &&
+                !CanJump() &&
                 !jetPacking)
             {
                 // Timer for jump duration
@@ -81,10 +82,9 @@ public class Player : Moving_Entity
 
             // Jump
             else if (Input.GetButtonDown("Jump") &&
-                CanJump())
+                    CanJump())
             {
                 Jump();
-
                 currentJumpDuration = 0.0f;
             }
 
@@ -107,41 +107,11 @@ public class Player : Moving_Entity
     ////////////////////////////////////////////////////////
     private void FireJetPack()
     {
-        if (canJetPack &&
-            currentJetPackDuration < jetPackDuration)
+        if (jetPack.CanJetPack())
         {
             // Fire upwards
-            rb.AddForce(Vector2.up * jetPackForce);
-
-            // Countdown jetpack duration
-            currentJetPackDuration += Time.deltaTime;
-        }
-    }
-
-    /////////////////////////////////////////////////////////
-    // Increase jetpack duration
-    ////////////////////////////////////////////////////////
-    private void RechargeJetPack()
-    {
-        if (CanJump() &&
-            currentJetPackDuration >= jetPackDuration)
-            rechargingJetPack = true;
-
-        if (rechargingJetPack &&
-            currentJetPackDuration > 0.0f)
-        {
-            // Recharge jetpack
-            canJetPack = false;
-            currentJetPackDuration -= Time.deltaTime * rechargeSpeed;
-
-            // Stop recharging
-            if (currentJetPackDuration < 0.0f)
-            {
-                currentJetPackDuration = 0.0f;
-
-                rechargingJetPack = false;
-                canJetPack = true;
-            }
+            rb.AddForce(Vector2.up * jetPack.GetForce());
+            jetPack.Fire();
         }
     }
 
@@ -177,14 +147,6 @@ public class Player : Moving_Entity
             }
         }
     }
-
-    /////////////////////////////////////////////////////////
-    // Returns jetpack charge
-    ////////////////////////////////////////////////////////
-    public float GetJetPackFuel()
-    {
-        return currentJetPackDuration;
-    }
     
     /////////////////////////////////////////////////////////
     // Updates sprite animation
@@ -193,5 +155,10 @@ public class Player : Moving_Entity
     {
         playerAnimator.SetBool("InAir", !CanJump());
         playerAnimator.SetBool("Moving", rb.velocity.x != 0);
+    }
+
+    public void TakeDamage(float damage)
+    {
+
     }
 }
