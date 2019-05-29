@@ -14,6 +14,7 @@ public class LevelEditor : MonoBehaviour
     public SpriteRenderer fullGridSprite;
     private BlockData currentBlock;
     private Quaternion currentRotation;
+    private GameObject grabbedObject;
 
     public static LevelEditor instance;
 
@@ -73,6 +74,32 @@ public class LevelEditor : MonoBehaviour
                     currentRotation = brushBlock.gameObject.transform.rotation;
                 }
             }
+
+            else if (Input.GetButton("PlaceBlock"))
+            {
+                print("a");
+                if (!grabbedObject)
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 1), Vector2.down, 1f);
+                    if (hit)
+                    {
+                        print("b");
+                        if (hit.transform.CompareTag("DragNode"))
+                        {
+                            print("c");
+                            grabbedObject = hit.transform.gameObject;
+                        }
+                    }
+                }
+
+                grabbedObject.transform.position = tilePosition;
+            }
+
+            else
+            {
+                grabbedObject = null;
+            }
+
 
             if (Input.GetButton("DeleteBlock") && levelData.tilemap.HasTile(tilePosition)) {
                 levelData.tilemap.SetTile(tilePosition, null);

@@ -143,3 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupID: 0
   prefab: {fileID: 2078058260196233964, guid: e091dcbf498019e4daed12877f75169f, type: 3}
+  sprite: {fileID: 4867183157381031476}
