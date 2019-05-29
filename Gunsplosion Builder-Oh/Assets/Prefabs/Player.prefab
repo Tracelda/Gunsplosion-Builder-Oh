@@ -38,7 +38,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271735289}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 6379640770938787315}
   - component: {fileID: 1855708536}
   - component: {fileID: 6379640770938787317}
+  - component: {fileID: 6379640770938787318}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -238,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 6379640770938787316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.9585, y: 5.9585, z: 5.9585}
+  m_LocalScale: {x: 1, y: 1, z: 5.9585}
   m_Children:
   - {fileID: 463951174}
   - {fileID: 1661406302}
@@ -264,7 +265,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -284,7 +285,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 913160e62ee85f5459263b9baafd6891, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -302,24 +303,24 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6379640770938787316}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2a95d1b9567d1514a92256c58b1562db, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.06, y: -0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.09, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.09, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09, y: 0.16}
+  m_Size: {x: 0.51, y: 0.94}
   m_EdgeRadius: 0
 --- !u!50 &6379640770938787315
 Rigidbody2D:
@@ -356,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpForce: 300
-  distFromGround: 0.5
+  distFromGround: 0.6
   gunLength: 0.5
   weapon: {fileID: 1115083794426569931}
   firingPoint: {fileID: 1661406301}
@@ -365,6 +366,7 @@ MonoBehaviour:
   jetPackDuration: 1
   jetPackForce: 15
   rechargeSpeed: 0.5
+  groundPoundDuration: 0
 --- !u!114 &6379640770938787317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +380,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+--- !u!95 &6379640770938787318
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379640770938787316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f5ae3bff2e53564ea150134d9b86cea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6379640769536839243
 PrefabInstance:
   m_ObjectHideFlags: 0
