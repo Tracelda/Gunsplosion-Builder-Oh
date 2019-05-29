@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Player : Moving_Entity
 {
-    public float        jumpDuration,
-                        jetPackDuration,
-                        jetPackForce,
-                        rechargeSpeed,
-                        groundPoundDuration;
+    public float            jumpDuration,
+                            jetPackDuration,
+                            jetPackForce,
+                            rechargeSpeed,
+                            groundPoundDuration,
+                            groundPoundForce;
+    public GameObject       groundPoundCollider;
 
-    private float       currentJumpDuration,
-                        currentJetPackDuration,
-                        currentGroundPoundDuration;
-    private bool        jetPacking,
-                        canJetPack,
-                        rechargingJetPack,
-                        canInput,
-                        groundPounding;
-    private Animator    playerAnimator;
-    private SpriteRenderer playerSprite;
+    private float           currentJumpDuration,
+                            currentJetPackDuration,
+                            currentGroundPoundDuration;
+    private bool            jetPacking,
+                            canJetPack,
+                            rechargingJetPack,
+                            canInput,
+                            groundPounding;
+    private Animator        playerAnimator;
+    private SpriteRenderer  playerSprite;
 
     private void Start()
     {
@@ -38,6 +40,7 @@ public class Player : Moving_Entity
         PlayerInput();
         RechargeJetPack();
         UpdateAnimation();
+        GroundPound();
     }
 
     /////////////////////////////////////////////////////////
@@ -84,6 +87,11 @@ public class Player : Moving_Entity
 
                 currentJumpDuration = 0.0f;
             }
+
+            // Ground pounding
+            if (!CanJump() &&
+                Input.GetAxis("Vertical") < 0.0f)
+                groundPounding = true;
         }
         
         // Aim gun
@@ -137,16 +145,36 @@ public class Player : Moving_Entity
         }
     }
 
-    public void GroundPound()
+    /////////////////////////////////////////////////////////
+    // Drop down and ground pound
+    ////////////////////////////////////////////////////////
+    private void GroundPound()
     {
-        if (currentGroundPoundDuration < groundPoundDuration)
+        if (groundPounding)
         {
-            currentGroundPoundDuration += Time.deltaTime;
-        }
-        else
-        {
-            currentGroundPoundDuration = 0.0f;
+            // HIT
+            if (CanJump())
+            {
+                groundPoundCollider.SetActive(true);
 
+                if (currentGroundPoundDuration < groundPoundDuration)
+                    currentGroundPoundDuration += Time.deltaTime;
+
+                else
+                {
+                    groundPoundCollider.SetActive(false);
+
+                    currentGroundPoundDuration = 0.0f;
+
+                    groundPounding = false;
+                    canInput = true;
+                }
+            }
+            // FALLING
+            else
+            {
+                rb.AddForce(-Vector2.up * groundPoundForce);
+            }
         }
     }
 
@@ -157,7 +185,10 @@ public class Player : Moving_Entity
     {
         return currentJetPackDuration;
     }
-
+    
+    /////////////////////////////////////////////////////////
+    // Updates sprite animation
+    ////////////////////////////////////////////////////////
     private void UpdateAnimation()
     {
         playerAnimator.SetBool("InAir", !CanJump());
