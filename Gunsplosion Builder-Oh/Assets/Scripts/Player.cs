@@ -108,4 +108,12 @@ public class Player : Moving_Entity
             }
         }
     }
+
+    /////////////////////////////////////////////////////////
+    // Returns jetpack charge
+    ////////////////////////////////////////////////////////
+    public float GetJetPackFuel()
+    {
+        return currentJetPackDuration;
+    }
 }
