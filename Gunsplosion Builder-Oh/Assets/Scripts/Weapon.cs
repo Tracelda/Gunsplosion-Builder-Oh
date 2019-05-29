@@ -42,6 +42,7 @@ public class Weapon : MonoBehaviour
     public int bulletPoolSize;
 
     private SpriteRenderer spriteRenderer;
+    public SpriteRenderer gunSprite;
     public GameObject aimDirection;
     public string OnlyDamageTag;
 
@@ -58,7 +59,7 @@ public class Weapon : MonoBehaviour
         Homing.bulletType.damageTag = OnlyDamageTag;
         Bounce.bulletType.damageTag = OnlyDamageTag;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         heldWeapons[0] = Bounce;
         heldWeapons[1] = Homing;
 
@@ -73,6 +74,8 @@ public class Weapon : MonoBehaviour
             bulletList.Add(shot);
             shot.transform.SetParent(transform);
         }
+
+        changeWeapon(0);
     }
 
     // Update is called once per frame
@@ -116,7 +119,7 @@ public class Weapon : MonoBehaviour
                 if(allWeapons[i].type == heldWeapons[0].type)
                 {
                     heldWeapons[0] = allWeapons[index];
-                    spriteRenderer.sprite = heldWeapons[0].weaponSprite;
+                    gunSprite.sprite = heldWeapons[0].weaponSprite;
                     return i;
                 }
             }
@@ -135,6 +138,6 @@ public class Weapon : MonoBehaviour
         heldWeapons[0] = heldWeapons[1];
         heldWeapons[1] = temp;
 
-        spriteRenderer.sprite = heldWeapons[0].weaponSprite;
+        gunSprite.sprite = heldWeapons[0].weaponSprite;
     }
 }

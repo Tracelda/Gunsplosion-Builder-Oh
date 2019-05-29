@@ -80,7 +80,7 @@ MonoBehaviour:
     fireRate: 0.5
     active: 0
     currentSlot: 0
-    weaponSprite: {fileID: 0}
+    weaponSprite: {fileID: 21300094, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
     shotStartPosition: {x: 0, y: 0, z: 0}
     bulletType:
       weaponType: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     fireRate: 0.5
     active: 0
     currentSlot: 0
-    weaponSprite: {fileID: 0}
+    weaponSprite: {fileID: 21300098, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
     shotStartPosition: {x: 0, y: 0, z: 0}
     bulletType:
       weaponType: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
     fireRate: 0.5
     active: 0
     currentSlot: 0
-    weaponSprite: {fileID: 0}
+    weaponSprite: {fileID: 21300102, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
     shotStartPosition: {x: 0, y: 0, z: 0}
     bulletType:
       weaponType: 0

@@ -14,7 +14,8 @@ public class Player : Moving_Entity
     private bool            jetPacking,
                             canInput,
                             groundPounding;
-    private Animator        playerAnimator;
+    public Animator         playerAnimator,
+                            accessoryAnimator;
     private SpriteRenderer  playerSprite;
     private Jetpack         jetPack;
     private Abilities       ability;
@@ -58,10 +59,12 @@ public class Player : Moving_Entity
                 if (Input.GetAxis("Horizontal") < 0)
                 {
                     playerSprite.flipX = true;
+                    accessoryAnimator.transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else if (Input.GetAxis("Horizontal") > 0)
                 {
                     playerSprite.flipX = false;
+                    accessoryAnimator.transform.localScale = new Vector3(1, 1, 1);
                 }
             }
 
@@ -155,6 +158,8 @@ public class Player : Moving_Entity
     {
         playerAnimator.SetBool("InAir", !CanJump());
         playerAnimator.SetBool("Moving", rb.velocity.x != 0);
+        accessoryAnimator.SetBool("InAir", !CanJump());
+        accessoryAnimator.SetBool("Moving", rb.velocity.x != 0);
     }
 
     public void TakeDamage(float damage)
