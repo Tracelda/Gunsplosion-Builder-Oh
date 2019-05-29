@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlockResetBase : MonoBehaviour
 {
-    private void Start()
+    protected virtual void Start()
     {
         GameManager.instance.levelObjects.Add(gameObject);
     }

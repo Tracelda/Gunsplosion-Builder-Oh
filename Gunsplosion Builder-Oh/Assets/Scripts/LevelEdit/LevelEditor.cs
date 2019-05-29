@@ -77,22 +77,22 @@ public class LevelEditor : MonoBehaviour
 
             else if (Input.GetButton("PlaceBlock"))
             {
-                print("a");
                 if (!grabbedObject)
                 {
                     RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 1), Vector2.down, 1f);
                     if (hit)
                     {
-                        print("b");
                         if (hit.transform.CompareTag("DragNode"))
                         {
-                            print("c");
                             grabbedObject = hit.transform.gameObject;
                         }
                     }
                 }
 
-                grabbedObject.transform.position = tilePosition;
+                else if (grabbedObject)
+                {
+                    grabbedObject.transform.position = tilePosition;
+                }
             }
 
             else

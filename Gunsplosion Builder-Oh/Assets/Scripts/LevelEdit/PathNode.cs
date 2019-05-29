@@ -6,8 +6,9 @@ public class PathNode : BlockResetBase
 {
     private SpriteRenderer sprite;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -16,7 +17,7 @@ public class PathNode : BlockResetBase
         sprite.enabled = false;
     }
 
-    public void ResetToLevel()
+    public void ResetToEdit()
     {
         sprite.enabled = true;
     }
