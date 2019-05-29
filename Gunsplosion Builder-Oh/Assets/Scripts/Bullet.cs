@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float lifeSpan;
     private BoxCollider2D boxCollider;
+    private Animator animator;
 
     //bounce logic
     private float bounceCooldown;
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
         active = false;
 
         bounceCooldown = 0.2f;
@@ -60,10 +62,11 @@ public class Bullet : MonoBehaviour
     {
         active = true;
         currentType = type;
-        spriteRenderer.sprite = currentType.bulletSprite;
+        //spriteRenderer.sprite = currentType.bulletSprite;
         lifeSpan = currentType.lifeSpan;
         gameObject.transform.localPosition = position; //= position;
         transform.rotation = lookAt2D(aimDirection);
+        animator.runtimeAnimatorController = currentType.animatorController;
         setColliderActiveState(true);
         //GetComponent<PolygonCollider2D>().
         //gameObject.transform.localRotation = ;
@@ -73,6 +76,7 @@ public class Bullet : MonoBehaviour
         active = false;
         spriteRenderer.sprite = null;
         rb.velocity = Vector2.zero;
+        animator.runtimeAnimatorController = null;
         setColliderActiveState(false);
     }
     public void setColliderActiveState(bool input)

@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
         public float damage;
         public float bulletSpeed;
         public Sprite bulletSprite;
+        public RuntimeAnimatorController animatorController;
         public float lifeSpan;
         public float homingRaduis;
         public float homingSpeed;

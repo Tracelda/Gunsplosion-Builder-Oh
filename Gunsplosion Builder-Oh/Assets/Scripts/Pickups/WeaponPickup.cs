@@ -63,7 +63,7 @@ public class WeaponPickup : MonoBehaviour
         }
     }
 
-    private void updateSprite()
+    public void updateSprite()
     {
         spriteRenderer.sprite = possiblePickups[pickupIndex];
     }

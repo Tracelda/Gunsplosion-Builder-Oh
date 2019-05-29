@@ -87,6 +87,7 @@ MonoBehaviour:
       damage: 0
       bulletSpeed: 0
       bulletSprite: {fileID: 0}
+      animatorController: {fileID: 0}
       lifeSpan: 0
       homingRaduis: 0
       homingSpeed: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
       damage: 0
       bulletSpeed: 0
       bulletSprite: {fileID: 0}
+      animatorController: {fileID: 0}
       lifeSpan: 0
       homingRaduis: 0
       homingSpeed: 0
@@ -121,6 +123,7 @@ MonoBehaviour:
       damage: 0
       bulletSpeed: 0
       bulletSprite: {fileID: 0}
+      animatorController: {fileID: 0}
       lifeSpan: 0
       homingRaduis: 0
       homingSpeed: 0
@@ -131,6 +134,8 @@ MonoBehaviour:
     damage: 1
     bulletSpeed: 1
     bulletSprite: {fileID: 21300000, guid: 26974f4fb11d90b48be8d2a355e7071f, type: 3}
+    animatorController: {fileID: 9100000, guid: 71f32a47a3f3c4a4a8609ce592c302f8,
+      type: 2}
     lifeSpan: 4
     homingRaduis: 0
     homingSpeed: 0
@@ -140,6 +145,8 @@ MonoBehaviour:
     damage: 10
     bulletSpeed: 1
     bulletSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    animatorController: {fileID: 9100000, guid: 62620e8b56449554bbbef3084523d835,
+      type: 2}
     lifeSpan: 10
     homingRaduis: 0
     homingSpeed: 0
@@ -149,6 +156,7 @@ MonoBehaviour:
     damage: 1
     bulletSpeed: 1
     bulletSprite: {fileID: 21300000, guid: 30c5b9aa87098fd499411ddaa220e14b, type: 3}
+    animatorController: {fileID: 0}
     lifeSpan: 10
     homingRaduis: 10
     homingSpeed: 2
