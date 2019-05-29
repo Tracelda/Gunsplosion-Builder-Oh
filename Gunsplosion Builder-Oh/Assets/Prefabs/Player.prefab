@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 6379640770938787314}
   - component: {fileID: 6379640770938787315}
   - component: {fileID: 1855708536}
+  - component: {fileID: 6379640770938787317}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -357,12 +358,26 @@ MonoBehaviour:
   jumpForce: 300
   distFromGround: 0.5
   gunLength: 0.5
-  maxHealth: 0
+  weapon: {fileID: 1115083794426569931}
   firingPoint: {fileID: 1661406301}
+  maxHealth: 100
   jumpDuration: 0.2
   jetPackDuration: 1
   jetPackForce: 15
   rechargeSpeed: 0.5
+--- !u!114 &6379640770938787317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379640770938787316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780bc44723cf945439f04d1211c7fd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1001 &6379640769536839243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -437,6 +452,12 @@ PrefabInstance:
       objectReference: {fileID: 1661406301}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5, type: 3}
+--- !u!1 &1115083794426569931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336735886851500672, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6379640769536839243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1115083794426569941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6336735886851500702, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,

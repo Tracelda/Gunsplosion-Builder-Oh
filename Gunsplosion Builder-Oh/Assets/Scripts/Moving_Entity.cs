@@ -8,11 +8,13 @@ public class Moving_Entity : MonoBehaviour
                             jumpForce,
                             distFromGround,
                             gunLength;
-    public int              maxHealth;
+    public GameObject       weapon;
     public GameObject       firingPoint;
+    public float            maxHealth;
 
     internal Rigidbody2D    rb;
-    internal int            health;
+    internal Health         entityHealth;
+    internal Weapon         weaponScript;
 
     private float           currentMoveSpeed;
     private BoxCollider2D   playerCollider;
@@ -20,22 +22,18 @@ public class Moving_Entity : MonoBehaviour
     public void Start()
     {
         currentMoveSpeed = moveSpeed;
+
         rb = GetComponent<Rigidbody2D>();
+
         playerCollider = GetComponent<BoxCollider2D>();
+
+        if (weapon)
+            weaponScript = weapon.GetComponent<Weapon>();
+
+        entityHealth = GetComponent<Health>();
+        entityHealth.health = maxHealth;
     }
-
-    public void AddHealth(int additionalHealth)
-    {
-        // Add health
-        health += additionalHealth;
-
-        // Keep health in boundaries
-        if (health > maxHealth)
-            health = maxHealth;
-        else if (health < 0)
-            health = 0;
-    }
-
+    
     internal void Move(float direction)
     {
         Vector2 newVel = rb.velocity;
@@ -85,7 +83,8 @@ public class Moving_Entity : MonoBehaviour
             Debug.Log(newPos);
 
             firingPoint.transform.localPosition = newPos;
-            //firingPoint.transform.position *= gunLength;
+
+            weaponScript.fire();
         }
     }
 }
