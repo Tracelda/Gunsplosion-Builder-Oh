@@ -69,10 +69,15 @@ public class WeaponPickup : MonoBehaviour
     }
     private void swapWeapon(Collider2D collision)
     {
+        int oldIndex = pickupIndex;
         pickupIndex = collision.gameObject.GetComponentInChildren<Weapon>().changeWeapon(pickupIndex);
         if (pickupIndex != int.MaxValue)
         {
             updateSprite();
+        }
+        else
+        {
+            pickupIndex = oldIndex;
         }
     }
 }

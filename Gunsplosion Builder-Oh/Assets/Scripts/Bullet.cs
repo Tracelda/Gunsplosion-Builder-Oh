@@ -70,7 +70,8 @@ public class Bullet : MonoBehaviour
         lifeSpan = currentType.lifeSpan;
         gameObject.transform.localPosition = position; //= position;
         transform.rotation = lookAt2D(aimDirection);
-        animator.runtimeAnimatorController = currentType.animatorController;
+        if(currentType.weaponType != Weapon.weaponType.Homing)
+            animator.runtimeAnimatorController = currentType.animatorController;
         setColliderActiveState(true);
         //GetComponent<PolygonCollider2D>().
         //gameObject.transform.localRotation = ;
