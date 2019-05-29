@@ -8,9 +8,11 @@ public class Moving_Entity : MonoBehaviour
                             jumpForce,
                             distFromGround,
                             gunLength;
+    public int              maxHealth;
     public GameObject       firingPoint;
 
     internal Rigidbody2D    rb;
+    internal int            health;
 
     private float           currentMoveSpeed;
     private BoxCollider2D   playerCollider;
