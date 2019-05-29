@@ -7,24 +7,37 @@ public class Player : Moving_Entity
     public float        jumpDuration,
                         jetPackDuration,
                         jetPackForce,
-                        rechargeSpeed;
+                        rechargeSpeed,
+                        groundPoundDuration;
 
     private float       currentJumpDuration,
-                        currentJetPackDuration;
+                        currentJetPackDuration,
+                        currentGroundPoundDuration;
     private bool        jetPacking,
                         canJetPack,
-                        rechargingJetPack;
+                        rechargingJetPack,
+                        canInput,
+                        groundPounding;
+    private Animator    playerAnimator;
+    private SpriteRenderer playerSprite;
 
     private void Start()
     {
         base.Start();
+
+        canInput = true;
         canJetPack = true;
+
+        currentGroundPoundDuration = 0.0f;
+        playerAnimator = GetComponent<Animator>();
+        playerSprite = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
         PlayerInput();
         RechargeJetPack();
+        UpdateAnimation();
     }
 
     /////////////////////////////////////////////////////////
@@ -32,32 +45,47 @@ public class Player : Moving_Entity
     ////////////////////////////////////////////////////////
     private void PlayerInput()
     {
-        // Move left abd right
-        Move(Input.GetAxis("Horizontal"));
-
-        if (!CanJump() &&
-            !jetPacking)
+        if (canInput)
         {
-            // Timer for jump duration
-            if (currentJumpDuration < jumpDuration)
-                currentJumpDuration += Time.deltaTime;
+            // Move left abd right
+            Move(Input.GetAxis("Horizontal"));
 
-            // Jetpack
-            else if (Input.GetButton("Jump"))
+            if (CanJump())
             {
-                FireJetPack();
+                if (Input.GetAxis("Horizontal") < 0)
+                {
+                    playerSprite.flipX = true;
+                }
+                else if (Input.GetAxis("Horizontal") > 0)
+                {
+                    playerSprite.flipX = false;
+                }
+            }
+
+            if (!CanJump() &&
+                !jetPacking)
+            {
+                // Timer for jump duration
+                if (currentJumpDuration < jumpDuration)
+                    currentJumpDuration += Time.deltaTime;
+
+                // Jetpack
+                else if (Input.GetButton("Jump"))
+                {
+                    FireJetPack();
+                }
+            }
+
+            // Jump
+            else if (Input.GetButtonDown("Jump") &&
+                CanJump())
+            {
+                Jump();
+
+                currentJumpDuration = 0.0f;
             }
         }
-
-        // Jump
-        else if (Input.GetButtonDown("Jump") &&
-            CanJump())
-        {
-            Jump();
-
-            currentJumpDuration = 0.0f;
-        }
-
+        
         // Aim gun
         Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
 
@@ -109,11 +137,30 @@ public class Player : Moving_Entity
         }
     }
 
+    public void GroundPound()
+    {
+        if (currentGroundPoundDuration < groundPoundDuration)
+        {
+            currentGroundPoundDuration += Time.deltaTime;
+        }
+        else
+        {
+            currentGroundPoundDuration = 0.0f;
+
+        }
+    }
+
     /////////////////////////////////////////////////////////
     // Returns jetpack charge
     ////////////////////////////////////////////////////////
     public float GetJetPackFuel()
     {
         return currentJetPackDuration;
+    }
+
+    private void UpdateAnimation()
+    {
+        playerAnimator.SetBool("InAir", !CanJump());
+        playerAnimator.SetBool("Moving", rb.velocity.x != 0);
     }
 }
