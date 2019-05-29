@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private float lifeSpan;
+    private BoxCollider2D boxCollider;
 
     //bounce logic
     private float bounceCooldown;
@@ -19,6 +20,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
         active = false;
 
         bounceCooldown = 0.2f;
@@ -62,7 +64,7 @@ public class Bullet : MonoBehaviour
         lifeSpan = currentType.lifeSpan;
         gameObject.transform.localPosition = position; //= position;
         transform.rotation = lookAt2D(aimDirection);
-
+        setColliderActiveState(true);
         //GetComponent<PolygonCollider2D>().
         //gameObject.transform.localRotation = ;
     }
@@ -71,6 +73,11 @@ public class Bullet : MonoBehaviour
         active = false;
         spriteRenderer.sprite = null;
         rb.velocity = Vector2.zero;
+        setColliderActiveState(false);
+    }
+    public void setColliderActiveState(bool input)
+    {
+        boxCollider.enabled = input;
     }
 
     private void straightShot()

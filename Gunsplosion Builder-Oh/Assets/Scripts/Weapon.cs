@@ -60,7 +60,8 @@ public class Weapon : MonoBehaviour
 
         for (int i = 0; i < bulletPoolSize; i++)
         {
-            GameObject shot = Instantiate(bulletPrefab, new Vector3(float.MaxValue, float.MaxValue), Quaternion.identity);
+            GameObject shot = Instantiate(bulletPrefab);
+            shot.GetComponent<BoxCollider2D>().enabled = false;
             bulletList.Add(shot);
             shot.transform.SetParent(transform);
         }
@@ -90,6 +91,7 @@ public class Weapon : MonoBehaviour
                     bulletList[i].GetComponent<Bullet>().activate(heldWeapons[0].bulletType,
                         heldWeapons[0].shotStartPosition, aimDirection.transform.position);
                     heldWeapons[0].currentShotCooldown = heldWeapons[0].fireRate;
+                    //bulletList[i].GetComponent<BoxCollider2D>().enabled = false;
                     break;
                 }
             }
