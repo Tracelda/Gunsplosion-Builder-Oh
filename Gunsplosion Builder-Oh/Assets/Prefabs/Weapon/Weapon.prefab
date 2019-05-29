@@ -143,11 +143,11 @@ MonoBehaviour:
   BounceShot:
     weaponType: 1
     damage: 10
-    bulletSpeed: 1
+    bulletSpeed: 30
     bulletSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     animatorController: {fileID: 9100000, guid: 62620e8b56449554bbbef3084523d835,
       type: 2}
-    lifeSpan: 10
+    lifeSpan: 30
     homingRaduis: 0
     homingSpeed: 0
     damageTag: 
