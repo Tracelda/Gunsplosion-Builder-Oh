@@ -2210,7 +2210,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2055914660}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2761,6 +2761,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c1f2147967fba29489b47271cbf4f27a, type: 2}
   - {fileID: 11400000, guid: fa5e7ce3e64ec1f4b8f8f2d2c22058bb, type: 2}
   - {fileID: 11400000, guid: 617267e92cb954f4cb08b82d659f1239, type: 2}
+  - {fileID: 11400000, guid: 46aafab6fa2608a4fa99a0062ad52607, type: 2}
+  - {fileID: 11400000, guid: 9bc0f1697f860ac42b3aba75f6147dff, type: 2}
+  - {fileID: 11400000, guid: e6f36641bb530cc43882eacb5fa5da4b, type: 2}
   emptyTile: {fileID: 11400000, guid: b7e0ee0f0355f144fa3c378e8fe1371c, type: 2}
 --- !u!4 &992293481
 Transform:

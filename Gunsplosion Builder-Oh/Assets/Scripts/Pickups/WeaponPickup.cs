@@ -6,7 +6,7 @@ public class WeaponPickup : MonoBehaviour
 {
     public List<Sprite> possiblePickups = new List<Sprite>();
     public int pickupIndex;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public GameObject spriteTooltip;
     // Start is called before the first frame update
     void Start()
@@ -70,6 +70,9 @@ public class WeaponPickup : MonoBehaviour
     private void swapWeapon(Collider2D collision)
     {
         pickupIndex = collision.gameObject.GetComponentInChildren<Weapon>().changeWeapon(pickupIndex);
-        updateSprite();
+        if (pickupIndex != int.MaxValue)
+        {
+            updateSprite();
+        }
     }
 }
