@@ -43,8 +43,10 @@ public class EditCamera : MonoBehaviour
     }
 
     public void ChangeToEdit() {
-        playMode = false;
-        transform.position = editModePosition;
-        camera.orthographicSize = editModeZoom;
+        if (playMode) {
+            playMode = false;
+            transform.position = editModePosition;
+            camera.orthographicSize = editModeZoom;
+        }
     }
 }

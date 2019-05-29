@@ -32,6 +32,9 @@ public class LevelEditor : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (MenuManager.instance.isPlaying)
+            return;
+
         Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         newPosition.x = Mathf.Round(newPosition.x);
         newPosition.y = Mathf.Round(newPosition.y);
