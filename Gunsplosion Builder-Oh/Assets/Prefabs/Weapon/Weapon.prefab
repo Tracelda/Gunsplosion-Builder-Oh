@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Straight:
     type: 0
-    fireRate: 0.5
+    fireRate: 0.1
     active: 0
     currentSlot: 0
     weaponSprite: {fileID: 21300094, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
@@ -95,7 +95,7 @@ MonoBehaviour:
     currentShotCooldown: 0
   Bounce:
     type: 1
-    fireRate: 0.5
+    fireRate: 0.25
     active: 0
     currentSlot: 0
     weaponSprite: {fileID: 21300098, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
@@ -143,18 +143,18 @@ MonoBehaviour:
   BounceShot:
     weaponType: 1
     damage: 10
-    bulletSpeed: 30
+    bulletSpeed: 40
     bulletSprite: {fileID: 0}
     animatorController: {fileID: 9100000, guid: 62620e8b56449554bbbef3084523d835,
       type: 2}
-    lifeSpan: 30
+    lifeSpan: 5
     homingRaduis: 0
     homingSpeed: 0
     damageTag: 
   HomingShot:
     weaponType: 2
     damage: 1
-    bulletSpeed: 2
+    bulletSpeed: 20
     bulletSprite: {fileID: 21300092, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
     animatorController: {fileID: 9100000, guid: 71f32a47a3f3c4a4a8609ce592c302f8,
       type: 2}
@@ -165,6 +165,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2964954051675385954, guid: c7b1ab40e86ac5e498100e830f8db392,
     type: 3}
   bulletPoolSize: 100
+  gunSprite: {fileID: 0}
   aimDirection: {fileID: 3738995486937336614}
   OnlyDamageTag: Enemy
 --- !u!212 &518241233

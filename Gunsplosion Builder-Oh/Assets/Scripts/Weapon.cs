@@ -73,6 +73,7 @@ public class Weapon : MonoBehaviour
             shot.GetComponent<BoxCollider2D>().enabled = false;
             bulletList.Add(shot);
             shot.transform.SetParent(transform);
+            
         }
 
         changeWeapon(0);
@@ -103,6 +104,7 @@ public class Weapon : MonoBehaviour
                         heldWeapons[0].shotStartPosition, aimDirection.transform.position);
                     heldWeapons[0].currentShotCooldown = heldWeapons[0].fireRate;
                     //bulletList[i].GetComponent<BoxCollider2D>().enabled = false;
+                    EffectManager.instance.AttachParticle(bulletList[i].transform, (EffectManager.ParticleTypes)(int)heldWeapons[0].bulletType.weaponType);
                     break;
                 }
             }
