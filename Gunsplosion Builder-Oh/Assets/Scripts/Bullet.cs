@@ -33,6 +33,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+    private void FixedUpdate()
+    {
         if(active)
         {
             switch (currentType.weaponType)
@@ -62,7 +66,7 @@ public class Bullet : MonoBehaviour
     {
         active = true;
         currentType = type;
-        //spriteRenderer.sprite = currentType.bulletSprite;
+        spriteRenderer.sprite = currentType.bulletSprite;
         lifeSpan = currentType.lifeSpan;
         gameObject.transform.localPosition = position; //= position;
         transform.rotation = lookAt2D(aimDirection);
