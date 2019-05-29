@@ -24,6 +24,18 @@ public class Moving_Entity : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
     }
 
+    public void AddHealth(int additionalHealth)
+    {
+        // Add health
+        health += additionalHealth;
+
+        // Keep health in boundaries
+        if (health > maxHealth)
+            health = maxHealth;
+        else if (health < 0)
+            health = 0;
+    }
+
     internal void Move(float direction)
     {
         Vector2 newVel = rb.velocity;
@@ -72,7 +84,7 @@ public class Moving_Entity : MonoBehaviour
 
             Debug.Log(newPos);
 
-            firingPoint.transform.position = newPos;
+            firingPoint.transform.localPosition = newPos;
             //firingPoint.transform.position *= gunLength;
         }
     }
