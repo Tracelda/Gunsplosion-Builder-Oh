@@ -132,7 +132,7 @@ public class Bullet : MonoBehaviour
         return Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (active)
         {
@@ -140,8 +140,12 @@ public class Bullet : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<Health>())
                 {
-                    other.gameObject.GetComponent<Health>().takeDamage(currentType.damage);
-                    deActivate();
+                    if (other.gameObject.CompareTag(currentType.damageTag))
+                    {
+                        print("we are hurting");
+                        other.gameObject.GetComponent<Health>().takeDamage(currentType.damage);
+                        deActivate();
+                    }
                 }
             }
         }

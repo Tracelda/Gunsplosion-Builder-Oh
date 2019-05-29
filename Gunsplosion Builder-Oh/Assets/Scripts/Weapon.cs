@@ -29,6 +29,7 @@ public class Weapon : MonoBehaviour
         public float lifeSpan;
         public float homingRaduis;
         public float homingSpeed;
+        public string damageTag;
     }
     public weaponStats Straight, Bounce, Homing;
     public BulletType StraightShot, BounceShot, HomingShot;
@@ -41,12 +42,17 @@ public class Weapon : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     public GameObject aimDirection;
+    public string OnlyDamageTag;
     // Start is called before the first frame update
     void Start()
     {
         Straight.bulletType = StraightShot;
         Homing.bulletType = HomingShot;
         Bounce.bulletType = BounceShot;
+
+        Straight.bulletType.damageTag = OnlyDamageTag;
+        Homing.bulletType.damageTag = OnlyDamageTag;
+        Bounce.bulletType.damageTag = OnlyDamageTag;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         heldWeapons[0] = Bounce;
