@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class Player : Moving_Entity
 {
-    public float            jumpDuration,
-                            groundPoundDuration,
-                            groundPoundForce,
-                            maxShieldDurability;
-    public GameObject       groundPoundCollider;
-    public Animator         playerAnimator,
-                            accessoryAnimator;
+    public float                        jumpDuration,
+                                        groundPoundDuration,
+                                        groundPoundForce;
+    public int                          maxShieldDurability;
+    public GameObject                   groundPoundCollider;
+    public Animator                     playerAnimator,
+                                        accessoryAnimator;
+    public RuntimeAnimatorController    shieldAnim,
+                                        jetpackAnim,
+                                        speedBoostAnim;
+    public HUD                          playerHUD;
 
-    private float           currentJumpDuration,
-                            currentGroundPoundDuration,
-                            shieldDurability;
-    private bool            jetPacking,
-                            canInput,
-                            groundPounding,
-                            shieldActive;
-    private SpriteRenderer  playerSprite;
-    private Jetpack         jetPack;
-    private Abilities       ability;
+    private float                       currentJumpDuration,
+                                        currentGroundPoundDuration;
+    private int                         shieldDurability;
+    private bool                        jetPacking,
+                                        canInput,
+                                        groundPounding,
+                                        shieldActive;
+    private SpriteRenderer              playerSprite;
+    private Jetpack                     jetPack;
+    private Abilities                   ability;
 
     private void Start()
     {
@@ -35,6 +39,8 @@ public class Player : Moving_Entity
 
         ability = GetComponent<Abilities>();
         jetPack = GetComponent<Jetpack>();
+
+        EnableShield();
     }
 
     private void FixedUpdate()
@@ -43,10 +49,27 @@ public class Player : Moving_Entity
         UpdateAnimation();
         GroundPound();
 
+        playerHUD.SetHealth((int)entityHealth.health);
+
+        switch (ability.type)
+        {
+            case Abilities.abilityType.JETPACK:
+                playerHUD.SetArmour(jetPack.GetFuel());
+                break;
+            case Abilities.abilityType.SHIELD:
+                playerHUD.SetArmour((float)shieldDurability / (float)maxShieldDurability);
+                break;
+            case Abilities.abilityType.SPEEDBOOST:
+                break;
+            default:
+                break;
+        }
+
         if (CanJump())
             jetPack.StartRecharging();
-    }
 
+    }
+    
     /////////////////////////////////////////////////////////
     // Runs functions from input
     ////////////////////////////////////////////////////////
@@ -93,18 +116,20 @@ public class Player : Moving_Entity
 
             // Ground pounding
             if (!CanJump() &&
-                Input.GetAxis("Vertical") < 0.0f)
+                Input.GetAxis("Vertical") < 0.0f &&
+                ability.type == Abilities.abilityType.JETPACK)
             {
                 groundPounding = true;
                 rb.AddForce(-Vector2.up * groundPoundForce);
             }
-        }
 
-        // Aim gun
-        if (CanJump()) {
-            Aim(Input.GetAxis("Horizontal"), 0, false);
+            // Aim gun
+            if (CanJump())
+            {
+                Aim(Input.GetAxis("Horizontal"), 0, false);
+            }
+            Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
         }
-        Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
 
         // Switch weapon
         if (Input.GetButtonDown("Switch Weapon"))
@@ -163,20 +188,74 @@ public class Player : Moving_Entity
         accessoryAnimator.SetBool("Moving", rb.velocity.x != 0);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        if (ability.type == Abilities.abilityType.SHIELD &&
-            shieldActive)
+        if (!invincible)
         {
-            shieldDurability -= damage;
-
-            if (shieldDurability <= 0.0f)
+            if (ability.type == Abilities.abilityType.SHIELD &&
+                shieldActive)
             {
-                shieldActive = false;
-                entityHealth.health += shieldDurability;
-                accessoryAnimator.gameObject.SetActive(false);
-                shieldDurability = 0.0f;
+                Debug.Log(true);
+                shieldDurability -= damage;
+
+                if (shieldDurability <= 0)
+                {
+                    shieldActive = false;
+                    entityHealth.health += shieldDurability;
+                    accessoryAnimator.gameObject.SetActive(false);
+                    shieldDurability = 0;
+                    EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.ArmourDestroy);
+                }
             }
+            else
+            {
+                entityHealth.health -= damage;
+            }
+
+            if (entityHealth.health < 0)
+                entityHealth.health = 0;
         }
+    }
+
+    public void EnableShield()
+    {
+        ability.type = Abilities.abilityType.SHIELD;
+        shieldActive = true;
+        accessoryAnimator.runtimeAnimatorController = shieldAnim;
+        accessoryAnimator.enabled = true;
+
+        shieldDurability = maxShieldDurability;
+
+        playerHUD.EnableArmourPips();
+    }
+
+    public void EnableJetPack()
+    {
+        ability.type = Abilities.abilityType.JETPACK;
+        shieldActive = false;
+        accessoryAnimator.runtimeAnimatorController = jetpackAnim;
+        accessoryAnimator.enabled = true;
+
+        playerHUD.EnableArmourPips();
+    }
+
+    public void EnableSpeedBoost()
+    {
+        ability.type = Abilities.abilityType.SPEEDBOOST;
+        shieldActive = false;
+        accessoryAnimator.runtimeAnimatorController = speedBoostAnim;
+        accessoryAnimator.enabled = true;
+
+        playerHUD.EnableArmourPips();
+    }
+
+    public void DisableAbility()
+    {
+        ability.type = Abilities.abilityType.NONE;
+        shieldActive = false;
+        accessoryAnimator.runtimeAnimatorController = null;
+        accessoryAnimator.enabled = false;
+
+        playerHUD.DisableExtraBar();
     }
 }

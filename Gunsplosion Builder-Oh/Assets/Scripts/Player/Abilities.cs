@@ -6,7 +6,7 @@ public class Abilities : MonoBehaviour
 {
     public enum abilityType
     {
-        JETPACK, SHIELD, SPEEDBOOST
+        NONE, JETPACK, SHIELD, SPEEDBOOST
     };
 
     public abilityType type;

@@ -10,13 +10,14 @@ public class Moving_Entity : MonoBehaviour
                             gunLength;
     public GameObject       weapon;
     public GameObject       firingPoint;
-    public float            maxHealth;
+    public int              maxHealth;
 
     internal Rigidbody2D    rb;
     internal Health         entityHealth;
     internal Weapon         weaponScript;
+    internal float          currentMoveSpeed;
+    internal bool           invincible;
 
-    private float           currentMoveSpeed;
     private BoxCollider2D   playerCollider;
 
     public void Start()

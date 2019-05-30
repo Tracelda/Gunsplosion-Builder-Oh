@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundPoundScript : MonoBehaviour
 {
-    public float damage;
+    public int damage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
