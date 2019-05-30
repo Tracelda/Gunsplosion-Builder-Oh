@@ -11,7 +11,9 @@ public class Player : Moving_Entity
                                         maxBoostCharge,
                                         boostRechargeSpeed;
     public int                          maxShieldDurability;
-    public GameObject                   groundPoundCollider;
+    public GameObject                   groundPoundCollider,
+                                        jetSprite,
+                                        speedSprite;
     public Animator                     playerAnimator,
                                         accessoryAnimator;
     public RuntimeAnimatorController    shieldAnim,
@@ -22,7 +24,7 @@ public class Player : Moving_Entity
                                         currentGroundPoundDuration,
                                         boostCharge;
     private int                         shieldDurability;
-    private bool                        jetPacking,
+    public bool                         jetPacking,
                                         canInput,
                                         groundPounding,
                                         shieldActive,
@@ -30,7 +32,7 @@ public class Player : Moving_Entity
                                         boostRecharging;
     private SpriteRenderer              playerSprite;
     private Jetpack                     jetPack;
-    private Abilities                   ability;
+    public Abilities                   ability;
     private HUD                         playerHUD;
 
     private void Start()
@@ -102,15 +104,15 @@ public class Player : Moving_Entity
             // Move left abd right
             Move(Input.GetAxis("Horizontal"));
 
-            if (Input.GetAxis("Horizontal") < 0)
-            {
-                playerSprite.flipX = true;
-                accessoryAnimator.transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else if (Input.GetAxis("Horizontal") > 0)
-            {
-                playerSprite.flipX = false;
-                accessoryAnimator.transform.localScale = new Vector3(1, 1, 1);
+            if (CanJump()) {
+                if (Input.GetAxis("Horizontal") < 0) {
+                    playerSprite.flipX = true;
+                    accessoryAnimator.transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else if (Input.GetAxis("Horizontal") > 0) {
+                    playerSprite.flipX = false;
+                    accessoryAnimator.transform.localScale = new Vector3(1, 1, 1);
+                }
             }
 
             if (ability.type == Abilities.abilityType.JETPACK &&
@@ -137,6 +139,11 @@ public class Player : Moving_Entity
                 currentJumpDuration = 0.0f;
             }
 
+            else if (ability.type == Abilities.abilityType.JETPACK &&
+                !Input.GetButton("Jump")) {
+                jetSprite.SetActive(false);
+            }
+
             // Ground pounding
             if (!CanJump() &&
                 Input.GetAxis("Vertical") < 0.0f &&
@@ -145,26 +152,29 @@ public class Player : Moving_Entity
                 groundPounding = true;
                 rb.AddForce(-Vector2.up * groundPoundForce);
             }
-            
+
+            // Speed boosting
+            if (ability.type == Abilities.abilityType.SPEEDBOOST &&
+                !boostRecharging &&
+                Input.GetButton("Speed Boost")) {
+                boosting = true;
+                speedSprite.SetActive(true);
+                invincible = true;
+                entityHealth.takeDamage(1);
+            }
+            else {
+                boosting = false;
+                speedSprite.SetActive(false);
+                invincible = false;
+            }
+
             if (CanJump())
             {
                 Aim(Input.GetAxis("Horizontal"), 0, false);
-
-                // Speed boosting
-                if (ability.type == Abilities.abilityType.SPEEDBOOST &&
-                    !boostRecharging &&
-                    Input.GetButton("Speed Boost"))
-                {
-                    boosting = true;
-                }
-                else
-                {
-                    boosting = false;
-                }
             }
 
             // Aim gun
-            Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
+            Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"), !boosting);
         }
 
         // Switch weapon
@@ -182,6 +192,10 @@ public class Player : Moving_Entity
             // Fire upwards
             rb.AddForce(Vector2.up * jetPack.GetForce());
             jetPack.Fire();
+            if (Input.GetButton("Jump"))
+                jetSprite.SetActive(true);
+            else
+                jetSprite.SetActive(false);
         }
     }
 
@@ -256,7 +270,6 @@ public class Player : Moving_Entity
             if (ability.type == Abilities.abilityType.SHIELD &&
                 shieldActive)
             {
-                Debug.Log(true);
                 shieldDurability -= damage;
 
                 if (shieldDurability <= 0)
@@ -275,6 +288,21 @@ public class Player : Moving_Entity
 
             if (entityHealth.health < 0)
                 entityHealth.health = 0;
+        }
+    }
+
+    public void ArmourDamage(int damage)
+    {
+        if (!invincible && ability.type == Abilities.abilityType.SHIELD && shieldActive) {
+            shieldDurability -= damage;
+
+            if (shieldDurability <= 0) {
+                shieldActive = false;
+                entityHealth.health += shieldDurability;
+                accessoryAnimator.gameObject.SetActive(false);
+                shieldDurability = 0;
+                EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.ArmourDestroy);
+            }
         }
     }
 
@@ -318,5 +346,14 @@ public class Player : Moving_Entity
         accessoryAnimator.enabled = false;
 
         playerHUD.DisableExtraBar();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (invincible && collision.gameObject.CompareTag("Enemy")) {
+            Health enemyHealth = collision.gameObject.GetComponent<Health>();
+            if (enemyHealth) {
+                enemyHealth.takeDamage(1);
+            }
+        }
     }
 }

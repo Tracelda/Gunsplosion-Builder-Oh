@@ -41,6 +41,12 @@ public class ExplosiveBlock : BlockResetBase
     public void StartExplode() {
         if (!exploded) {
             exploded = true;
+
+            sprite.enabled = false;
+            collider.enabled = false;
+            EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.LargeExplosion);
+            GameManager.instance.AddScore(scoreValue);
+
             StartCoroutine(DelayedExplosion());
         }
     }
@@ -60,11 +66,6 @@ public class ExplosiveBlock : BlockResetBase
                 }
             }
         }
-
-        sprite.enabled = false;
-        collider.enabled = false;
-        EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.LargeExplosion);
-        GameManager.instance.AddScore(scoreValue);
     }
 
     IEnumerator DelayedExplosion() {

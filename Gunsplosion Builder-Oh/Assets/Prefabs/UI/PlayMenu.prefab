@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipPrefab: {fileID: 5120600736527856187, guid: 67f2022137fef724e80b381e5955f72e,
     type: 3}
-  maxHealth: 20
+  maxHealth: 10
   emptySprite: {fileID: 21300000, guid: b1f47d9d8f79f5942aeebdf2f25c5e94, type: 3}
   filledSprite: {fileID: 21300010, guid: f5a62363ed9b11f4daaff6d3ea4be569, type: 3}
 --- !u!1 &239816588
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipPrefab: {fileID: 5120600736527856187, guid: 67f2022137fef724e80b381e5955f72e,
     type: 3}
-  maxHealth: 20
+  maxHealth: 10
   emptySprite: {fileID: 21300000, guid: b1f47d9d8f79f5942aeebdf2f25c5e94, type: 3}
   filledSprite: {fileID: 21300000, guid: 84bb79c9ae968404aa8d902a03be982a, type: 3}
 --- !u!1 &6864496962245006991

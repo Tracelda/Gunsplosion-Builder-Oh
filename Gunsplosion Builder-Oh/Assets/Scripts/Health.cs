@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     private int iframeFrequency = 4;
     public enum EntityTypes { None, Player, Enemy };
     public EntityTypes entityType;
+    private Player player;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class Health : MonoBehaviour
         {
             baseColour = sprite.color;
         }
+        player = GetComponent<Player>();
     }
 
     void Update()
@@ -43,6 +45,17 @@ public class Health : MonoBehaviour
     {
         if (iframes <= 0)
         {
+            if (player) {
+                if (player.invincible)
+                    return;
+
+                if (player.ability.type == Abilities.abilityType.SHIELD && player.shieldActive) {
+                    iframes = iframeDuration;
+                    player.ArmourDamage(Mathf.FloorToInt(damage));
+                    return;
+                }
+            }
+
             health -= damage;
             iframes = iframeDuration;
 

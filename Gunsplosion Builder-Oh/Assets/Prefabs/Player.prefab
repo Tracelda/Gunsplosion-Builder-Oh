@@ -213,7 +213,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -634,7 +634,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300102, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -726,7 +726,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -803,20 +803,29 @@ MonoBehaviour:
   gunLength: 0.5
   weapon: {fileID: 1115083794426569931}
   firingPoint: {fileID: 1661406301}
-  maxHealth: 20
+  maxHealth: 10
   jumpDuration: 0.2
   groundPoundDuration: 0.2
   groundPoundForce: 300
-  speedBoostMultiplier: 3
+  speedBoostMultiplier: 2
   maxBoostCharge: 1
-  boostRechargeSpeed: 0.2
-  maxShieldDurability: 5
+  boostRechargeSpeed: 0.5
+  maxShieldDurability: 10
   groundPoundCollider: {fileID: 271735289}
+  jetSprite: {fileID: 1650377802257813283}
+  speedSprite: {fileID: 1562541586395894836}
   playerAnimator: {fileID: 6379640770938787318}
   accessoryAnimator: {fileID: 1070355587}
   shieldAnim: {fileID: 9100000, guid: f941ce2edd9a33f48a1972c10dc0c46a, type: 2}
   jetpackAnim: {fileID: 9100000, guid: c4a16466ba68c1d468fe7c2a502f1101, type: 2}
   speedBoostAnim: {fileID: 9100000, guid: f6a8896fbd66ef04199b359c3684fd6e, type: 2}
+  jetPacking: 0
+  canInput: 0
+  groundPounding: 0
+  shieldActive: 0
+  boosting: 0
+  boostRecharging: 0
+  ability: {fileID: 0}
 --- !u!114 &6379640770938787317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxJetpackFuel: 1
   jetPackForce: 15
-  rechargeSpeed: 0.2
+  rechargeSpeed: 0.5
 --- !u!114 &8534135130323521438
 MonoBehaviour:
   m_ObjectHideFlags: 0

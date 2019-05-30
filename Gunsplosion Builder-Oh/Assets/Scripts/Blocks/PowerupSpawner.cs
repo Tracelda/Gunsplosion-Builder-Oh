@@ -20,6 +20,8 @@ public class PowerupSpawner : BlockResetBase
     public void ResetToEdit()
     {
         Destroy(spawnedPickup);
-        sprite.enabled = true;
+        if (sprite) {
+            sprite.enabled = true;
+        }
     }
 }
