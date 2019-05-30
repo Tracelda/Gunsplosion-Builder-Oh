@@ -113,7 +113,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -298,7 +298,6 @@ GameObject:
   - component: {fileID: 1900849228992001161}
   - component: {fileID: 502819373865828604}
   - component: {fileID: 7076199832787008274}
-  - component: {fileID: 878769323}
   m_Layer: 0
   m_Name: Goomba
   m_TagString: Untagged
@@ -413,9 +412,9 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 0
   distFromGround: 0.5
-  gunLength: 0
-  weapon: {fileID: 0}
-  firingPoint: {fileID: 0}
+  gunLength: 1
+  weapon: {fileID: 6410530899841065974}
+  firingPoint: {fileID: 6260616500524483064}
   maxHealth: 0
 --- !u!114 &6237264114948495478
 MonoBehaviour:
@@ -429,6 +428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efa24b8c8abbbc4690e2aacd1b1e49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  active: 0
   leftNodePos: {x: 0, y: 0}
   rightNodePos: {x: 0, y: 0}
   leftNode: {fileID: 26074739441718250}
@@ -448,8 +449,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetingPlayer: 0
-  distance: 0
-  angle: 0
+  attackRange: 10
+  distanceToPlayer: 0
   playerObject: {fileID: 0}
   shootDirection: {x: 0, y: 0, z: 0}
   normShootDirection: {x: 0, y: 0, z: 0}
@@ -486,23 +487,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &878769323
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4066955448605500130}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 5.74
+  m_Constraints: 5
 --- !u!1 &6260616500524483064
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6260616500524483064}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.06136, y: -0.21493721, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.18466, y: 0.18466, z: 1.1003}
   m_Children: []
   m_Father: {fileID: 3377209235904662086}
@@ -541,7 +526,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6260616500524483064}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -661,6 +646,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5, type: 3}
+--- !u!1 &6410530899841065974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336735886851500672, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1082654278993168758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6410530899841065960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6336735886851500702, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
