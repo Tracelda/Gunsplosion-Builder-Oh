@@ -38,7 +38,7 @@ public class JetTrooperScrpt : MonoBehaviour
 
     public void FindNodes(Vector2 CharacterPos)
     {
-        if (leftNodePos.x > CharacterPos.x)
+        if (leftNodeTrans.position.x > CharacterPos.x)
         {
             mirrorPatroling = true;
         }
@@ -64,11 +64,11 @@ public class JetTrooperScrpt : MonoBehaviour
         }
         else
         { // Moving left
-            if (CharacterPos.x > leftNodePos.x)
+            if (CharacterPos.x > leftNodeTrans.position.x)
             {
                 Moving_Entity.Move(-Direction);
             }
-            else if (CharacterPos.x <= leftNodePos.x)
+            else if (CharacterPos.x <= leftNodeTrans.position.x)
             {
                 MovingRight = true;
                 Moving_Entity.Move(Direction);
@@ -92,11 +92,11 @@ public class JetTrooperScrpt : MonoBehaviour
         }
         else
         { // Moving left
-            if (CharacterPos.x < leftNodePos.x)
+            if (CharacterPos.x < leftNodeTrans.position.x)
             {
                 Moving_Entity.Move(Direction);
             }
-            else if (CharacterPos.x >= leftNodePos.x)
+            else if (CharacterPos.x >= leftNodeTrans.position.x)
             {
                 MovingRight = true;
                 Moving_Entity.Move(-Direction);
