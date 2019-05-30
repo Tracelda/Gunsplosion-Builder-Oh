@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -39,6 +40,7 @@ public class MenuManager : MonoBehaviour
         playButton.enabled = false;
         grid.SetActive(false);
         StartCoroutine(ChangeCamera());
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void Edit()
