@@ -16,7 +16,7 @@ public class Moving_Entity : MonoBehaviour
     internal float          currentMoveSpeed;
     internal bool           invincible;
 
-    private BoxCollider2D   playerCollider;
+    private BoxCollider2D   entityCollider;
 
     public void Start()
     {
@@ -24,7 +24,7 @@ public class Moving_Entity : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        playerCollider = GetComponent<BoxCollider2D>();
+        entityCollider = GetComponent<BoxCollider2D>();
 
         if (weapon)
             weaponScript = weapon.GetComponent<Weapon>();
@@ -60,11 +60,13 @@ public class Moving_Entity : MonoBehaviour
     ////////////////////////////////////////////////////////
     internal bool CanJump()
     {
-        playerCollider.enabled = false;
+        //entityCollider.enabled = false;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, distFromGround);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, entityCollider.bounds.size, 0.0f, -Vector3.up, distFromGround, LayerMask.GetMask("Block"));
 
-        playerCollider.enabled = true;
+        //entityCollider.enabled = true;
+        
+        Debug.Log(hit.collider != null);
 
         return (hit.collider != null);
     }
