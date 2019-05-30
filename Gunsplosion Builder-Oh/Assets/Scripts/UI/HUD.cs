@@ -40,6 +40,11 @@ public class HUD : MonoBehaviour
         armourPips.UpdateHealth(val);
     }
 
+    public void SetArmour(float val)
+    {
+        armourPips.UpdateHealthPercentage(val);
+    }
+
     public void SetEnergy(float val) {
         energyBar.SetMeter(val);
     }

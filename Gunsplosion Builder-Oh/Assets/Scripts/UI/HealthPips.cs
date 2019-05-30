@@ -33,4 +33,9 @@ public class HealthPips : MonoBehaviour
             }
         }
     }
+
+    public void UpdateHealthPercentage(float val)
+    {
+        UpdateHealth(Mathf.FloorToInt(val * maxHealth));
+    }
 }
