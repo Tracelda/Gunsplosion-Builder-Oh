@@ -14,6 +14,7 @@ public class FinishBlock : MonoBehaviour
                     break;
                 case GameManager.GameModes.Play:
                     SceneManager.LoadScene(0);
+                    Time.timeScale = 1;
                     break;
             }
         }
