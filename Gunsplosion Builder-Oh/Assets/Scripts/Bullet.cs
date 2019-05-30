@@ -80,7 +80,6 @@ public class Bullet : MonoBehaviour
         gameObject.transform.localPosition = position; //= position;
         if (currentType.weaponType == Weapon.weaponType.shotgun)
         {
-            print("shotgunning???");
             float rand = Random.Range(-currentType.shotGunSpread, currentType.shotGunSpread);
             print(rand);
             transform.rotation = lookAt2D(aimDirection,rand);
@@ -180,7 +179,6 @@ public class Bullet : MonoBehaviour
                     if (other.gameObject.CompareTag(currentType.damageTag))
                     {
                         EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.SmallExplosion);
-                        print("we are hurting");
                         other.gameObject.GetComponent<Health>().takeDamage(currentType.damage);
                         deActivate();
                     }
