@@ -6,16 +6,19 @@ public class Player : Moving_Entity
 {
     public float            jumpDuration,
                             groundPoundDuration,
-                            groundPoundForce;
+                            groundPoundForce,
+                            maxShieldDurability;
     public GameObject       groundPoundCollider;
-
-    private float           currentJumpDuration,
-                            currentGroundPoundDuration;
-    private bool            jetPacking,
-                            canInput,
-                            groundPounding;
     public Animator         playerAnimator,
                             accessoryAnimator;
+
+    private float           currentJumpDuration,
+                            currentGroundPoundDuration,
+                            shieldDurability;
+    private bool            jetPacking,
+                            canInput,
+                            groundPounding,
+                            shieldActive;
     private SpriteRenderer  playerSprite;
     private Jetpack         jetPack;
     private Abilities       ability;
@@ -54,18 +57,15 @@ public class Player : Moving_Entity
             // Move left abd right
             Move(Input.GetAxis("Horizontal"));
 
-            if (CanJump())
+            if (Input.GetAxis("Horizontal") < 0)
             {
-                if (Input.GetAxis("Horizontal") < 0)
-                {
-                    playerSprite.flipX = true;
-                    accessoryAnimator.transform.localScale = new Vector3(-1, 1, 1);
-                }
-                else if (Input.GetAxis("Horizontal") > 0)
-                {
-                    playerSprite.flipX = false;
-                    accessoryAnimator.transform.localScale = new Vector3(1, 1, 1);
-                }
+                playerSprite.flipX = true;
+                accessoryAnimator.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (Input.GetAxis("Horizontal") > 0)
+            {
+                playerSprite.flipX = false;
+                accessoryAnimator.transform.localScale = new Vector3(1, 1, 1);
             }
 
             if (ability.type == Abilities.abilityType.JETPACK &&
@@ -94,7 +94,10 @@ public class Player : Moving_Entity
             // Ground pounding
             if (!CanJump() &&
                 Input.GetAxis("Vertical") < 0.0f)
+            {
                 groundPounding = true;
+                rb.AddForce(-Vector2.up * groundPoundForce);
+            }
         }
         
         // Aim gun
@@ -143,11 +146,6 @@ public class Player : Moving_Entity
                     canInput = true;
                 }
             }
-            // FALLING
-            else
-            {
-                rb.AddForce(-Vector2.up * groundPoundForce);
-            }
         }
     }
     
@@ -164,6 +162,18 @@ public class Player : Moving_Entity
 
     public void TakeDamage(float damage)
     {
+        if (ability.type == Abilities.abilityType.SHIELD &&
+            shieldActive)
+        {
+            shieldDurability -= damage;
 
+            if (shieldDurability <= 0.0f)
+            {
+                shieldActive = false;
+                entityHealth.health += shieldDurability;
+                accessoryAnimator.gameObject.SetActive(false);
+                shieldDurability = 0.0f;
+            }
+        }
     }
 }
