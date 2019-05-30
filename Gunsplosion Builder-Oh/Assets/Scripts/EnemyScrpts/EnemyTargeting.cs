@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTargeting : MonoBehaviour
+public class EnemyTargeting : BaseEnemy
 {
     public bool targetingPlayer;
     public float attackRange, distanceToPlayer, angle, normAngle;
@@ -16,7 +16,7 @@ public class EnemyTargeting : MonoBehaviour
     public float timer, timerTarget;
     public bool timerRunning, shoot;
 
-    void Start()
+    protected override void Start()
     {
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
         weaponScript = GetComponentInChildren<Weapon>();
@@ -25,8 +25,8 @@ public class EnemyTargeting : MonoBehaviour
 
     void Update()
     {
-        if (BaseEnemy.active)
-        {
+        //if (BaseEnemy.active)
+        //{
             CheckForPlayer();
 
             if (targetingPlayer)
@@ -36,7 +36,7 @@ public class EnemyTargeting : MonoBehaviour
                 ShootAtPlayer(normShootDirection.x, normShootDirection.y);
                 timerRunning = true;
             }
-        }
+        //}
     }
 
     public void CheckForPlayer()
