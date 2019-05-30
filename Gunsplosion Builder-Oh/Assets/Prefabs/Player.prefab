@@ -235,7 +235,7 @@ Animator:
   m_GameObject: {fileID: 1070355585}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f941ce2edd9a33f48a1972c10dc0c46a, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -807,10 +807,16 @@ MonoBehaviour:
   jumpDuration: 0.2
   groundPoundDuration: 0.2
   groundPoundForce: 300
-  maxShieldDurability: 0
+  speedBoostMultiplier: 3
+  maxBoostCharge: 1
+  boostRechargeSpeed: 0.2
+  maxShieldDurability: 5
   groundPoundCollider: {fileID: 271735289}
   playerAnimator: {fileID: 6379640770938787318}
   accessoryAnimator: {fileID: 1070355587}
+  shieldAnim: {fileID: 0}
+  jetpackAnim: {fileID: 0}
+  speedBoostAnim: {fileID: 0}
 --- !u!114 &6379640770938787317
 MonoBehaviour:
   m_ObjectHideFlags: 0

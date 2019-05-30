@@ -6,7 +6,10 @@ public class Player : Moving_Entity
 {
     public float                        jumpDuration,
                                         groundPoundDuration,
-                                        groundPoundForce;
+                                        groundPoundForce,
+                                        speedBoostMultiplier,
+                                        maxBoostCharge,
+                                        boostRechargeSpeed;
     public int                          maxShieldDurability;
     public GameObject                   groundPoundCollider;
     public Animator                     playerAnimator,
@@ -14,31 +17,39 @@ public class Player : Moving_Entity
     public RuntimeAnimatorController    shieldAnim,
                                         jetpackAnim,
                                         speedBoostAnim;
-    public HUD                          playerHUD;
 
     private float                       currentJumpDuration,
-                                        currentGroundPoundDuration;
+                                        currentGroundPoundDuration,
+                                        boostCharge;
     private int                         shieldDurability;
     private bool                        jetPacking,
                                         canInput,
                                         groundPounding,
-                                        shieldActive;
+                                        shieldActive,
+                                        boosting,
+                                        boostRecharging;
     private SpriteRenderer              playerSprite;
     private Jetpack                     jetPack;
     private Abilities                   ability;
+    private HUD                         playerHUD;
 
     private void Start()
     {
         base.Start();
 
         canInput = true;
+        boostRecharging = false;
+        boosting = false;
 
         currentGroundPoundDuration = 0.0f;
+        boostCharge = maxBoostCharge;
+
         playerAnimator = GetComponent<Animator>();
         playerSprite = GetComponent<SpriteRenderer>();
 
         ability = GetComponent<Abilities>();
         jetPack = GetComponent<Jetpack>();
+        playerHUD = HUD.instance;
     }
 
     private void FixedUpdate()
@@ -58,6 +69,7 @@ public class Player : Moving_Entity
                 playerHUD.SetArmour((float)shieldDurability / (float)maxShieldDurability);
                 break;
             case Abilities.abilityType.SPEEDBOOST:
+                playerHUD.SetArmour(boostCharge);
                 break;
             default:
                 break;
@@ -65,6 +77,18 @@ public class Player : Moving_Entity
 
         if (CanJump())
             jetPack.StartRecharging();
+
+        if (boosting)
+        {
+            currentMoveSpeed = moveSpeed * speedBoostMultiplier;
+
+            if (!CanJump())
+                boosting = false;
+        }
+        else
+            currentMoveSpeed = moveSpeed;
+
+        SpeedBoost();
 
     }
     
@@ -105,7 +129,8 @@ public class Player : Moving_Entity
             }
 
             // Jump
-            else if (Input.GetButtonDown("Jump") &&
+            else if (!boosting &&
+                    Input.GetButtonDown("Jump") &&
                     CanJump())
             {
                 Jump();
@@ -120,12 +145,25 @@ public class Player : Moving_Entity
                 groundPounding = true;
                 rb.AddForce(-Vector2.up * groundPoundForce);
             }
-
-            // Aim gun
+            
             if (CanJump())
             {
                 Aim(Input.GetAxis("Horizontal"), 0, false);
+
+                // Speed boosting
+                if (ability.type == Abilities.abilityType.SPEEDBOOST &&
+                    !boostRecharging &&
+                    Input.GetButton("Speed Boost"))
+                {
+                    boosting = true;
+                }
+                else
+                {
+                    boosting = false;
+                }
             }
+
+            // Aim gun
             Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
         }
 
@@ -184,6 +222,31 @@ public class Player : Moving_Entity
         playerAnimator.SetBool("Moving", rb.velocity.x != 0);
         accessoryAnimator.SetBool("InAir", !CanJump());
         accessoryAnimator.SetBool("Moving", rb.velocity.x != 0);
+    }
+
+    private void SpeedBoost()
+    {
+        if (boosting &&
+            rb.velocity.x != 0.0f)
+        {
+            boostCharge -= Time.deltaTime;
+
+            if (boostCharge <= 0.0f)
+            {
+                boosting = false;
+                boostRecharging = true;
+            }
+        }
+        else if (boostCharge < maxBoostCharge)
+        {
+            boostCharge += Time.deltaTime * boostRechargeSpeed;
+
+            if (boostCharge >= maxBoostCharge)
+            {
+                boostCharge = maxBoostCharge;
+                boostRecharging = false;
+            }
+        }
     }
 
     public void TakeDamage(int damage)
