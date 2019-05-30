@@ -125,7 +125,7 @@ public class Bullet : MonoBehaviour
         if (!homingTarget) {
             foreach (Collider2D hit in multiHit) {
                 if (hit) {
-                    if (hit.transform.CompareTag("Enemy")) {
+                    if (hit.transform.CompareTag(currentType.damageTag)) {
                         homingTarget = hit.transform;
                     }
                 }
