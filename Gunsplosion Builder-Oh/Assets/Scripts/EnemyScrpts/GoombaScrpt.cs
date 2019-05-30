@@ -12,6 +12,7 @@ public class GoombaScrpt : BaseEnemy
     private float Direction = 1f;
     public LineRenderer leftLineRender, rightLineRender;
     private Rigidbody2D Rigidbody2D;
+    private SpriteRenderer spriteRenderer;
 
     public bool MovingRight, mirrorPatroling = false;
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class GoombaScrpt : BaseEnemy
         rightNodeTrans = rightNode.transform;
         detectionRing = gameObject.GetComponent<CircleCollider2D>();
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         MovingRight = true;
         FindNodes(gameObject.transform.position);
         Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
@@ -32,13 +34,17 @@ public class GoombaScrpt : BaseEnemy
     {
         if (active)
         {
-            if (mirrorPatroling)
+            onScreen = spriteRenderer.isVisible;
+            if (onScreen)
             {
-                ReversePatrolling(gameObject.transform.position);
-            }
-            else
-            {
-                Patrolling(gameObject.transform.position);
+                if (mirrorPatroling)
+                {
+                    ReversePatrolling(gameObject.transform.position);
+                }
+                else
+                {
+                    Patrolling(gameObject.transform.position);
+                }
             }
 
         }

@@ -7,7 +7,7 @@ public class BaseEnemy : BlockResetBase
     public Rigidbody2D rigid;
     private Vector3 Startpos;
     public bool active;
-
+    public bool onScreen;
     public void StartGame()
     {
         rigid = GetComponent<Rigidbody2D>();
