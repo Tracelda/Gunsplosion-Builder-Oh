@@ -163,7 +163,7 @@ MonoBehaviour:
       shotGunSpread: 0
     currentShotCooldown: 0
     shotSound: {fileID: 0}
-    shotGunPelletAmount: 20
+    shotGunPelletAmount: 6
   StraightShot:
     weaponType: 0
     damage: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
     homingSpeed: 0
     damageTag: 
     bulletSound: {fileID: 0}
-    shotGunSpread: 45
+    shotGunSpread: 15
   bulletPrefab: {fileID: 2964954051675385954, guid: c7b1ab40e86ac5e498100e830f8db392,
     type: 3}
   bulletPoolSize: 100
