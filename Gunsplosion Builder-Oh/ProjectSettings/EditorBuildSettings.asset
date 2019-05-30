@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LewisTest.unity
     guid: 6809663fd45f2a743b8dc8c438d40947
+  - enabled: 1
+    path: Assets/Scenes/LevelClear.unity
+    guid: b7794a6703456bd498659bb3025d90e4
   m_configObjects: {}

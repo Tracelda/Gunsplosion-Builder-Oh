@@ -2804,6 +2804,9 @@ MonoBehaviour:
     type: 3}
   playerDestroy: {fileID: 7360337725380997971, guid: 5fb5d1ad76b1bd344890cb9ab5de6fb4,
     type: 3}
+  shotgunShell: {fileID: 4019081808195497631, guid: 1ed4c8cd789e7df438773811e9ab82d0,
+    type: 3}
+  shotgunShot: {fileID: 811002333, guid: 96af9336e5567d445bc7a750ced15779, type: 3}
 --- !u!114 &1031711290 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
@@ -4969,6 +4972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelObjects: []
   gameMode: 0
+  score: 0
+  multiplier: 0
 --- !u!4 &1881283635
 Transform:
   m_ObjectHideFlags: 0
@@ -5468,6 +5473,12 @@ PrefabInstance:
       propertyPath: editCamera
       value: 
       objectReference: {fileID: 68868660}
+    - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
+        type: 3}
+      propertyPath: clearParticle
+      value: 
+      objectReference: {fileID: 2689739204411386864, guid: c72706ebbd7c10d48b44c54e53bf97fc,
+        type: 3}
     - target: {fileID: 3396109117301410435, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: m_LocalPosition.x

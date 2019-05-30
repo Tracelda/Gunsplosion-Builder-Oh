@@ -667,6 +667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 0}
   active: 0
+  leftNodeTrans: {fileID: 3971718229022294668}
+  rightNodeTrans: {fileID: 6517457343054334308}
   leftNodePos: {x: 0, y: 0}
   rightNodePos: {x: 0, y: 0}
   leftNode: {fileID: 1092977638859092618}

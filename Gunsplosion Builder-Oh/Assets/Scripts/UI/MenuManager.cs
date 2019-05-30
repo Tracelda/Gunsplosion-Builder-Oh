@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public Button playButton;
     public EditCamera editCamera;
     public bool isPlaying;
+    public GameObject clearParticle;
 
     public static MenuManager instance;
 
@@ -22,6 +23,11 @@ public class MenuManager : MonoBehaviour
             instance = this;
         else
             Destroy(this);
+    }
+
+    private void Start() {
+        GameManager.instance.score = 0;
+        GameManager.instance.multiplier = 1;
     }
 
     public void Pause() {
@@ -59,5 +65,9 @@ public class MenuManager : MonoBehaviour
         var player = FindObjectOfType<Player>();
         if (player)
             editCamera.ChangeToPlay(player.transform);
+    }
+
+    public GameObject ClearEffect() {
+        return Instantiate(clearParticle, Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f)), Quaternion.identity);
     }
 }

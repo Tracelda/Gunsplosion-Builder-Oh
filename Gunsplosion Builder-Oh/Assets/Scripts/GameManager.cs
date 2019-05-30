@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     private bool levelLoaded;
     public enum GameModes { Play, Edit };
     public GameModes gameMode;
-    private int score, multiplier;
+    public int score, multiplier;
+    public string currentLevel;
 
     private void Awake() {
         if (!instance)
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(string levelName) {
         levelLoaded = false;
+        currentLevel = levelName;
         SceneManager.LoadScene(1);
         StartCoroutine(WaitLoadLevel(levelName));
     }
@@ -113,5 +115,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         MenuManager.instance.Edit();
         MenuManager.instance.Play();
+    }
+
+    public void ReplayLevel() {
+        LoadLevel(currentLevel);
     }
 }

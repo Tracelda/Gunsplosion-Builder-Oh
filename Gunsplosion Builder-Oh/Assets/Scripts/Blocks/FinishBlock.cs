@@ -13,10 +13,18 @@ public class FinishBlock : MonoBehaviour
                     MenuManager.instance.Edit();
                     break;
                 case GameManager.GameModes.Play:
-                    SceneManager.LoadScene(0);
-                    Time.timeScale = 1;
+                    StartCoroutine(DelayedEnd());
                     break;
             }
         }
+    }
+
+    IEnumerator DelayedEnd() {
+        Time.timeScale = 0.5f;
+        GameObject effect = MenuManager.instance.ClearEffect();
+        yield return new WaitForSecondsRealtime(1f);
+        SceneManager.LoadScene(2);
+        effect.transform.position = Vector3.zero;
+        Time.timeScale = 1;
     }
 }

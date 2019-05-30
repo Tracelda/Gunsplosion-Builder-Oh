@@ -1,15 +1,12 @@
-olly's fmp
 finish enemies
 weapon and enemy damage balance
 sound
-fix up level select screen
-hazard blocks
-look into player jumps
-level clear screen
+crumbling platform
+moving platform
+slow platform
 title screen
 edit mode tooltips
 background choices
-player jets
 
 //pip health meter
 
