@@ -16,6 +16,7 @@ public class AttachEffect : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         active = true;
+        StartCoroutine(DelayedStart());
     }
 
     void Update()
@@ -57,6 +58,13 @@ public class AttachEffect : MonoBehaviour
             {
                 audioSource.volume -= Time.deltaTime * muteSpeed;
             }
+        }
+    }
+
+    IEnumerator DelayedStart() {
+        yield return new WaitForEndOfFrame();
+        foreach (ParticleSystem particle in particleEmitter) {
+            particle.Play();
         }
     }
 }
