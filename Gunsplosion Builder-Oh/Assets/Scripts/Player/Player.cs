@@ -19,6 +19,7 @@ public class Player : Moving_Entity
     public RuntimeAnimatorController    shieldAnim,
                                         jetpackAnim,
                                         speedBoostAnim;
+    public List<Sprite>                 abilityIcons = new List<Sprite>();
 
     private float                       currentJumpDuration,
                                         currentGroundPoundDuration,
@@ -32,7 +33,7 @@ public class Player : Moving_Entity
                                         boostRecharging;
     private SpriteRenderer              playerSprite;
     private Jetpack                     jetPack;
-    public Abilities                   ability;
+    public Abilities                    ability;
     private HUD                         playerHUD;
 
     private void Start()
@@ -52,6 +53,7 @@ public class Player : Moving_Entity
         ability = GetComponent<Abilities>();
         jetPack = GetComponent<Jetpack>();
         playerHUD = HUD.instance;
+        playerHUD.powerupImage.sprite = abilityIcons[0];
     }
 
     private void Update() {
@@ -321,6 +323,7 @@ public class Player : Moving_Entity
         shieldDurability = maxShieldDurability;
 
         playerHUD.EnableArmourPips();
+        playerHUD.powerupImage.sprite = abilityIcons[2];
     }
 
     public void EnableJetPack()
@@ -331,6 +334,7 @@ public class Player : Moving_Entity
         accessoryAnimator.enabled = true;
 
         playerHUD.EnableArmourPips();
+        playerHUD.powerupImage.sprite = abilityIcons[1];
     }
 
     public void EnableSpeedBoost()
@@ -341,6 +345,7 @@ public class Player : Moving_Entity
         accessoryAnimator.enabled = true;
 
         playerHUD.EnableArmourPips();
+        playerHUD.powerupImage.sprite = abilityIcons[3];
     }
 
     public void DisableAbility()
@@ -351,6 +356,7 @@ public class Player : Moving_Entity
         accessoryAnimator.enabled = false;
 
         playerHUD.DisableExtraBar();
+        playerHUD.powerupImage.sprite = abilityIcons[0];
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

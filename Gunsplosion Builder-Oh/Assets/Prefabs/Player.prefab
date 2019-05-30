@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &463951174
 Transform:
   m_ObjectHideFlags: 0
@@ -819,6 +819,11 @@ MonoBehaviour:
   shieldAnim: {fileID: 9100000, guid: f941ce2edd9a33f48a1972c10dc0c46a, type: 2}
   jetpackAnim: {fileID: 9100000, guid: c4a16466ba68c1d468fe7c2a502f1101, type: 2}
   speedBoostAnim: {fileID: 9100000, guid: f6a8896fbd66ef04199b359c3684fd6e, type: 2}
+  abilityIcons:
+  - {fileID: 21300000, guid: 8d09aabf1ff82e94e9b15e623cd51b58, type: 3}
+  - {fileID: 21300012, guid: 8d09aabf1ff82e94e9b15e623cd51b58, type: 3}
+  - {fileID: 21300004, guid: 8d09aabf1ff82e94e9b15e623cd51b58, type: 3}
+  - {fileID: 21300008, guid: 8d09aabf1ff82e94e9b15e623cd51b58, type: 3}
   jetPacking: 0
   canInput: 0
   groundPounding: 0

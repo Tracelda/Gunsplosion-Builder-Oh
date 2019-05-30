@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3399668041217531090
 Transform:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac7df90101f3724e8b4bdfc87169e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: 2
+  ability: 1
   listofSprites:
   - {fileID: 9100000, guid: 92f3227694faea042a9b973da9236583, type: 2}
   - {fileID: 9100000, guid: e6d0e7aac201ff74d89ad3ae495518e6, type: 2}
