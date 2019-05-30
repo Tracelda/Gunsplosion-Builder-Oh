@@ -63,4 +63,10 @@ public class HUD : MonoBehaviour
         energyBar.gameObject.SetActive(false);
         armourPips.gameObject.SetActive(true);
     }
+
+    public void DisableExtraBar()
+    {
+        energyBar.gameObject.SetActive(false);
+        armourPips.gameObject.SetActive(false);
+    }
 }
