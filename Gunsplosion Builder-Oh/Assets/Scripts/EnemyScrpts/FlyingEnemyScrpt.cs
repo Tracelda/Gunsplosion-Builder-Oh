@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemyScrpt : MonoBehaviour
+public class FlyingEnemyScrpt : BaseEnemy
 {
     public Vector2 leftNodePos, rightNodePos;
-    public GameObject leftNode, rightNode;
+    public GameObject leftNode, rightNode, enemy;
     private CircleCollider2D detectionRing;
     private Moving_Entity Moving_Entity;
     private float Direction = 1f;
+    public LineRenderer leftLineRender, rightLineRender;
 
     public bool MovingRight, mirrorPatroling = false;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         leftNodePos = leftNode.transform.position;
         rightNodePos = rightNode.transform.position;
@@ -20,18 +21,33 @@ public class FlyingEnemyScrpt : MonoBehaviour
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
         MovingRight = true;
         FindNodes(gameObject.transform.position);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(mirrorPatroling)
+        if (active)
         {
-            ReversePatrolling(gameObject.transform.position);
+            if (mirrorPatroling)
+            {
+                ReversePatrolling(gameObject.transform.position);
+            }
+            else
+            {
+                Patrolling(gameObject.transform.position);
+            }
         }
         else
         {
-            Patrolling(gameObject.transform.position);
+            leftLineRender = leftNode.GetComponent<LineRenderer>();
+            rightLineRender = rightNode.GetComponent<LineRenderer>();
+
+            leftLineRender.SetPosition(0, leftNodePos);
+            leftLineRender.SetPosition(1, transform.position);
+
+            rightLineRender.SetPosition(0, rightNodePos);
+            rightLineRender.SetPosition(1, transform.position);
         }
     }
 
@@ -51,6 +67,7 @@ public class FlyingEnemyScrpt : MonoBehaviour
     {
         if (MovingRight) // Moving right
         {
+            transform.localScale = new Vector2(-1, transform.localScale.y);
             if (CharacterPos.x < rightNodePos.x)
             {
                 Moving_Entity.Move(Direction);
@@ -63,6 +80,7 @@ public class FlyingEnemyScrpt : MonoBehaviour
         }
         else
         { // Moving left
+            transform.localScale = new Vector2(1, transform.localScale.y);
             if (CharacterPos.x > leftNodePos.x)
             {
                 Moving_Entity.Move(-Direction);
@@ -79,6 +97,7 @@ public class FlyingEnemyScrpt : MonoBehaviour
     {
         if (MovingRight) // Moving right
         {
+            transform.localScale = new Vector2(1, transform.localScale.y);
             if (CharacterPos.x > rightNodePos.x)
             {
                 Moving_Entity.Move(-Direction);
@@ -91,6 +110,7 @@ public class FlyingEnemyScrpt : MonoBehaviour
         }
         else
         { // Moving left
+            transform.localScale = new Vector2(-1, transform.localScale.y);
             if (CharacterPos.x < leftNodePos.x)
             {
                 Moving_Entity.Move(Direction);

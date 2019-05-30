@@ -14,6 +14,7 @@ public class BaseEnemy : BlockResetBase
         Startpos = transform.position;
         rigid.simulated = true;
         active = true;
+
     }
 
     public void ResetToEdit()

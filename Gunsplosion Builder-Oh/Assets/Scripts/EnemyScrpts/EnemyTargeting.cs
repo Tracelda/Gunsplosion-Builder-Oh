@@ -11,6 +11,7 @@ public class EnemyTargeting : MonoBehaviour
 
     public Weapon weaponScript;
     private Moving_Entity Moving_Entity;
+    public BaseEnemy BaseEnemy;
 
     public float timer, timerTarget;
     public bool timerRunning, shoot;
@@ -19,18 +20,22 @@ public class EnemyTargeting : MonoBehaviour
     {
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
         weaponScript = GetComponentInChildren<Weapon>();
+        BaseEnemy = GetComponentInParent<BaseEnemy>();
     }
 
     void Update()
     {
-        CheckForPlayer();
-
-        if (targetingPlayer)
+        if (BaseEnemy.active)
         {
-            FindDistance();
-            FindAngle(gameObject.transform.position, playerObject.transform.position);
-            ShootAtPlayer(normShootDirection.x, normShootDirection.y);
-            timerRunning = true;
+            CheckForPlayer();
+
+            if (targetingPlayer)
+            {
+                FindDistance();
+                FindAngle(gameObject.transform.position, playerObject.transform.position);
+                ShootAtPlayer(normShootDirection.x, normShootDirection.y);
+                timerRunning = true;
+            }
         }
     }
 
