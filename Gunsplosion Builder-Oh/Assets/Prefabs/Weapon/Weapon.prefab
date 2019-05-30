@@ -176,8 +176,8 @@ MonoBehaviour:
     type: 3}
   bulletPoolSize: 100
   gunSprite: {fileID: 0}
-  aimDirection: {fileID: 3738995486937336614}
-  OnlyDamageTag: Enemy
+  aimDirection: {fileID: 0}
+  OnlyDamageTag: Player
 --- !u!212 &518241233
 SpriteRenderer:
   m_ObjectHideFlags: 0
