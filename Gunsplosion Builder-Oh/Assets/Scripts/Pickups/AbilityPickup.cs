@@ -11,25 +11,9 @@ public class AbilityPickup : MonoBehaviour
 
     private Abilities.abilityType           temp;
 
-    private void Update()
+    private void Start()
     {
-        switch (ability)
-        {
-            case Abilities.abilityType.NONE:
-                gameObject.SetActive(false);
-                break;
-            case Abilities.abilityType.JETPACK:
-                sprite.runtimeAnimatorController = listofSprites[0];
-                break;
-            case Abilities.abilityType.SHIELD:
-                sprite.runtimeAnimatorController = listofSprites[1];
-                break;
-            case Abilities.abilityType.SPEEDBOOST:
-                sprite.runtimeAnimatorController = listofSprites[2];
-                break;
-            default:
-                break;
-        }
+        UpdateSprite();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -87,5 +71,28 @@ public class AbilityPickup : MonoBehaviour
         }
 
         ability = temp;
+
+        UpdateSprite();
+    }
+
+    private void UpdateSprite()
+    {
+        switch (ability)
+        {
+            case Abilities.abilityType.NONE:
+                gameObject.SetActive(false);
+                break;
+            case Abilities.abilityType.JETPACK:
+                sprite.runtimeAnimatorController = listofSprites[0];
+                break;
+            case Abilities.abilityType.SHIELD:
+                sprite.runtimeAnimatorController = listofSprites[1];
+                break;
+            case Abilities.abilityType.SPEEDBOOST:
+                sprite.runtimeAnimatorController = listofSprites[2];
+                break;
+            default:
+                break;
+        }
     }
 }
