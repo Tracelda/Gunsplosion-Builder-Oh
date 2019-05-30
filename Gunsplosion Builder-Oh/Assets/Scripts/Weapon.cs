@@ -49,6 +49,8 @@ public class Weapon : MonoBehaviour
     public string OnlyDamageTag;
     private AudioSource audioSource;
 
+    public int weaponNumber;
+
 
     private List<weaponStats> allWeapons = new List<weaponStats>();
     // Start is called before the first frame update
@@ -80,7 +82,7 @@ public class Weapon : MonoBehaviour
             
         }
 
-        changeWeapon(0);
+        changeWeapon(weaponNumber);
     }
 
     // Update is called once per frame

@@ -25,8 +25,8 @@ public class EnemyTargeting : BaseEnemy
 
     void Update()
     {
-        //if (BaseEnemy.active)
-        //{
+        if (BaseEnemy.active)
+        {
             CheckForPlayer();
 
             if (targetingPlayer)
@@ -36,7 +36,7 @@ public class EnemyTargeting : BaseEnemy
                 ShootAtPlayer(normShootDirection.x, normShootDirection.y);
                 timerRunning = true;
             }
-        //}
+        }
     }
 
     public void CheckForPlayer()
