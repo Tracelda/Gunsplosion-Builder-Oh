@@ -39,8 +39,6 @@ public class Player : Moving_Entity
 
         ability = GetComponent<Abilities>();
         jetPack = GetComponent<Jetpack>();
-
-        EnableShield();
     }
 
     private void FixedUpdate()

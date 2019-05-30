@@ -37,6 +37,11 @@ public class AbilityPickup : MonoBehaviour
         if (collision.gameObject &&
             collision.gameObject.CompareTag("Player"))
         {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SwapAbilities(collision);
+            }
+
             spriteTooltip.SetActive(true);
         }
     }
@@ -57,25 +62,30 @@ public class AbilityPickup : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                temp = collision.GetComponent<Abilities>().type;
-
-                switch (ability)
-                {
-                    case Abilities.abilityType.JETPACK:
-                        collision.GetComponent<Player>().EnableJetPack();
-                        break;
-                    case Abilities.abilityType.SHIELD:
-                        collision.GetComponent<Player>().EnableShield();
-                        break;
-                    case Abilities.abilityType.SPEEDBOOST:
-                        collision.GetComponent<Player>().EnableSpeedBoost();
-                        break;
-                    default:
-                        break;
-                }
-
-                ability = temp;
+                SwapAbilities(collision);
             }
         }
+    }
+
+    private void SwapAbilities(Collider2D collision)
+    {
+        temp = collision.GetComponent<Abilities>().type;
+
+        switch (ability)
+        {
+            case Abilities.abilityType.JETPACK:
+                collision.GetComponent<Player>().EnableJetPack();
+                break;
+            case Abilities.abilityType.SHIELD:
+                collision.GetComponent<Player>().EnableShield();
+                break;
+            case Abilities.abilityType.SPEEDBOOST:
+                collision.GetComponent<Player>().EnableSpeedBoost();
+                break;
+            default:
+                break;
+        }
+
+        ability = temp;
     }
 }
