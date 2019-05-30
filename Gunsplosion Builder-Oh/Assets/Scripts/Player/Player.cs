@@ -99,8 +99,11 @@ public class Player : Moving_Entity
                 rb.AddForce(-Vector2.up * groundPoundForce);
             }
         }
-        
+
         // Aim gun
+        if (CanJump()) {
+            Aim(Input.GetAxis("Horizontal"), 0, false);
+        }
         Aim(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y"));
 
         // Switch weapon

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 327498574694340589}
   - component: {fileID: 7454521691971513791}
   - component: {fileID: 8369192507319503976}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: OneWayBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7991
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2634394238638695794}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: OneWayBlock
   m_TagString: Block
   m_Icon: {fileID: 0}

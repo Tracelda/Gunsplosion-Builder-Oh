@@ -97,4 +97,30 @@ public class Moving_Entity : MonoBehaviour
             weaponScript.fire();
         }
     }
+
+    internal void Aim(float x, float y, bool shoot) {
+        //Debug.Log("X = " + x + "Y = " + y);
+        if (x < 0.0f)
+            x = -1.0f;
+        else if (x > 0.0f)
+            x = 1.0f;
+
+        if (y < 0.0f)
+            y = -1.0f;
+        else if (y > 0.0f)
+            y = 1.0f;
+
+        if (x != 0.0f || y != 0.0f) {
+            Vector2 newPos = new Vector2(x, y);
+            //Debug.Log("newPos = " + newPos);
+            newPos *= gunLength;
+
+            firingPoint.transform.localPosition = newPos;
+
+            if (shoot)
+            {
+                weaponScript.fire();
+            }
+        }
+    }
 }

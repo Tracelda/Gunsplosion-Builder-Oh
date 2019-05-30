@@ -24,7 +24,9 @@ public class MenuManager : MonoBehaviour
     }
 
     public void Pause() {
-        levelName.text = SaveAndLoad.instance.levelName;
+        if (SaveAndLoad.instance.levelName != "") {
+            levelName.text = SaveAndLoad.instance.levelName;
+        }
         pauseCanvas.enabled = true;
     }
 
