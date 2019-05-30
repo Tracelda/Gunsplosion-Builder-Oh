@@ -2742,6 +2742,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b90af3aaea079e47ad4fc1b79fa17d8, type: 2}
   - {fileID: 11400000, guid: 841b02142137f584bba027049529fb60, type: 2}
   - {fileID: 11400000, guid: 90198e4a55b72d54281321b50926156c, type: 2}
+  - {fileID: 11400000, guid: eb9ef72c37e431e4eb2282bc19b1f49e, type: 2}
   emptyTile: {fileID: 11400000, guid: e52e1661487ff474e8652d244ff93849, type: 2}
 --- !u!4 &992293481
 Transform:
@@ -5450,6 +5451,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: EditMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
+        type: 3}
+      propertyPath: playMenu
+      value: 
+      objectReference: {fileID: 47255361}
+    - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
+        type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 293162478}
+    - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
+        type: 3}
+      propertyPath: editCamera
+      value: 
+      objectReference: {fileID: 68868660}
     - target: {fileID: 3396109117301410435, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5560,21 +5576,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
-        type: 3}
-      propertyPath: playMenu
-      value: 
-      objectReference: {fileID: 47255361}
-    - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
-        type: 3}
-      propertyPath: grid
-      value: 
-      objectReference: {fileID: 293162478}
-    - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
-        type: 3}
-      propertyPath: editCamera
-      value: 
-      objectReference: {fileID: 68868660}
     - target: {fileID: 3396109118211294980, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -5670,7 +5671,7 @@ PrefabInstance:
     - target: {fileID: 3396109117750000505, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000014366708
+      value: 0.0000074059217
       objectReference: {fileID: 0}
     - target: {fileID: 3396109117750000505, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}

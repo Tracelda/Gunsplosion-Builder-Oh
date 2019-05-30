@@ -234,8 +234,10 @@ public class Player : Moving_Entity
     {
         playerAnimator.SetBool("InAir", !CanJump());
         playerAnimator.SetBool("Moving", rb.velocity.x != 0);
-        accessoryAnimator.SetBool("InAir", !CanJump());
-        accessoryAnimator.SetBool("Moving", rb.velocity.x != 0);
+        if (accessoryAnimator.runtimeAnimatorController) {
+            accessoryAnimator.SetBool("InAir", !CanJump());
+            accessoryAnimator.SetBool("Moving", rb.velocity.x != 0);
+        }
     }
 
     private void SpeedBoost()

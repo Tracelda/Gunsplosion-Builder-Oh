@@ -14,7 +14,8 @@ public class PowerupSpawner : BlockResetBase
     {
         spawnedPickup = Instantiate(prefab, transform.position, Quaternion.identity);
         spawnedPickup.GetComponent<AbilityPickup>().ability = type;
-        sprite.enabled = false;
+        if (sprite)
+            sprite.enabled = false;
     }
 
     public void ResetToEdit()
