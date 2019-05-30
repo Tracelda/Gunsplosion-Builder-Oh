@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private bool levelLoaded;
     public enum GameModes { Play, Edit };
     public GameModes gameMode;
+    private int score, multiplier;
 
     private void Awake() {
         if (!instance)
@@ -17,6 +18,11 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        multiplier = 1;
     }
 
     public void NewLevel() {
@@ -80,5 +86,17 @@ public class GameManager : MonoBehaviour
                 component.Invoke(function, 0f);
             }
         }
+    }
+
+    public void AddScore(int val)
+    {
+        score += val * multiplier;
+        HUD.instance.SetScore(score);
+    }
+
+    public void AddMultiplier(int val)
+    {
+        multiplier += val;
+        HUD.instance.SetMultiplier(multiplier);
     }
 }

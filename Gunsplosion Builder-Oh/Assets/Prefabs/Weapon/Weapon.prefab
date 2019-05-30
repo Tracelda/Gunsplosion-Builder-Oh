@@ -133,7 +133,7 @@ MonoBehaviour:
     weaponType: 0
     damage: 1
     bulletSpeed: 30
-    bulletSprite: {fileID: 0}
+    bulletSprite: {fileID: 21300018, guid: d170f2f82b2583d43a963b8eb0a587f9, type: 3}
     animatorController: {fileID: 9100000, guid: 71f32a47a3f3c4a4a8609ce592c302f8,
       type: 2}
     lifeSpan: 4
@@ -144,7 +144,7 @@ MonoBehaviour:
     weaponType: 1
     damage: 10
     bulletSpeed: 40
-    bulletSprite: {fileID: 0}
+    bulletSprite: {fileID: 21300006, guid: d170f2f82b2583d43a963b8eb0a587f9, type: 3}
     animatorController: {fileID: 9100000, guid: 62620e8b56449554bbbef3084523d835,
       type: 2}
     lifeSpan: 5

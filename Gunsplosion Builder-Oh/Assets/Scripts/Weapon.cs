@@ -122,6 +122,7 @@ public class Weapon : MonoBehaviour
                 {
                     heldWeapons[0] = allWeapons[index];
                     gunSprite.sprite = heldWeapons[0].weaponSprite;
+                    UpdateWeaponUI();
                     return i;
                 }
             }
@@ -132,6 +133,7 @@ public class Weapon : MonoBehaviour
             return int.MaxValue;
         }
 
+
         return result;
     }
     public void swapActiveWeapon()
@@ -141,5 +143,13 @@ public class Weapon : MonoBehaviour
         heldWeapons[1] = temp;
 
         gunSprite.sprite = heldWeapons[0].weaponSprite;
+
+        UpdateWeaponUI();
+    }
+
+    public void UpdateWeaponUI()
+    {
+        HUD.instance.SetWeapon1(heldWeapons[0].bulletType.bulletSprite);
+        HUD.instance.SetWeapon2(heldWeapons[1].bulletType.bulletSprite);
     }
 }

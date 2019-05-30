@@ -5538,6 +5538,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3396109117301410434, guid: 4e0a7a3841f487b4ab755928fbc55649,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3396109117301410432, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: playMenu
@@ -5576,7 +5581,7 @@ PrefabInstance:
     - target: {fileID: 3396109117750000505, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 134.22502
+      value: -0.000014647512
       objectReference: {fileID: 0}
     - target: {fileID: 3396109117750000505, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
@@ -5591,6 +5596,11 @@ PrefabInstance:
     - target: {fileID: 3396109118437343013, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396109118437343013, guid: 4e0a7a3841f487b4ab755928fbc55649,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5855,11 +5865,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6864496963631800812, guid: 5a827b389b7563146bdb78708fae122e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6864496963887597713, guid: 5a827b389b7563146bdb78708fae122e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1031711290}
+    - target: {fileID: 6864496963463557906, guid: 5a827b389b7563146bdb78708fae122e,
+        type: 3}
+      propertyPath: m_Text
+      value: x01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a827b389b7563146bdb78708fae122e, type: 3}
 --- !u!1001 &9113171965373741236

@@ -10,6 +10,7 @@ public class ExplosiveBlock : BlockResetBase
     public SpriteRenderer sprite;
     public Collider2D collider;
     public Health health;
+    private int scoreValue = 50;
 
     public void StartGame()
     {
@@ -63,6 +64,7 @@ public class ExplosiveBlock : BlockResetBase
         sprite.enabled = false;
         collider.enabled = false;
         EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.LargeExplosion);
+        GameManager.instance.AddScore(scoreValue);
     }
 
     IEnumerator DelayedExplosion() {

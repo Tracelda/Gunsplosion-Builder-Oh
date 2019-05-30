@@ -5,22 +5,45 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float health;
+    public float iframeDuration;
+    private float iframes;
+    private Color baseColour;
+    private SpriteRenderer sprite;
+    private int iframeFrequency = 4;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        sprite = GetComponent<SpriteRenderer>();
+        if (sprite)
+        {
+            baseColour = sprite.color;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        iframes -= Time.deltaTime;
+        if (iframes > 0 && sprite && Time.frameCount % iframeFrequency == 0)
+        {
+            sprite.color = Color.red;
+        }
+        else if (iframes <= 0 && sprite.color != baseColour)
+        {
+            sprite.color = baseColour;
+        }
+        else
+        {
+            sprite.color = baseColour;
+        }
     }
 
     public void takeDamage(float damage)
     {
-        health -= damage;
+        if (iframes <= 0)
+        {
+            health -= damage;
+            iframes = iframeDuration;
+        }
         //print(health);
     }
 }

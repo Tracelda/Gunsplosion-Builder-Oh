@@ -50,11 +50,11 @@ public class HUD : MonoBehaviour
     }
 
     public void SetScore(int val) {
-        scoreText.text = val.ToString();
+        scoreText.text = val.ToString("D8");
     }
 
     public void SetMultiplier(int val) {
-        scoreText.text = "x" + val.ToString();
+        scoreText.text = "x" + val.ToString("D2");
     }
 
     public void EnableEnergyBar()
