@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 1900849228992001161}
   - component: {fileID: 502819373865828604}
   - component: {fileID: 7076199832787008274}
+  - component: {fileID: 1396672757}
   m_Layer: 0
   m_Name: Goomba
   m_TagString: Untagged
@@ -415,7 +416,7 @@ MonoBehaviour:
   gunLength: 1
   weapon: {fileID: 6410530899841065974}
   firingPoint: {fileID: 6260616500524483064}
-  maxHealth: 0
+  maxHealth: 50
 --- !u!114 &6237264114948495478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,9 +452,16 @@ MonoBehaviour:
   targetingPlayer: 0
   attackRange: 10
   distanceToPlayer: 0
+  angle: 0
+  normAngle: 0
   playerObject: {fileID: 0}
   shootDirection: {x: 0, y: 0, z: 0}
   normShootDirection: {x: 0, y: 0, z: 0}
+  weaponScript: {fileID: 0}
+  timer: 0
+  timerTarget: 0.75
+  timerRunning: 0
+  shoot: 0
 --- !u!114 &502819373865828604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  iframeDuration: 0
+  entityType: 0
 --- !u!50 &7076199832787008274
 Rigidbody2D:
   serializedVersion: 4
@@ -487,7 +497,26 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
+--- !u!95 &1396672757
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4066955448605500130}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6110d2ef62a2f74aa0249f9aac18954, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6260616500524483064
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,11 +668,6 @@ PrefabInstance:
       propertyPath: aimDirection
       value: 
       objectReference: {fileID: 6260616500524483064}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: OnlyDamageTag
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5, type: 3}
 --- !u!1 &6410530899841065974 stripped
