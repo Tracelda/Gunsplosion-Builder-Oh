@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1090296322}
   - component: {fileID: 1090296323}
   - component: {fileID: 3177334196117989509}
+  - component: {fileID: 2210428145737876164}
   m_Layer: 0
   m_Name: LeftNode
   m_TagString: DragNode
@@ -237,6 +238,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &2210428145737876164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26074739441718250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1a9df52fc72429aaccd3c1cd064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1858108348648591574
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +264,7 @@ GameObject:
   - component: {fileID: 957675255}
   - component: {fileID: 957675256}
   - component: {fileID: 8532285112615345982}
+  - component: {fileID: 8484927481781089053}
   m_Layer: 0
   m_Name: RightNode
   m_TagString: DragNode
@@ -474,6 +488,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &8484927481781089053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858108348648591574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1a9df52fc72429aaccd3c1cd064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4066955448605500130
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ff464ea70c97c4eb2062cd3bbbc3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  active: 0
   targetingPlayer: 0
   attackRange: 10
   distanceToPlayer: 0
@@ -671,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   iframeDuration: 0
-  entityType: 0
+  entityType: 2
 --- !u!50 &7076199832787008274
 Rigidbody2D:
   serializedVersion: 4

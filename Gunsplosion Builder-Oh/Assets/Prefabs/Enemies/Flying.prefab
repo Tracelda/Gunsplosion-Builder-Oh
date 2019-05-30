@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8928324383631575596}
   - component: {fileID: 7530369315741520639}
   - component: {fileID: 6793930194122319107}
+  - component: {fileID: 8330003396985285164}
   m_Layer: 0
   m_Name: LeftNode
   m_TagString: Untagged
@@ -197,6 +198,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &8330003396985285164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092977638859092618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1a9df52fc72429aaccd3c1cd064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &3746437596370281694
 Animator:
   serializedVersion: 3
@@ -307,6 +320,7 @@ GameObject:
   - component: {fileID: 7381801845760311117}
   - component: {fileID: 318870584590921867}
   - component: {fileID: 4609979658890871081}
+  - component: {fileID: 3069117975559366804}
   m_Layer: 0
   m_Name: RightNode
   m_TagString: Untagged
@@ -492,6 +506,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &3069117975559366804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147417378007639742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1a9df52fc72429aaccd3c1cd064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4368878273409709132
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +621,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.041677}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -606,7 +632,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.916646}
   m_EdgeRadius: 0
 --- !u!114 &9162643788944217243
 MonoBehaviour:
@@ -664,7 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   iframeDuration: 0
-  entityType: 0
+  entityType: 2
 --- !u!50 &8552510067589159203
 Rigidbody2D:
   serializedVersion: 4
@@ -717,6 +743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ff464ea70c97c4eb2062cd3bbbc3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  active: 0
   targetingPlayer: 0
   attackRange: 10
   distanceToPlayer: 0

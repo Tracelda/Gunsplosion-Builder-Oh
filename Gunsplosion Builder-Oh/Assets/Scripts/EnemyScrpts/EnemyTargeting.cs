@@ -166,8 +166,9 @@ public class EnemyTargeting : BaseEnemy
 
         if (shoot)
         {
-            weaponScript.fire();
+            Debug.Log("bang");
             shoot = false;
+            weaponScript.fire();
         }
     }
 }

@@ -178,6 +178,7 @@ MonoBehaviour:
   gunSprite: {fileID: 0}
   aimDirection: {fileID: 1098773840}
   OnlyDamageTag: Player
+  weaponNumber: 0
 --- !u!212 &745781695
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -462,7 +463,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.01041925, y: -0.12}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -473,7 +474,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.021086, y: 1.689415}
   m_EdgeRadius: 0
 --- !u!114 &779452354
 MonoBehaviour:
@@ -528,6 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ff464ea70c97c4eb2062cd3bbbc3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  active: 0
   targetingPlayer: 0
   attackRange: 10
   distanceToPlayer: 0
@@ -556,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   iframeDuration: 0
-  entityType: 0
+  entityType: 2
 --- !u!50 &779452350
 Rigidbody2D:
   serializedVersion: 4
@@ -690,6 +693,7 @@ GameObject:
   - component: {fileID: 1388182564}
   - component: {fileID: 1388182563}
   - component: {fileID: 2248311026625373898}
+  - component: {fileID: 6786992607361579729}
   m_Layer: 0
   m_Name: LeftNode
   m_TagString: DragNode
@@ -913,6 +917,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &6786992607361579729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388182562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1a9df52fc72429aaccd3c1cd064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1779098777
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +943,7 @@ GameObject:
   - component: {fileID: 1779098779}
   - component: {fileID: 1779098778}
   - component: {fileID: 8617577674972348350}
+  - component: {fileID: 3095271776272728006}
   m_Layer: 0
   m_Name: RightNode
   m_TagString: DragNode
@@ -1150,3 +1167,15 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &3095271776272728006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779098777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1a9df52fc72429aaccd3c1cd064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

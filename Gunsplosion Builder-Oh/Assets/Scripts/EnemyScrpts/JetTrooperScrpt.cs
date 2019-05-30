@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JetTrooperScrpt : MonoBehaviour
 {
+    public Transform leftNodeTrans, rightNodeTrans;
     public Vector2 leftNodePos, rightNodePos;
     public GameObject leftNode, rightNode;
     private CircleCollider2D detectionRing;
@@ -15,7 +16,7 @@ public class JetTrooperScrpt : MonoBehaviour
     void Start()
     {
         leftNodePos = leftNode.transform.position;
-        rightNodePos = rightNode.transform.position;
+        rightNodeTrans.position = rightNode.transform.position;
         detectionRing = gameObject.GetComponent<CircleCollider2D>();
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
         MovingRight = true;
@@ -51,11 +52,11 @@ public class JetTrooperScrpt : MonoBehaviour
     {
         if (MovingRight) // Moving right
         {
-            if (CharacterPos.x < rightNodePos.x)
+            if (CharacterPos.x < rightNodeTrans.position.x)
             {
                 Moving_Entity.Move(Direction);
             }
-            else if (CharacterPos.x >= rightNodePos.x)
+            else if (CharacterPos.x >= rightNodeTrans.position.x)
             {
                 MovingRight = false;
                 Moving_Entity.Move(-Direction);
@@ -79,11 +80,11 @@ public class JetTrooperScrpt : MonoBehaviour
     {
         if (MovingRight) // Moving right
         {
-            if (CharacterPos.x > rightNodePos.x)
+            if (CharacterPos.x > rightNodeTrans.position.x)
             {
                 Moving_Entity.Move(-Direction);
             }
-            else if (CharacterPos.x <= rightNodePos.x)
+            else if (CharacterPos.x <= rightNodeTrans.position.x)
             {
                 MovingRight = false;
                 Moving_Entity.Move(Direction);
