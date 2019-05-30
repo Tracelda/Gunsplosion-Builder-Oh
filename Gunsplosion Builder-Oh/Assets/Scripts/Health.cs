@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     private Color baseColour;
     private SpriteRenderer sprite;
     private int iframeFrequency = 4;
+    public enum EntityTypes { None, Player, Enemy };
+    public EntityTypes entityType;
 
     private void Start()
     {
@@ -43,6 +45,24 @@ public class Health : MonoBehaviour
         {
             health -= damage;
             iframes = iframeDuration;
+
+            if (health <= 0)
+            {
+                switch (entityType)
+                {
+                    case EntityTypes.Player:
+                        EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.PlayerDestroy);
+                        HUD.instance.SetHealth(0);
+                        GameManager.instance.Restartlater();
+                        Destroy(gameObject);
+                        break;
+                    case EntityTypes.Enemy:
+                        EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.LargeExplosion);
+                        GameManager.instance.AddMultiplier(1);
+                        Destroy(gameObject);
+                        break;
+                }
+            }
         }
         //print(health);
     }

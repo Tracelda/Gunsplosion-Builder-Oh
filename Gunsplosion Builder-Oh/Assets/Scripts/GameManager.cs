@@ -99,4 +99,16 @@ public class GameManager : MonoBehaviour
         multiplier += val;
         HUD.instance.SetMultiplier(multiplier);
     }
+
+    public void Restartlater()
+    {
+        StartCoroutine(DelayedRestart());
+    }
+
+    public IEnumerator DelayedRestart()
+    {
+        yield return new WaitForSeconds(4);
+        MenuManager.instance.Edit();
+        MenuManager.instance.Play();
+    }
 }

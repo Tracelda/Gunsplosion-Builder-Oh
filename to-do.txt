@@ -1,0 +1,28 @@
+olly's fmp
+finish enemies
+weapon and enemy damage balance
+sound
+fix up level select screen
+hazard blocks
+look into player jumps
+level clear screen
+title screen
+edit mode tooltips
+background choices
+player jets
+
+//pip health meter
+
+speed boost:
+    use fuel like jetpack
+    hold run key to use
+    runs at double speed in player facing direction (x only)
+    player is invincible
+    cant shoot
+    damage enemies
+
+shoot sounds
+impact sounds
+jet sounds
+teleporter sound
+pickup sound

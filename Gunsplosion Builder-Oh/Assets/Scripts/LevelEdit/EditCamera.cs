@@ -15,7 +15,7 @@ public class EditCamera : MonoBehaviour
     private float editModeZoom;
 
     private void Update() {
-        if (playMode) {
+        if (playMode && target) {
             Vector3 targetPosition = target.position;
             targetPosition.z = -10;
             transform.position = Vector3.Lerp(transform.position, targetPosition, playMoveSpeed * Time.deltaTime);

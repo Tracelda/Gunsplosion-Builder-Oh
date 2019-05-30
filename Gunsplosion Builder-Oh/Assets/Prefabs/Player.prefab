@@ -214,7 +214,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c696464ccb2c78645b526b9915c8741c, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -222,7 +222,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1070355587
@@ -803,7 +803,7 @@ MonoBehaviour:
   gunLength: 0.5
   weapon: {fileID: 1115083794426569931}
   firingPoint: {fileID: 1661406301}
-  maxHealth: 100
+  maxHealth: 20
   jumpDuration: 0.2
   groundPoundDuration: 0.2
   groundPoundForce: 300
@@ -814,9 +814,9 @@ MonoBehaviour:
   groundPoundCollider: {fileID: 271735289}
   playerAnimator: {fileID: 6379640770938787318}
   accessoryAnimator: {fileID: 1070355587}
-  shieldAnim: {fileID: 0}
-  jetpackAnim: {fileID: 0}
-  speedBoostAnim: {fileID: 0}
+  shieldAnim: {fileID: 9100000, guid: f941ce2edd9a33f48a1972c10dc0c46a, type: 2}
+  jetpackAnim: {fileID: 9100000, guid: c4a16466ba68c1d468fe7c2a502f1101, type: 2}
+  speedBoostAnim: {fileID: 9100000, guid: f6a8896fbd66ef04199b359c3684fd6e, type: 2}
 --- !u!114 &6379640770938787317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,8 +829,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780bc44723cf945439f04d1211c7fd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  iframeDuration: 0
+  health: 20
+  iframeDuration: 1
+  entityType: 1
 --- !u!95 &6379640770938787318
 Animator:
   serializedVersion: 3
