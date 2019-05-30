@@ -562,7 +562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -75, y: 10.0000305}
+  m_AnchoredPosition: {x: -75, y: 10.000061}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6864496962355003698
@@ -1310,7 +1310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 75, y: 10.0000305}
+  m_AnchoredPosition: {x: 75, y: 10.000061}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6864496963459627254
@@ -1799,7 +1799,7 @@ MonoBehaviour:
   scoreText: {fileID: 6864496962658877475}
   multiplierText: {fileID: 6864496963463557906}
   healthPips: {fileID: 6864496962231351140}
-  armourPips: {fileID: 0}
+  armourPips: {fileID: 36399500}
 --- !u!1 &6864496963864673433
 GameObject:
   m_ObjectHideFlags: 0
