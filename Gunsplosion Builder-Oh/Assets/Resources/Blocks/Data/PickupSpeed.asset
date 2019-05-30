@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1645ada0456778b45b1625b43db4ff15, type: 3}
+  m_Name: PickupSpeed
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4867183157381031482, guid: a026fbe15e44bd24984007687b2f5fc4, type: 3}
+  tile: {fileID: 0}
+  blockType: 1
+  gameObject: {fileID: 0}
+  blockInfo:
+    objectname: PickupSpeed
+    position:
+      x: 9
+      y: 5
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 270
+  icon: {fileID: 21300008, guid: 8d09aabf1ff82e94e9b15e623cd51b58, type: 3}

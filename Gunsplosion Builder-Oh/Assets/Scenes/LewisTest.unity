@@ -2739,6 +2739,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9bc0f1697f860ac42b3aba75f6147dff, type: 2}
   - {fileID: 11400000, guid: e6f36641bb530cc43882eacb5fa5da4b, type: 2}
   - {fileID: 11400000, guid: 39227a7f9357f164887ab4091f65d1bf, type: 2}
+  - {fileID: 11400000, guid: 9b90af3aaea079e47ad4fc1b79fa17d8, type: 2}
+  - {fileID: 11400000, guid: 841b02142137f584bba027049529fb60, type: 2}
+  - {fileID: 11400000, guid: 90198e4a55b72d54281321b50926156c, type: 2}
   emptyTile: {fileID: 11400000, guid: e52e1661487ff474e8652d244ff93849, type: 2}
 --- !u!4 &992293481
 Transform:
@@ -2795,6 +2798,8 @@ MonoBehaviour:
   smallDust: {fileID: 0}
   largeDust: {fileID: 0}
   armourDestroy: {fileID: 7360337725380997971, guid: 80bf6c7e67bde1c46bff609716014f7c,
+    type: 3}
+  playerDestroy: {fileID: 7360337725380997971, guid: 5fb5d1ad76b1bd344890cb9ab5de6fb4,
     type: 3}
 --- !u!114 &1031711290 stripped
 MonoBehaviour:
@@ -5947,11 +5952,6 @@ PrefabInstance:
     - target: {fileID: 6864496963631800809, guid: 5a827b389b7563146bdb78708fae122e,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864496963631800812, guid: 5a827b389b7563146bdb78708fae122e,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6864496963887597713, guid: 5a827b389b7563146bdb78708fae122e,

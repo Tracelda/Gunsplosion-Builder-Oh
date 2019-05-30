@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EffectManager : MonoBehaviour
 {
-    public enum ParticleTypes { StraightShot, BounceShot, HomingShot, SmallExplosion, LargeExplosion, HugeExplosion, SmallDust, LargeDust, ArmourDestroy};
-    public GameObject straightShot, bounceShot, homingShot, smallExplosion, largeExplosion, hugeExplosion, smallDust, largeDust, armourDestroy;
+    public enum ParticleTypes { StraightShot, BounceShot, HomingShot, SmallExplosion, LargeExplosion, HugeExplosion, SmallDust, LargeDust, ArmourDestroy, PlayerDestroy};
+    public GameObject straightShot, bounceShot, homingShot, smallExplosion, largeExplosion, hugeExplosion, smallDust, largeDust, armourDestroy, playerDestroy;
 
     public static EffectManager instance;
 
@@ -49,6 +49,8 @@ public class EffectManager : MonoBehaviour
                 return largeDust;
             case ParticleTypes.ArmourDestroy:
                 return armourDestroy;
+            case ParticleTypes.PlayerDestroy:
+                return playerDestroy;
         }
         return null;
     }
