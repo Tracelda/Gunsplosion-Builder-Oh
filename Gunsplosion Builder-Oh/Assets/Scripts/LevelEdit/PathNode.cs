@@ -5,6 +5,8 @@ using UnityEngine;
 public class PathNode : BlockResetBase
 {
     private SpriteRenderer sprite;
+    private Vector3 basePosition;
+    private bool inGame;
 
     protected override void Start()
     {
@@ -14,11 +16,21 @@ public class PathNode : BlockResetBase
 
     public void StartGame()
     {
-        sprite.enabled = false;
+        //sprite.enabled = false;
+        basePosition = transform.position;
+        inGame = true;
+
     }
 
     public void ResetToEdit()
     {
         sprite.enabled = true;
+        inGame = false;
+    }
+
+    private void Update() {
+        if (inGame) {
+            transform.position = basePosition;
+        }
     }
 }
