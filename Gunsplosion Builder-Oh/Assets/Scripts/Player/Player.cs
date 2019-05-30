@@ -56,12 +56,9 @@ public class Player : Moving_Entity
         playerHUD.powerupImage.sprite = abilityIcons[0];
     }
 
-    private void Update() {
-        PlayerInput();
-    }
-
     private void FixedUpdate()
     {
+        PlayerInput();
         UpdateAnimation();
         GroundPound();
 

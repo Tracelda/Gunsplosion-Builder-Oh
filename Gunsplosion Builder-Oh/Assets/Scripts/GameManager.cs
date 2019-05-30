@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         multiplier = 1;
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
     }
 
     public void NewLevel() {

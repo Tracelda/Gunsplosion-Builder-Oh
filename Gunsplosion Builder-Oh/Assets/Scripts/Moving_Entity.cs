@@ -62,7 +62,7 @@ public class Moving_Entity : MonoBehaviour
     {
         //entityCollider.enabled = false;
 
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, entityCollider.bounds.size, 0.0f, -Vector3.up, distFromGround, LayerMask.GetMask("Block"));
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, entityCollider.bounds.size, 0.0f, -Vector3.up, distFromGround);
 
         //entityCollider.enabled = true;
 
