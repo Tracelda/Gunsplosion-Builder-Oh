@@ -8,6 +8,7 @@ public class HUD : MonoBehaviour
     public Image powerupImage, weapon1Image, weapon2Image;
     public Bar healthBar, armourBar, energyBar;
     public Text scoreText, multiplierText;
+    public HealthPips healthPips, armourPips;
     public static HUD instance;
 
     private void Awake() {
@@ -29,12 +30,14 @@ public class HUD : MonoBehaviour
         weapon2Image.sprite = image;
     }
 
-    public void SetHealth(float val) {
-        healthBar.SetMeter(val);
+    public void SetHealth(int val) {
+        //healthBar.SetMeter(val);
+        healthPips.UpdateHealth(val);
     }
 
-    public void SetArmour(float val) {
-        armourBar.SetMeter(val);
+    public void SetArmour(int val) {
+        //armourBar.SetMeter(val);
+        armourPips.UpdateHealth(val);
     }
 
     public void SetEnergy(float val) {
