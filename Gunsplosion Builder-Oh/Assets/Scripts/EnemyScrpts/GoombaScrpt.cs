@@ -29,8 +29,8 @@ public class GoombaScrpt : BaseEnemy
     // Update is called once per frame
     void Update()
     {
-        //if (active)
-        //{
+        if (active)
+        {
             if (mirrorPatroling)
             {
                 ReversePatrolling(gameObject.transform.position);
@@ -39,17 +39,17 @@ public class GoombaScrpt : BaseEnemy
             {
                 Patrolling(gameObject.transform.position);
             }
-        //}
-        //else
-        //{
-        //    leftLineRender = leftNode.GetComponent<LineRenderer>();
-        //    rightLineRender = rightNode.GetComponent<LineRenderer>();
-        //    leftLineRender.SetPosition(0, leftNodeTrans.position);
-        //    leftLineRender.SetPosition(1, transform.position);
+    }
+        else
+        {
+            leftLineRender = leftNode.GetComponent<LineRenderer>();
+            rightLineRender = rightNode.GetComponent<LineRenderer>();
+            leftLineRender.SetPosition(0, leftNodeTrans.position);
+            leftLineRender.SetPosition(1, transform.position);
 
-        //    rightLineRender.SetPosition(0, rightNodeTrans.position);
-        //    rightLineRender.SetPosition(1, transform.position);
-        //}
+            rightLineRender.SetPosition(0, rightNodeTrans.position);
+            rightLineRender.SetPosition(1, transform.position);
+        }
     }
 
     public void FindNodes(Vector2 CharacterPos)
