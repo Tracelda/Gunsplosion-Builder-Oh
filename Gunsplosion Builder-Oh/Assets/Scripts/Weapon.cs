@@ -149,8 +149,11 @@ public class Weapon : MonoBehaviour
                 if(allWeapons[i].type == heldWeapons[0].type)
                 {
                     heldWeapons[0] = allWeapons[index];
-                    gunSprite.sprite = heldWeapons[0].weaponSprite;
-                    UpdateWeaponUI();
+                    if (gunSprite != null)
+                    {
+                        gunSprite.sprite = heldWeapons[0].weaponSprite;
+                        UpdateWeaponUI();
+                    }
                     return i;
                 }
             }
@@ -169,10 +172,12 @@ public class Weapon : MonoBehaviour
         weaponStats temp = heldWeapons[0];
         heldWeapons[0] = heldWeapons[1];
         heldWeapons[1] = temp;
+        if (gunSprite != null)
+        {
+            gunSprite.sprite = heldWeapons[0].weaponSprite;
 
-        gunSprite.sprite = heldWeapons[0].weaponSprite;
-
-        UpdateWeaponUI();
+            UpdateWeaponUI();
+        }
     }
 
     public void UpdateWeaponUI()
