@@ -51,4 +51,16 @@ public class HUD : MonoBehaviour
     public void SetMultiplier(int val) {
         scoreText.text = "x" + val.ToString();
     }
+
+    public void EnableEnergyBar()
+    {
+        armourPips.gameObject.SetActive(false);
+        energyBar.gameObject.SetActive(true);
+    }
+
+    public void EnableArmourPips()
+    {
+        energyBar.gameObject.SetActive(false);
+        armourPips.gameObject.SetActive(true);
+    }
 }
