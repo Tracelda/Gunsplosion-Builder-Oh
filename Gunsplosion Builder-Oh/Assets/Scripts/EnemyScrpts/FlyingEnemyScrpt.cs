@@ -18,6 +18,10 @@ public class FlyingEnemyScrpt : BaseEnemy
     {
         leftNodeTrans.position = leftNode.transform.position;
         rightNodeTrans.position = rightNode.transform.position;
+
+        leftNodePos = leftNode.transform.position;
+        rightNodePos = rightNode.transform.position;
+
         detectionRing = gameObject.GetComponent<CircleCollider2D>();
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
         MovingRight = true;
@@ -28,8 +32,8 @@ public class FlyingEnemyScrpt : BaseEnemy
     // Update is called once per frame
     void Update()
     {
-        if (active)
-        {
+        //if (active)
+        //{
             if (mirrorPatroling)
             {
                 ReversePatrolling(gameObject.transform.position);
@@ -38,23 +42,23 @@ public class FlyingEnemyScrpt : BaseEnemy
             {
                 Patrolling(gameObject.transform.position);
             }
-        }
-        else
-        {
-            leftLineRender = leftNode.GetComponent<LineRenderer>();
-            rightLineRender = rightNode.GetComponent<LineRenderer>();
+        //}
+        //else
+        //{
+        //    leftLineRender = leftNode.GetComponent<LineRenderer>();
+        //    rightLineRender = rightNode.GetComponent<LineRenderer>();
 
-            leftLineRender.SetPosition(0, leftNodeTrans.position);
-            leftLineRender.SetPosition(1, transform.position);
+        //    leftLineRender.SetPosition(0, leftNodeTrans.position);
+        //    leftLineRender.SetPosition(1, transform.position);
 
-            rightLineRender.SetPosition(0, rightNodeTrans.position);
-            rightLineRender.SetPosition(1, transform.position);
-        }
+        //    rightLineRender.SetPosition(0, rightNodeTrans.position);
+        //    rightLineRender.SetPosition(1, transform.position);
+        //}
     }
 
     public void FindNodes(Vector2 CharacterPos)
     {
-        if (leftNodeTrans.position.x > CharacterPos.x)
+        if (leftNodePos.x > CharacterPos.x)
         {
             mirrorPatroling = true;
         }
@@ -69,11 +73,11 @@ public class FlyingEnemyScrpt : BaseEnemy
         if (MovingRight) // Moving right
         {
             transform.localScale = new Vector2(-1, transform.localScale.y);
-            if (CharacterPos.x < rightNodeTrans.position.x)
+            if (CharacterPos.x < rightNodePos.x)
             {
                 Moving_Entity.Move(Direction);
             }
-            else if (CharacterPos.x >= rightNodeTrans.position.x)
+            else if (CharacterPos.x >= rightNodePos.x)
             {
                 MovingRight = false;
                 Moving_Entity.Move(-Direction);
@@ -82,11 +86,11 @@ public class FlyingEnemyScrpt : BaseEnemy
         else
         { // Moving left
             transform.localScale = new Vector2(1, transform.localScale.y);
-            if (CharacterPos.x > leftNodeTrans.position.x)
+            if (CharacterPos.x > leftNodePos.x)
             {
                 Moving_Entity.Move(-Direction);
             }
-            else if (CharacterPos.x <= leftNodeTrans.position.x)
+            else if (CharacterPos.x <= leftNodePos.x)
             {
                 MovingRight = true;
                 Moving_Entity.Move(Direction);
@@ -99,11 +103,11 @@ public class FlyingEnemyScrpt : BaseEnemy
         if (MovingRight) // Moving right
         {
             transform.localScale = new Vector2(1, transform.localScale.y);
-            if (CharacterPos.x > rightNodeTrans.position.x)
+            if (CharacterPos.x > rightNodePos.x)
             {
                 Moving_Entity.Move(-Direction);
             }
-            else if (CharacterPos.x <= rightNodeTrans.position.x)
+            else if (CharacterPos.x <= rightNodePos.x)
             {
                 MovingRight = false;
                 Moving_Entity.Move(Direction);
@@ -112,11 +116,11 @@ public class FlyingEnemyScrpt : BaseEnemy
         else
         { // Moving left
             transform.localScale = new Vector2(-1, transform.localScale.y);
-            if (CharacterPos.x < leftNodeTrans.position.x)
+            if (CharacterPos.x < leftNodePos.x)
             {
                 Moving_Entity.Move(Direction);
             }
-            else if (CharacterPos.x >= leftNodeTrans.position.x)
+            else if (CharacterPos.x >= leftNodePos.x)
             {
                 MovingRight = true;
                 Moving_Entity.Move(-Direction);
