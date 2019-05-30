@@ -5,21 +5,22 @@ using UnityEngine;
 public class EnemyTargeting : MonoBehaviour
 {
     public bool targetingPlayer;
-    public float attackRange, distanceToPlayer;
+    public float attackRange, distanceToPlayer, angle, normAngle;
     public GameObject playerObject;
     public Vector3 shootDirection, normShootDirection;
 
     public Weapon weaponScript;
     private Moving_Entity Moving_Entity;
 
-    // Start is called before the first frame update
+    public float timer, timerTarget;
+    public bool timerRunning, shoot;
+
     void Start()
     {
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
         weaponScript = GetComponentInChildren<Weapon>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckForPlayer();
@@ -29,6 +30,7 @@ public class EnemyTargeting : MonoBehaviour
             FindDistance();
             FindAngle(gameObject.transform.position, playerObject.transform.position);
             ShootAtPlayer(normShootDirection.x, normShootDirection.y);
+            timerRunning = true;
         }
     }
 
@@ -55,6 +57,10 @@ public class EnemyTargeting : MonoBehaviour
 
     public void FindAngle(Vector3 enemyLocation, Vector3 playerPos)
     {
+        // Find angle 
+        Vector2 dir = playerPos - enemyLocation;
+        angle = Vector2.Angle(transform.up, dir);
+
         shootDirection = (playerPos - enemyLocation);
         normShootDirection = Vector3.Normalize(shootDirection);
         
@@ -67,68 +73,96 @@ public class EnemyTargeting : MonoBehaviour
         distanceToPlayer = Vector2.Distance(playerObject.transform.position, transform.position);
     }
 
-    public void ShootAtPlayer(float x, float y)
+    private void RunTimer()
     {
-        //Moving_Entity.Aim(normShootDirection.x, normShootDirection.y);
-        Debug.Log("Shooting at player");
-
-        //if (((x > -0.75f && x < 0.25f) && (y > 0.0f && y < 0.25f)) || ((x < 0.0f && x > -0.25f) && (y < 0.0f && y > -0.25f))) // target right 0 degrees
-        //{
-        //    Debug.Log("target right 0 degrees");
-        //    x = 1f;
-        //    y = 0f;
-        //}
-        //else if (((x > 0.25f && x < 0.75f) && (y > 0.25f && y < 0.75f))) // target right 45 degrees
-        //{
-        //    Debug.Log("target right 45 degrees");
-        //    x = 1f;
-        //    y = 1f;
-        //}
-        //else if (((x > 0.0f && x < 0.25f) && (y > 0.75f && y < 0.1f)) || ((x < 0.0f && x > -0.25f) && (y < 0.75f && y < 1f))) // target up 90 degrees
-        //{
-        //    Debug.Log("target up 90 degrees");
-        //    x = 0f;
-        //    y = 1f;
-        //}
-        //else if (((x > 0.25f && x < 0.75f) && (y > -0.25f && y < -0.75f))) // target right -45 degrees
-        //{
-        //    Debug.Log("target right -45 degrees");
-        //    x = -1f;
-        //    y = -1f;
-        //}
-
-        if (x < 0.5f && x > -0.5f)
-            x = 0f;
-        else if (x > 0.5f)
-            x = 1.0f;
-        else if (x < -0.5f)
-            x = -1.0f;
-
-        if (y > -0.25f && y < 0.25f) // target left & right 0 degrees
+        if (timerRunning)
         {
-            y = 0f;
-        }
-        else if (y > 0.25f && y < 0.75f)
-        {
-            y = 1f;
-        }
-        else if (y > 0.75f && (x < 0.5f && x > -0.5f))
-        {
-            y = 1f;
-            x = 0f;
-        }
+            if (timer < timerTarget)
+            {
+                Debug.Log("timer");
+                timer += Time.deltaTime;
+            }
+            else if (timer >= timerTarget)
+            {
+                shoot = true;
+                timer = 0f;
 
-        if (x != 0.0f && y != 0.0f)
-        {
-            Vector2 newPos = new Vector2(x, y);
-            //Debug.Log("newPos = " + newPos);
-            newPos *= Moving_Entity.gunLength;
-
-            Moving_Entity.firingPoint.transform.localPosition = newPos;
-
-            weaponScript.fire();
+            }
         }
     }
-    
-    
+
+    public void ShootAtPlayer(float x, float y)
+    {
+        Debug.Log("Shooting at player");
+
+        // target up
+        if (angle < 22.5f)
+        {
+            x = 0f;
+            y = 1f;
+        }
+        // target down
+        else if (angle > 157.5f)
+        {
+            x = 0f;
+            y = -1f;
+        }
+        // target right
+        else if (shootDirection.x > 0)
+        {
+            // target 90 degrees
+            if (angle > 67.5f && angle < 112.5f)
+            {
+                x = 1f;
+                y = 0f;
+            }
+            // target 45 degrees
+            else if (angle < 67.5f && angle > 22.5f)
+            {
+                x = 1f;
+                y = 1f;
+            }
+            // target 135 degrees
+            else if (angle > 112.5f && angle < 157.5f)
+            {
+                x = 1f;
+                y = -1f;
+            }
+        }
+        // target left
+        else if (shootDirection.x < 0)
+        {
+            // target 90 degrees
+            if (angle > 67.5f && angle < 112.5f)
+            {
+                x = -1f;
+                y = 0f;
+            }
+            // target 45 degrees
+            else if (angle < 67.5f && angle > 22.5f)
+            {
+                x = -1f;
+                y = 1f;
+            }
+            // target 135 degrees
+            else if (angle > 112.5f && angle < 157.5f)
+            {
+                x = -1f;
+                y = -1f;
+            }
+        }
+
+        Vector2 newPos = new Vector2(x, y);
+        newPos *= Moving_Entity.gunLength;
+
+        Moving_Entity.firingPoint.transform.localPosition = newPos;
+
+        RunTimer();
+
+        if (shoot)
+        {
+            weaponScript.fire();
+            shoot = false;
+        }
+    }
 }
