@@ -94,8 +94,10 @@ MonoBehaviour:
       homingSpeed: 0
       damageTag: 
       bulletSound: {fileID: 0}
+      shotGunSpread: 0
     currentShotCooldown: 0
     shotSound: {fileID: 8300000, guid: ad9dbbe91ce9c1647b31c48a591a6ccf, type: 3}
+    shotGunPelletAmount: 0
   Bounce:
     type: 1
     fireRate: 0.25
@@ -114,8 +116,10 @@ MonoBehaviour:
       homingSpeed: 0
       damageTag: 
       bulletSound: {fileID: 0}
+      shotGunSpread: 0
     currentShotCooldown: 0
     shotSound: {fileID: 8300000, guid: 199cfecc7d8535c4c904223a776176b1, type: 3}
+    shotGunPelletAmount: 0
   Homing:
     type: 2
     fireRate: 0.5
@@ -134,8 +138,32 @@ MonoBehaviour:
       homingSpeed: 0
       damageTag: 
       bulletSound: {fileID: 0}
+      shotGunSpread: 0
     currentShotCooldown: 0
     shotSound: {fileID: 8300000, guid: 09e1894451bb95340b78e042fd6336a1, type: 3}
+    shotGunPelletAmount: 0
+  shotGun:
+    type: 3
+    fireRate: 0.5
+    active: 0
+    currentSlot: 0
+    weaponSprite: {fileID: 21300100, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
+    shotStartPosition: {x: 0, y: 0, z: 0}
+    bulletType:
+      weaponType: 0
+      damage: 0
+      bulletSpeed: 0
+      bulletSprite: {fileID: 0}
+      animatorController: {fileID: 0}
+      lifeSpan: 0
+      homingRaduis: 0
+      homingSpeed: 0
+      damageTag: 
+      bulletSound: {fileID: 0}
+      shotGunSpread: 0
+    currentShotCooldown: 0
+    shotSound: {fileID: 0}
+    shotGunPelletAmount: 20
   StraightShot:
     weaponType: 0
     damage: 1
@@ -148,6 +176,7 @@ MonoBehaviour:
     homingSpeed: 0
     damageTag: 
     bulletSound: {fileID: 0}
+    shotGunSpread: 0
   BounceShot:
     weaponType: 1
     damage: 10
@@ -160,6 +189,7 @@ MonoBehaviour:
     homingSpeed: 0
     damageTag: 
     bulletSound: {fileID: 8300000, guid: 1d965b3204447f7449ee3936ab6ac850, type: 3}
+    shotGunSpread: 0
   HomingShot:
     weaponType: 2
     damage: 1
@@ -172,12 +202,27 @@ MonoBehaviour:
     homingSpeed: 20
     damageTag: 
     bulletSound: {fileID: 0}
+    shotGunSpread: 0
+  shotGunShot:
+    weaponType: 3
+    damage: 0
+    bulletSpeed: 30
+    bulletSprite: {fileID: 21300128, guid: 99bd0ab3d639fc14ba6e917b804dfe40, type: 3}
+    animatorController: {fileID: 9100000, guid: 71f32a47a3f3c4a4a8609ce592c302f8,
+      type: 2}
+    lifeSpan: 4
+    homingRaduis: 0
+    homingSpeed: 0
+    damageTag: 
+    bulletSound: {fileID: 0}
+    shotGunSpread: 45
   bulletPrefab: {fileID: 2964954051675385954, guid: c7b1ab40e86ac5e498100e830f8db392,
     type: 3}
   bulletPoolSize: 100
   gunSprite: {fileID: 0}
   aimDirection: {fileID: 0}
   OnlyDamageTag: Enemy
+  weaponNumber: 3
 --- !u!212 &518241233
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -56,6 +56,9 @@ public class Bullet : MonoBehaviour
                 case Weapon.weaponType.Homing:
                     homingShot();
                     break;
+                case Weapon.weaponType.shotgun:
+                    straightShot();
+                    break;
                 default:
                     break;
             }
@@ -75,8 +78,18 @@ public class Bullet : MonoBehaviour
         spriteRenderer.sprite = currentType.bulletSprite;
         lifeSpan = currentType.lifeSpan;
         gameObject.transform.localPosition = position; //= position;
-        transform.rotation = lookAt2D(aimDirection);
-        if(currentType.weaponType != Weapon.weaponType.Homing)
+        if (currentType.weaponType == Weapon.weaponType.shotgun)
+        {
+            print("shotgunning???");
+            float rand = Random.Range(-currentType.shotGunSpread, currentType.shotGunSpread);
+            print(rand);
+            transform.rotation = lookAt2D(aimDirection,rand);
+        }
+        else
+        {
+            transform.rotation = lookAt2D(aimDirection);// + Quaternion.Euler(new Vector3(0,Random.Range(-5,5),0));
+        }
+        if (currentType.weaponType != Weapon.weaponType.Homing)
             animator.runtimeAnimatorController = currentType.animatorController;
         setColliderActiveState(true);
         //GetComponent<PolygonCollider2D>().
@@ -125,52 +138,6 @@ public class Bullet : MonoBehaviour
             bounceOnCooldown = true;
         }
 
-        //print(hit.collider);
-        //if (hit)
-        //{
-        //    print("Bam");
-        //    if (hit.collider.gameObject && hit.collider.CompareTag("Enemy"))
-        //    {
-        //        print("jam");
-        //        if (hit.collider.gameObject.GetComponent<Health>())
-        //        {
-        //            print("ham");
-        //            Quaternion toRotation = lookAt2D(hit.point);
-        //            //transform.rotation = toRotation;
-        //            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
-        //            bounceOnCooldown = true;
-        //        }
-        //    }
-        //}
-        //if (multiHit.Length > 1)
-        //{
-        //    if (multiHit[0])
-        //    {
-        //        print("Bam2");
-        //        if (multiHit[0].collider.gameObject)
-        //        {
-        //            print("jam2");
-        //            if (multiHit[0].collider.gameObject.GetComponent<Health>())
-        //            {
-        //                print("ham2");
-        //                Quaternion toRotation = lookAt2D(multiHit[0].point);
-        //                //transform.rotation = toRotation;
-        //                transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, currentType.homingSpeed * Time.deltaTime);
-        //                bounceOnCooldown = true;
-        //            }
-        //        }
-        //    }
-        //}
-        //}
-        //else
-        //{
-        //    bounceCooldown -= Time.deltaTime;
-        //    if(bounceCooldown<0)
-        //    {
-        //        bounceOnCooldown = false;
-        //        bounceCooldown = maxBounceCoolDown;
-        //    }
-        //}
     }
     private void bounceShot()
     {
@@ -192,6 +159,13 @@ public class Bullet : MonoBehaviour
         Vector3 tempDirection = WorldPos;
         var dir = tempDirection - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90;
+        return Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+    private Quaternion lookAt2D(Vector2 WorldPos, float shotSpread)
+    {
+        Vector3 tempDirection = WorldPos;
+        var dir = tempDirection - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x ) * Mathf.Rad2Deg - 90 + shotSpread;
         return Quaternion.AngleAxis(angle, Vector3.forward);
     }
 

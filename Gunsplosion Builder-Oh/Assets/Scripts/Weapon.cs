@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public enum weaponType { Straight, Bounce, Homing};
+    public enum weaponType { Straight, Bounce, Homing, shotgun};
 
     [System.Serializable]
     public struct weaponStats
@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour
         public BulletType bulletType;
         public float currentShotCooldown;
         public AudioClip shotSound;
+        public int shotGunPelletAmount;
     }
     [System.Serializable]
     public struct BulletType
@@ -33,9 +34,10 @@ public class Weapon : MonoBehaviour
         public float homingSpeed;
         public string damageTag;
         public AudioClip bulletSound;
+        public float shotGunSpread;
     }
-    public weaponStats Straight, Bounce, Homing;
-    public BulletType StraightShot, BounceShot, HomingShot;
+    public weaponStats Straight, Bounce, Homing, shotGun;
+    public BulletType StraightShot, BounceShot, HomingShot, shotGunShot;
 
     weaponStats[] heldWeapons = new weaponStats[2]; 
 
@@ -60,10 +62,12 @@ public class Weapon : MonoBehaviour
         Straight.bulletType = StraightShot;
         Homing.bulletType = HomingShot;
         Bounce.bulletType = BounceShot;
+        shotGun.bulletType = shotGunShot;
 
         Straight.bulletType.damageTag = OnlyDamageTag;
         Homing.bulletType.damageTag = OnlyDamageTag;
         Bounce.bulletType.damageTag = OnlyDamageTag;
+        shotGun.bulletType.damageTag = OnlyDamageTag;
 
         //spriteRenderer = GetComponent<SpriteRenderer>();
         heldWeapons[0] = Bounce;
@@ -72,6 +76,7 @@ public class Weapon : MonoBehaviour
         allWeapons.Add(Straight);
         allWeapons.Add(Bounce);
         allWeapons.Add(Homing);
+        allWeapons.Add(shotGun);
 
         for (int i = 0; i < bulletPoolSize; i++)
         {
@@ -100,20 +105,36 @@ public class Weapon : MonoBehaviour
 
     public void fire()
     {
+        
         if (heldWeapons[0].currentShotCooldown <= 0)
         {
-            for (int i = 0; i < bulletPoolSize; i++)
+            if (heldWeapons[0].type == weaponType.shotgun)
             {
-                if (!bulletList[i].GetComponent<Bullet>().active)
+                for (int i = 0; i < heldWeapons[0].shotGunPelletAmount; i++)
                 {
-                    bulletList[i].GetComponent<Bullet>().activate(heldWeapons[0].bulletType,
-                        heldWeapons[0].shotStartPosition, aimDirection.transform.position);
-                    heldWeapons[0].currentShotCooldown = heldWeapons[0].fireRate;
-                    //bulletList[i].GetComponent<BoxCollider2D>().enabled = false;
-                    EffectManager.instance.AttachParticle(bulletList[i].transform, (EffectManager.ParticleTypes)(int)heldWeapons[0].bulletType.weaponType);
-                    audioSource.PlayOneShot(heldWeapons[0].shotSound, 0.5f);
-                    break;
+                    fireShot();
                 }
+            }
+            else
+            {
+                fireShot();
+            }
+        }
+    }
+
+    private void fireShot()
+    {
+        for (int i = 0; i < bulletPoolSize; i++)
+        {
+            if (!bulletList[i].GetComponent<Bullet>().active)
+            {
+                bulletList[i].GetComponent<Bullet>().activate(heldWeapons[0].bulletType,
+                    heldWeapons[0].shotStartPosition, aimDirection.transform.position);
+                heldWeapons[0].currentShotCooldown = heldWeapons[0].fireRate;
+                //bulletList[i].GetComponent<BoxCollider2D>().enabled = false;
+                EffectManager.instance.AttachParticle(bulletList[i].transform, (EffectManager.ParticleTypes)(int)heldWeapons[0].bulletType.weaponType);
+                audioSource.PlayOneShot(heldWeapons[0].shotSound, 0.5f);
+                break;
             }
         }
     }
