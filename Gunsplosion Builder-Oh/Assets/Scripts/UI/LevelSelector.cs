@@ -18,6 +18,7 @@ public class LevelSelector : MonoBehaviour
         }
 
         DirectoryInfo dir = new DirectoryInfo(Application.persistentDataPath + "/levels");
+        dir.Create();
         FileInfo[] info = dir.GetFiles("*.dat");
         foreach (FileInfo f in info) {
             LevelMenuItem newItem = Instantiate(levelSelectPrefab, levelSelectContent).GetComponent<LevelMenuItem>();
