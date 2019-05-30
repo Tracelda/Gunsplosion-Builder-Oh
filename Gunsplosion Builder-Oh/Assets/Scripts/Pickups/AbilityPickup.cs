@@ -37,7 +37,7 @@ public class AbilityPickup : MonoBehaviour
         if (collision.gameObject &&
             collision.gameObject.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetButtonDown("Pickup"))
             {
                 SwapAbilities(collision);
             }
@@ -60,7 +60,7 @@ public class AbilityPickup : MonoBehaviour
         if (collision.gameObject &&
             collision.gameObject.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetButtonDown("Pickup"))
             {
                 SwapAbilities(collision);
             }

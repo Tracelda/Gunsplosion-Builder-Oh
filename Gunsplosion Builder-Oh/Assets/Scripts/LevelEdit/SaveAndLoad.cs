@@ -76,8 +76,6 @@ public class SaveAndLoad : MonoBehaviour
                     GameObject newObject = Instantiate(Resources.Load(blockPrefabAddress + block.objectname) as GameObject, newPos, newRot);
                     blockData.gameObject = newObject;
                     blockData.blockInfo = block;
-
-                    print(newPos);
                 }
 
                 if (levelData.blockData.ContainsKey(block.position.ToVector3()))

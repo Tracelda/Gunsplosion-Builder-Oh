@@ -30,7 +30,7 @@ public class WeaponPickup : MonoBehaviour
             if(collision.gameObject.CompareTag("Player"))
             {
                 spriteTooltip.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetButtonDown("Pickup"))
                 {
                     swapWeapon(collision);
                 }
@@ -43,7 +43,7 @@ public class WeaponPickup : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetButtonDown("Pickup"))
                 {
                     swapWeapon(collision);
                 }
