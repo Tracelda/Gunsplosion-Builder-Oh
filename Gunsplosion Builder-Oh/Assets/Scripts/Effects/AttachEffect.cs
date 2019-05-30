@@ -8,9 +8,13 @@ public class AttachEffect : MonoBehaviour
     public List<ParticleSystem> particleEmitter = new List<ParticleSystem>();
     private bool active;
     private Animator anim;
+    private AudioSource audioSource;
+    public float muteSpeed = 10;
+    public AudioClip particleCollideClip;
 
     private void Start() {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         active = true;
     }
 
@@ -40,7 +44,18 @@ public class AttachEffect : MonoBehaviour
                 Destroy(gameObject, maxLifetime);
             }
             else {
-                Destroy(gameObject, 1);
+                active = false;
+                float killTime = 1;
+                if (audioSource && audioSource.clip.length > killTime)
+                    killTime = audioSource.clip.length;
+                Destroy(gameObject, killTime);
+            }
+        }
+        else
+        {
+            if (audioSource)
+            {
+                audioSource.volume -= Time.deltaTime * muteSpeed;
             }
         }
     }

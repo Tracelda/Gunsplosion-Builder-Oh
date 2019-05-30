@@ -4714,3 +4714,4 @@ MonoBehaviour:
   target: {fileID: 0}
   particleEmitter:
   - {fileID: 2848825426372494126}
+  muteSpeed: 10

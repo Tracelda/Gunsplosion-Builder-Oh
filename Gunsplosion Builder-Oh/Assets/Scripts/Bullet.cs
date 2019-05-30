@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private float lifeSpan;
     private BoxCollider2D boxCollider;
     private Animator animator;
+    private AudioSource audioSource;
 
     //bounce logic
     private float bounceCooldown;
@@ -28,6 +29,7 @@ public class Bullet : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         active = false;
+        audioSource = GetComponent<AudioSource>();
 
         bounceCooldown = 0.2f;
         maxBounceCoolDown = bounceCooldown;
@@ -180,7 +182,7 @@ public class Bullet : MonoBehaviour
             Vector2 reflect = Vector2.Reflect(transform.up, hit.normal);
             float rot =  Mathf.Atan2(reflect.y, reflect.x) * Mathf.Rad2Deg -90f;
             transform.eulerAngles = new Vector3(0,0, rot);
-
+            audioSource.PlayOneShot(currentType.bulletSound, 0.5f);
             //transform.rotation = lookAt2D(reflect);
         }
     }

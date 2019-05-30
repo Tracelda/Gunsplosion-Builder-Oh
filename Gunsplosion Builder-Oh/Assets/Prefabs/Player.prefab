@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 6379640770938787318}
   - component: {fileID: 6379640770938787319}
   - component: {fileID: 8534135130323521438}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -807,6 +807,7 @@ MonoBehaviour:
   jumpDuration: 0.2
   groundPoundDuration: 0.2
   groundPoundForce: 300
+  maxShieldDurability: 0
   groundPoundCollider: {fileID: 271735289}
   playerAnimator: {fileID: 6379640770938787318}
   accessoryAnimator: {fileID: 1070355587}
@@ -823,6 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  iframeDuration: 0
 --- !u!95 &6379640770938787318
 Animator:
   serializedVersion: 3

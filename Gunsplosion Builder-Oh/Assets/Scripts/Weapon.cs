@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
         public Vector3 shotStartPosition;
         public BulletType bulletType;
         public float currentShotCooldown;
+        public AudioClip shotSound;
     }
     [System.Serializable]
     public struct BulletType
@@ -31,6 +32,7 @@ public class Weapon : MonoBehaviour
         public float homingRaduis;
         public float homingSpeed;
         public string damageTag;
+        public AudioClip bulletSound;
     }
     public weaponStats Straight, Bounce, Homing;
     public BulletType StraightShot, BounceShot, HomingShot;
@@ -45,12 +47,14 @@ public class Weapon : MonoBehaviour
     public SpriteRenderer gunSprite;
     public GameObject aimDirection;
     public string OnlyDamageTag;
+    private AudioSource audioSource;
 
 
     private List<weaponStats> allWeapons = new List<weaponStats>();
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Straight.bulletType = StraightShot;
         Homing.bulletType = HomingShot;
         Bounce.bulletType = BounceShot;
@@ -105,6 +109,7 @@ public class Weapon : MonoBehaviour
                     heldWeapons[0].currentShotCooldown = heldWeapons[0].fireRate;
                     //bulletList[i].GetComponent<BoxCollider2D>().enabled = false;
                     EffectManager.instance.AttachParticle(bulletList[i].transform, (EffectManager.ParticleTypes)(int)heldWeapons[0].bulletType.weaponType);
+                    audioSource.PlayOneShot(heldWeapons[0].shotSound, 0.5f);
                     break;
                 }
             }

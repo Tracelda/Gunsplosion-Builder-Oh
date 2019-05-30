@@ -8,10 +8,21 @@ public class AudioManager : MonoBehaviour
     public List<string> Sound_Names = new List<string>();										// A list to hold the audioclip names
     public List<AudioClip> Sound_Clips = new List<AudioClip>();									// A list to hold the audioclips themselves
     public Dictionary<string, AudioClip> Sound_Lib = new Dictionary<string, AudioClip>();       // Dictionary that holds the audio names and clips
+    public static AudioManager instance;
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(this);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < Sound_Names.Count; i++)         // For loop that populates the dictionary with all the sound assets in the lists
         {
             Sound_Lib.Add(Sound_Names[i], Sound_Clips[i]);
