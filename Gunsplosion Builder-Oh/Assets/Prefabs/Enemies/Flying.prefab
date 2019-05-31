@@ -741,7 +741,7 @@ MonoBehaviour:
   gunLength: 1
   weapon: {fileID: 366336591211201989}
   firingPoint: {fileID: 4035419607629088616}
-  maxHealth: 50
+  maxHealth: 15
 --- !u!114 &9011894535459424914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +921,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+        type: 3}
+      propertyPath: aimDirection
+      value: 
+      objectReference: {fileID: 4035419607629088616}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
       propertyPath: OnlyDamageTag

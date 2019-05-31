@@ -55,5 +55,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7410620826520473340, guid: bacca8e5ae762dc4b958fc45a2fc8657,
+        type: 3}
+      propertyPath: aimDirection
+      value: 
+      objectReference: {fileID: 1964943904719166418}
+    - target: {fileID: 7410620826520473340, guid: bacca8e5ae762dc4b958fc45a2fc8657,
+        type: 3}
+      propertyPath: OnlyDamageTag
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
+--- !u!1 &1964943904719166418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1098773840, guid: bacca8e5ae762dc4b958fc45a2fc8657,
+    type: 3}
+  m_PrefabInstance: {fileID: 1964943905806298754}
+  m_PrefabAsset: {fileID: 0}

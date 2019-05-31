@@ -63,10 +63,10 @@ public class EnemyTargeting : BaseEnemy
         angle = Vector2.Angle(transform.up, dir);
 
         shootDirection = (playerPos - enemyLocation);
-        normShootDirection = Vector3.Normalize(shootDirection);
+        //normShootDirection = Vector3.Normalize(shootDirection);
         
-        RaycastHit2D hit = Physics2D.Raycast(enemyLocation, normShootDirection);
-        Debug.DrawRay(enemyLocation, normShootDirection, Color.green);
+        //RaycastHit2D hit = Physics2D.Raycast(enemyLocation, normShootDirection);
+        //Debug.DrawRay(enemyLocation, normShootDirection, Color.green);
     }
 
     public void FindDistance()
