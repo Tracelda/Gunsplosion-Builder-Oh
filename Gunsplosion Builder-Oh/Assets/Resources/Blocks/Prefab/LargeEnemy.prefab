@@ -55,37 +55,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 779452354, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: maxHealth
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 779452351, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: entityType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 779452351, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: scoreValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 779452351, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: iframeDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 779452350, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: m_Simulated
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388182567, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388182567, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1779098782, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bacca8e5ae762dc4b958fc45a2fc8657, type: 3}

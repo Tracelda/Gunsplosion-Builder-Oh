@@ -12,11 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4066955448605500130, guid: e2e734b34a2ff464ebc41983a354c964,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 3377209235904662086, guid: e2e734b34a2ff464ebc41983a354c964,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,31 +65,6 @@ PrefabInstance:
     - target: {fileID: 3377209235904662086, guid: e2e734b34a2ff464ebc41983a354c964,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6510581726498126667, guid: e2e734b34a2ff464ebc41983a354c964,
-        type: 3}
-      propertyPath: maxHealth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 502819373865828604, guid: e2e734b34a2ff464ebc41983a354c964,
-        type: 3}
-      propertyPath: entityType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 502819373865828604, guid: e2e734b34a2ff464ebc41983a354c964,
-        type: 3}
-      propertyPath: scoreValue
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 502819373865828604, guid: e2e734b34a2ff464ebc41983a354c964,
-        type: 3}
-      propertyPath: iframeDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7076199832787008274, guid: e2e734b34a2ff464ebc41983a354c964,
-        type: 3}
-      propertyPath: m_Simulated
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

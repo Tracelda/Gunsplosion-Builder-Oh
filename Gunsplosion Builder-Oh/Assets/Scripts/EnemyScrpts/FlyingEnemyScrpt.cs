@@ -112,11 +112,15 @@ public class FlyingEnemyScrpt : BaseEnemy
             //transform.localScale = new Vector2(1, transform.localScale.y);
             if (CharacterPos.x > rightNodeTrans.position.x)
             {
+                //rightNodePos = rightNodeTrans.position;
+                //Moving_Entity.MoveVector3(gameObject.transform.position, rightNodePos);
                 Moving_Entity.Move(-Direction);
             }
             else if (CharacterPos.x <= rightNodeTrans.position.x)
             {
                 MovingRight = false;
+                //rightNodePos = rightNodeTrans.position;
+                //Moving_Entity.MoveVector3(gameObject.transform.position, rightNodePos);
                 Moving_Entity.Move(Direction);
                 FlipSprite();
             }
@@ -126,11 +130,15 @@ public class FlyingEnemyScrpt : BaseEnemy
             //transform.localScale = new Vector2(-1, transform.localScale.y);
             if (CharacterPos.x < leftNodeTrans.position.x)
             {
+                //leftNodePos = leftNodeTrans.position;
+                //Moving_Entity.MoveVector3(gameObject.transform.position, leftNodePos);
                 Moving_Entity.Move(Direction);
             }
             else if (CharacterPos.x >= leftNodeTrans.position.x)
             {
                 MovingRight = true;
+                //leftNodePos = leftNodeTrans.position;
+                //Moving_Entity.MoveVector3(gameObject.transform.position, leftNodePos);
                 Moving_Entity.Move(-Direction);
                 FlipSprite();
             }

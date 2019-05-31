@@ -47,6 +47,11 @@ public class Moving_Entity : MonoBehaviour
         rb.velocity = newVel;
     }
 
+    internal void MoveVector3(Vector3 Object, Vector3 Direction)
+    {
+        Vector3.MoveTowards(Object, Direction, moveSpeed);
+    }
+
     /////////////////////////////////////////////////////////
     // Jump
     ////////////////////////////////////////////////////////
