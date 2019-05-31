@@ -649,6 +649,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 0}
   active: 0
+  onScreen: 0
+  MovingRight: 0
+  mirrorPatroling: 0
   leftNodeTrans: {fileID: 0}
   rightNodeTrans: {fileID: 0}
   leftNodePos: {x: 0, y: 0}
@@ -657,8 +660,6 @@ MonoBehaviour:
   rightNode: {fileID: 1858108348648591574}
   leftLineRender: {fileID: 0}
   rightLineRender: {fileID: 0}
-  MovingRight: 0
-  mirrorPatroling: 0
 --- !u!114 &1900849228992001161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,6 +674,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 0}
   active: 0
+  onScreen: 0
+  MovingRight: 0
+  mirrorPatroling: 0
   targetingPlayer: 0
   attackRange: 10
   distanceToPlayer: 0
