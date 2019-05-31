@@ -301,9 +301,9 @@ public class Player : Moving_Entity
             shieldDurability -= damage;
 
             if (shieldDurability <= 0) {
+                DisableAbility();
                 shieldActive = false;
                 entityHealth.health += shieldDurability;
-                accessoryAnimator.gameObject.SetActive(false);
                 shieldDurability = 0;
                 EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.ArmourDestroy);
             }
