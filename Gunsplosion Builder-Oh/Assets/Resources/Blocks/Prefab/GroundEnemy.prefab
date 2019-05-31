@@ -72,6 +72,21 @@ PrefabInstance:
       propertyPath: aimDirection
       value: 
       objectReference: {fileID: 4339918992845054007}
+    - target: {fileID: 3926626189785518832, guid: e2e734b34a2ff464ebc41983a354c964,
+        type: 3}
+      propertyPath: StraightShot.damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926626189785518832, guid: e2e734b34a2ff464ebc41983a354c964,
+        type: 3}
+      propertyPath: BounceShot.damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926626189785518832, guid: e2e734b34a2ff464ebc41983a354c964,
+        type: 3}
+      propertyPath: HomingShot.damage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2e734b34a2ff464ebc41983a354c964, type: 3}
 --- !u!1 &4339918992845054007 stripped

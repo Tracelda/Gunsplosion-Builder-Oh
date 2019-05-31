@@ -29,7 +29,7 @@ public class EnemyTargeting : BaseEnemy
         {
             CheckForPlayer();
 
-            if (targetingPlayer)
+            if (targetingPlayer && playerObject)
             {
                 FindDistance();
                 FindAngle(gameObject.transform.position, playerObject.transform.position);
@@ -41,18 +41,20 @@ public class EnemyTargeting : BaseEnemy
 
     public void CheckForPlayer()
     {
-        var objectInRange = Physics2D.OverlapCircle(transform.position, attackRange);
+        var objectInRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
 
-        if (objectInRange.gameObject.CompareTag("Player"))
-        {
-            targetingPlayer = true;
-            playerObject = objectInRange.gameObject;
-        }
-        if (distanceToPlayer > attackRange)
-        {
-            distanceToPlayer = 0;
-            playerObject = null;
-            targetingPlayer = false;
+        foreach (Collider2D hit in objectInRange) {
+            if (hit) {
+                if (hit.gameObject.CompareTag("Player")) {
+                    targetingPlayer = true;
+                    playerObject = hit.gameObject;
+                }
+                if (distanceToPlayer > attackRange) {
+                    distanceToPlayer = 0;
+                    playerObject = null;
+                    targetingPlayer = false;
+                }
+            }
         }
     }
 

@@ -6,13 +6,24 @@ public class AcidBlock : MonoBehaviour
 {
     public RuntimeAnimatorController depthSprite, topSprite;
     public Animator sprite;
+    private List<Health> healthsInside = new List<Health>();
 
     private void OnTriggerEnter2D(Collider2D collision) {
         Health playerHealth = collision.GetComponent<Health>();
         if (playerHealth) {
             Player player = collision.GetComponent<Player>();
             if (player && player.ability.type != Abilities.abilityType.SHIELD) {
-                playerHealth.takeDamage(1);
+                healthsInside.Add(playerHealth);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        Health playerHealth = collision.GetComponent<Health>();
+        if (playerHealth) {
+            Player player = collision.GetComponent<Player>();
+            if (player && player.ability.type != Abilities.abilityType.SHIELD) {
+                healthsInside.Remove(playerHealth);
             }
         }
     }
@@ -24,6 +35,12 @@ public class AcidBlock : MonoBehaviour
     private void FixedUpdate() {
         if (!MenuManager.instance.isPlaying) {
             SetSprite();
+        }
+
+        foreach (Health health in healthsInside) {
+            if (health) {
+                health.takeDamage(1);
+            }
         }
     }
 

@@ -783,7 +783,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 19718adbc808cac428b57f8c86edd045, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1855708536
 MonoBehaviour:
@@ -846,6 +846,7 @@ MonoBehaviour:
   health: 20
   iframeDuration: 1
   entityType: 1
+  scoreValue: 0
 --- !u!95 &6379640770938787318
 Animator:
   serializedVersion: 3

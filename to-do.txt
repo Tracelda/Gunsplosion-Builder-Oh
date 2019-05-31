@@ -1,12 +1,13 @@
 finish enemies
 weapon and enemy damage balance
-sound
 crumbling platform
 moving platform
 slow platform
 title screen
 edit mode tooltips
 background choices
+rockets to target player
+that alien animation
 
 //pip health meter
 
