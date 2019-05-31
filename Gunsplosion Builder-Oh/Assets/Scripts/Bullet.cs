@@ -73,6 +73,7 @@ public class Bullet : MonoBehaviour
 
     public void activate(Weapon.BulletType type, Vector2 position, Vector2 aimDirection)
     {
+        spriteRenderer.enabled = true;
         active = true;
         currentType = type;
         spriteRenderer.sprite = currentType.bulletSprite;
@@ -97,6 +98,7 @@ public class Bullet : MonoBehaviour
     {
         active = false;
         spriteRenderer.sprite = null;
+        spriteRenderer.enabled = false;
         rb.velocity = Vector2.zero;
         animator.runtimeAnimatorController = null;
         setColliderActiveState(false);
