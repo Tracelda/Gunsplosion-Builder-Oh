@@ -31,13 +31,13 @@ public class GameManager : MonoBehaviour
 
     public void NewLevel() {
         gameMode = GameModes.Edit;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void LoadLevel(string levelName) {
         levelLoaded = false;
         currentLevel = levelName;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         StartCoroutine(WaitLoadLevel(levelName));
     }
 
