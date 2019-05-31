@@ -2745,6 +2745,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39227a7f9357f164887ab4091f65d1bf, type: 2}
   - {fileID: 11400000, guid: a1d7c117f9f9de54f9e07a13292170f9, type: 2}
   - {fileID: 11400000, guid: d91278b617c6a1c4087829ccb9d98106, type: 2}
+  - {fileID: 11400000, guid: 3fecbef4163bac349b7f0652f7b68e5c, type: 2}
   emptyTile: {fileID: 11400000, guid: e52e1661487ff474e8652d244ff93849, type: 2}
 --- !u!4 &992293481
 Transform:
@@ -4974,6 +4975,7 @@ MonoBehaviour:
   gameMode: 0
   score: 0
   multiplier: 0
+  currentLevel: 
 --- !u!4 &1881283635
 Transform:
   m_ObjectHideFlags: 0
@@ -5684,7 +5686,7 @@ PrefabInstance:
     - target: {fileID: 3396109117750000505, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000016478425
+      value: 0.0000016853272
       objectReference: {fileID: 0}
     - target: {fileID: 3396109117750000505, guid: 4e0a7a3841f487b4ab755928fbc55649,
         type: 3}

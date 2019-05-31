@@ -4714,6 +4714,5 @@ MonoBehaviour:
   target: {fileID: 0}
   particleEmitter:
   - {fileID: 811002335}
-  - {fileID: 0}
   muteSpeed: 10
   particleCollideClip: {fileID: 0}

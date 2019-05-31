@@ -81,7 +81,6 @@ public class Bullet : MonoBehaviour
         if (currentType.weaponType == Weapon.weaponType.shotgun)
         {
             float rand = Random.Range(-currentType.shotGunSpread, currentType.shotGunSpread);
-            print(rand);
             transform.rotation = lookAt2D(aimDirection,rand);
         }
         else

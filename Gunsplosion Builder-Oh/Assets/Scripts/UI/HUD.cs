@@ -54,7 +54,7 @@ public class HUD : MonoBehaviour
     }
 
     public void SetMultiplier(int val) {
-        scoreText.text = "x" + val.ToString("D2");
+        multiplierText.text = "x" + val.ToString("D2");
     }
 
     public void EnableEnergyBar()

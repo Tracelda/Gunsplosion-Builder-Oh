@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     public enum EntityTypes { None, Player, Enemy };
     public EntityTypes entityType;
     private Player player;
+    public int scoreValue;
 
     private void Start()
     {
@@ -71,6 +72,7 @@ public class Health : MonoBehaviour
                         break;
                     case EntityTypes.Enemy:
                         EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.LargeExplosion);
+                        GameManager.instance.AddScore(scoreValue);
                         GameManager.instance.AddMultiplier(1);
                         Destroy(gameObject);
                         break;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectManager : MonoBehaviour
 {
-    public enum ParticleTypes { StraightShot, BounceShot, HomingShot, SmallExplosion, LargeExplosion, HugeExplosion, SmallDust, LargeDust, ArmourDestroy, PlayerDestroy, ShotgunShell, ShotgunShot};
+    public enum ParticleTypes { StraightShot, BounceShot, HomingShot, ShotgunShot, SmallExplosion, LargeExplosion, HugeExplosion, SmallDust, LargeDust, ArmourDestroy, PlayerDestroy, ShotgunShell};
     public GameObject straightShot, bounceShot, homingShot, smallExplosion, largeExplosion, hugeExplosion, smallDust, largeDust, armourDestroy, playerDestroy, shotgunShell, shotgunShot;
 
     public static EffectManager instance;
@@ -19,7 +19,9 @@ public class EffectManager : MonoBehaviour
     public void AttachParticle(Transform target, ParticleTypes type) {
         if (GetPrefab(type)) {
             AttachEffect particle = Instantiate(GetPrefab(type), null).GetComponent<AttachEffect>();
-            particle.target = target;
+            if (particle && target) {
+                particle.target = target;
+            }
         }
     }
 
@@ -54,7 +56,7 @@ public class EffectManager : MonoBehaviour
             case ParticleTypes.ShotgunShell:
                 return shotgunShell;
             case ParticleTypes.ShotgunShot:
-                return shotgunShell;
+                return shotgunShot;
         }
         return null;
     }

@@ -114,6 +114,7 @@ public class Weapon : MonoBehaviour
                 {
                     fireShot();
                 }
+                EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.ShotgunShell);
             }
             else
             {
