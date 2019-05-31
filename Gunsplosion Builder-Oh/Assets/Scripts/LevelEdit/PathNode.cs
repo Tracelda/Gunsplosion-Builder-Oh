@@ -29,6 +29,7 @@ public class PathNode : BlockResetBase
         sprite.enabled = true;
         inGame = false;
         line.enabled = true;
+        transform.position = basePosition;
     }
 
     private void Update() {

@@ -74,7 +74,15 @@ public class Health : MonoBehaviour
                         EffectManager.instance.PlaceParticle(transform.position, EffectManager.ParticleTypes.LargeExplosion);
                         GameManager.instance.AddScore(scoreValue);
                         GameManager.instance.AddMultiplier(1);
-                        Destroy(gameObject);
+                        foreach(Behaviour comp in gameObject.GetComponents<Behaviour>())
+                        {
+                            if (comp != this && comp.GetType() != typeof(BaseEnemy))
+                            {
+                                comp.enabled = false;
+                            }
+                        }
+                        GetComponent<Rigidbody2D>().simulated = false;
+                        GetComponent<Renderer>().enabled = false;
                         break;
                 }
             }

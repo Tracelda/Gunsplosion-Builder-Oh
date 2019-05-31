@@ -25,6 +25,12 @@ public class BaseEnemy : BlockResetBase
         rigid.simulated = false;
         rigid.velocity = Vector2.zero;
         active = false;
+        foreach (Behaviour comp in gameObject.GetComponents<Behaviour>())
+        {
+            comp.enabled = true;
+        }
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<Health>().health = GetComponent<Moving_Entity>().maxHealth;
     }
 
     public void FlipSprite()
