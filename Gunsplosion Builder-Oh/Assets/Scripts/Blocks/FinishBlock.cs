@@ -23,7 +23,7 @@ public class FinishBlock : MonoBehaviour
         Time.timeScale = 0.5f;
         GameObject effect = MenuManager.instance.ClearEffect();
         yield return new WaitForSecondsRealtime(1f);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
         effect.transform.position = Vector3.zero;
         Time.timeScale = 1;
     }

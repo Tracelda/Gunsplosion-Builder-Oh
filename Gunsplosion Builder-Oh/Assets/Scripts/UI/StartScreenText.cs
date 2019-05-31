@@ -8,9 +8,11 @@ public class StartScreenText : MonoBehaviour
 {
     Text text;
     private float timer;
+    public Animator animator;
 
     private void Start() {
         text = GetComponent<Text>();
+        animator.speed = 0;
     }
 
     private void Update() {
@@ -22,7 +24,13 @@ public class StartScreenText : MonoBehaviour
         }
 
         if (Input.anyKeyDown) {
-            SceneManager.LoadScene(1);
+            StartCoroutine(CoolTitle());
         }
+    }
+
+    IEnumerator CoolTitle() {
+        animator.speed = 1;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(1);
     }
 }

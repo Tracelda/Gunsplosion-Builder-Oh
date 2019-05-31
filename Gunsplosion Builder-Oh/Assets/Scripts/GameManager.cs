@@ -118,6 +118,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void ReplayLevel() {
-        LoadLevel(currentLevel);
+        PlayLevel(currentLevel);
     }
 }
