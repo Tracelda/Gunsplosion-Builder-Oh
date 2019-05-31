@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JetTrooperScrpt : MonoBehaviour
+public class JetTrooperScrpt : BaseEnemy
 {
     public Transform leftNodeTrans, rightNodeTrans;
     public Vector2 leftNodePos, rightNodePos;
@@ -10,29 +10,54 @@ public class JetTrooperScrpt : MonoBehaviour
     private CircleCollider2D detectionRing;
     private Moving_Entity Moving_Entity;
     private float Direction = 1f;
+    public LineRenderer leftLineRender, rightLineRender;
+    private Rigidbody2D Rigidbody2D;
+    private SpriteRenderer spriteRenderer;
 
-    public bool MovingRight, mirrorPatroling = false;
+    //public bool MovingRight, mirrorPatroling = false;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        leftNodePos = leftNode.transform.position;
-        rightNodeTrans.position = rightNode.transform.position;
+        base.Start();
+        leftNodeTrans = leftNode.transform;
+        rightNodeTrans = rightNode.transform;
         detectionRing = gameObject.GetComponent<CircleCollider2D>();
         Moving_Entity = gameObject.GetComponent<Moving_Entity>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         MovingRight = true;
         FindNodes(gameObject.transform.position);
+        Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        FlipSprite();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (mirrorPatroling)
+        if (active)
         {
-            ReversePatrolling(gameObject.transform.position);
+            onScreen = spriteRenderer.isVisible;
+            if (onScreen)
+            {
+                if (mirrorPatroling)
+                {
+                    ReversePatrolling(gameObject.transform.position);
+                }
+                else
+                {
+                    Patrolling(gameObject.transform.position);
+                }
+            }
+
         }
         else
         {
-            Patrolling(gameObject.transform.position);
+            leftLineRender = leftNode.GetComponent<LineRenderer>();
+            rightLineRender = rightNode.GetComponent<LineRenderer>();
+            leftLineRender.SetPosition(0, leftNodeTrans.position);
+            leftLineRender.SetPosition(1, transform.position);
+
+            rightLineRender.SetPosition(0, rightNodeTrans.position);
+            rightLineRender.SetPosition(1, transform.position);
         }
     }
 
@@ -52,26 +77,30 @@ public class JetTrooperScrpt : MonoBehaviour
     {
         if (MovingRight) // Moving right
         {
-            if (CharacterPos.x < rightNodeTrans.position.x)
+            //transform.localScale = new Vector2(-1, transform.localScale.y);
+            if (CharacterPos.x < rightNodeTrans.position.x - 0.7f)
             {
                 Moving_Entity.Move(Direction);
             }
-            else if (CharacterPos.x >= rightNodeTrans.position.x)
+            else if (CharacterPos.x >= rightNodeTrans.position.x - 0.7f)
             {
                 MovingRight = false;
                 Moving_Entity.Move(-Direction);
+                FlipSprite();
             }
         }
         else
         { // Moving left
-            if (CharacterPos.x > leftNodeTrans.position.x)
+            //transform.localScale = new Vector2(1, transform.localScale.y);
+            if (CharacterPos.x > leftNodeTrans.position.x + 0.7f)
             {
                 Moving_Entity.Move(-Direction);
             }
-            else if (CharacterPos.x <= leftNodeTrans.position.x)
+            else if (CharacterPos.x <= leftNodeTrans.position.x + 0.7f)
             {
                 MovingRight = true;
                 Moving_Entity.Move(Direction);
+                FlipSprite();
             }
         }
     }
@@ -80,26 +109,30 @@ public class JetTrooperScrpt : MonoBehaviour
     {
         if (MovingRight) // Moving right
         {
-            if (CharacterPos.x > rightNodeTrans.position.x)
+            //transform.localScale = new Vector2(1, transform.localScale.y);
+            if (CharacterPos.x > rightNodeTrans.position.x - 0.7f)
             {
                 Moving_Entity.Move(-Direction);
             }
-            else if (CharacterPos.x <= rightNodeTrans.position.x)
+            else if (CharacterPos.x <= rightNodeTrans.position.x - 0.7f)
             {
                 MovingRight = false;
                 Moving_Entity.Move(Direction);
+                FlipSprite();
             }
         }
         else
         { // Moving left
-            if (CharacterPos.x < leftNodeTrans.position.x)
+            //transform.localScale = new Vector2(-1, transform.localScale.y);
+            if (CharacterPos.x < leftNodeTrans.position.x + 0.7f)
             {
                 Moving_Entity.Move(Direction);
             }
-            else if (CharacterPos.x >= leftNodeTrans.position.x)
+            else if (CharacterPos.x >= leftNodeTrans.position.x + 0.7f)
             {
                 MovingRight = true;
                 Moving_Entity.Move(-Direction);
+                FlipSprite();
             }
         }
     }

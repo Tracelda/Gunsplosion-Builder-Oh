@@ -8,6 +8,8 @@ public class BaseEnemy : BlockResetBase
     private Vector3 Startpos;
     public bool active;
     public bool onScreen;
+    public bool MovingRight, mirrorPatroling = false;
+
     public void StartGame()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -23,6 +25,18 @@ public class BaseEnemy : BlockResetBase
         rigid.simulated = false;
         rigid.velocity = Vector2.zero;
         active = false;
+    }
+
+    public void FlipSprite()
+    {
+        if (MovingRight)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
 }

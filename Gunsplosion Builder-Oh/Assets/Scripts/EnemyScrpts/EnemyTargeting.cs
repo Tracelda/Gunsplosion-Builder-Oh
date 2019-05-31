@@ -43,14 +43,10 @@ public class EnemyTargeting : BaseEnemy
     {
         var objectInRange = Physics2D.OverlapCircle(transform.position, attackRange);
 
-        Debug.Log("Objects in range: " + objectInRange);
-
         if (objectInRange.gameObject.CompareTag("Player"))
         {
             targetingPlayer = true;
             playerObject = objectInRange.gameObject;
-
-            Debug.Log("Targeted Object: " + playerObject);
         }
         if (distanceToPlayer > attackRange)
         {
@@ -84,7 +80,6 @@ public class EnemyTargeting : BaseEnemy
         {
             if (timer < timerTarget)
             {
-                Debug.Log("timer");
                 timer += Time.deltaTime;
             }
             else if (timer >= timerTarget)
@@ -98,8 +93,6 @@ public class EnemyTargeting : BaseEnemy
 
     public void ShootAtPlayer(float x, float y)
     {
-        Debug.Log("Shooting at player");
-
         // target up
         if (angle < 22.5f)
         {
@@ -166,7 +159,6 @@ public class EnemyTargeting : BaseEnemy
 
         if (shoot)
         {
-            Debug.Log("bang");
             shoot = false;
             weaponScript.fire();
         }

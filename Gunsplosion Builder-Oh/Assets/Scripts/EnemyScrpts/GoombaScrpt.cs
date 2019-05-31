@@ -14,7 +14,7 @@ public class GoombaScrpt : BaseEnemy
     private Rigidbody2D Rigidbody2D;
     private SpriteRenderer spriteRenderer;
 
-    public bool MovingRight, mirrorPatroling = false;
+    //public bool MovingRight, mirrorPatroling = false;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -27,6 +27,7 @@ public class GoombaScrpt : BaseEnemy
         MovingRight = true;
         FindNodes(gameObject.transform.position);
         Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        FlipSprite();
     }
 
     // Update is called once per frame
@@ -85,6 +86,7 @@ public class GoombaScrpt : BaseEnemy
             {
                 MovingRight = false;
                 Moving_Entity.Move(-Direction);
+                FlipSprite();
             }
         }
         else
@@ -98,6 +100,7 @@ public class GoombaScrpt : BaseEnemy
             {
                 MovingRight = true;
                 Moving_Entity.Move(Direction);
+                FlipSprite();
             }
         }
     }
@@ -131,20 +134,6 @@ public class GoombaScrpt : BaseEnemy
                 Moving_Entity.Move(-Direction);
                 FlipSprite();
             }
-        }
-    }
-
-    public void FlipSprite()
-    {
-        if (MovingRight)
-        {
-            Debug.Log("Flip True");
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            Debug.Log("Flip False");
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 }
