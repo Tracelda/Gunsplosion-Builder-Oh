@@ -220,7 +220,7 @@ MonoBehaviour:
     type: 3}
   bulletPoolSize: 100
   gunSprite: {fileID: 0}
-  aimDirection: {fileID: 0}
+  aimDirection: {fileID: 3738995486937336614}
   OnlyDamageTag: Enemy
   weaponNumber: 0
 --- !u!212 &518241233

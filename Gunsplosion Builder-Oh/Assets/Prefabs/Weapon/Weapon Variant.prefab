@@ -69,13 +69,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
         type: 3}
+      propertyPath: aimDirection
+      value: 
+      objectReference: {fileID: 9003057367224004916}
+    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+        type: 3}
       propertyPath: OnlyDamageTag
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6336735886851500673, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
-        type: 3}
-      propertyPath: weaponNumber
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5, type: 3}
+--- !u!1 &9003057367224004916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3738995486937336614, guid: 6cde2703d19b03c4d8bf2f5b2a55e6a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5697858837112551954}
+  m_PrefabAsset: {fileID: 0}

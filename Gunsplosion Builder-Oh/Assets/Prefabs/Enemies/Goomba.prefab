@@ -632,7 +632,7 @@ MonoBehaviour:
   jumpForce: 0
   distFromGround: 0.5
   gunLength: 1
-  weapon: {fileID: 0}
+  weapon: {fileID: 3926626189785518833}
   firingPoint: {fileID: 6260616500524483064}
   maxHealth: 20
 --- !u!114 &6237264114948495478
@@ -685,7 +685,7 @@ MonoBehaviour:
   playerObject: {fileID: 0}
   shootDirection: {x: 0, y: 0, z: 0}
   normShootDirection: {x: 0, y: 0, z: 0}
-  weaponScript: {fileID: 0}
+  weaponScript: {fileID: 3926626189785518832}
   BaseEnemy: {fileID: 0}
   timer: 0
   timerTarget: 0.75
@@ -895,9 +895,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f8b89e7057650a4aa5732007c5525ed, type: 3}
+--- !u!1 &3926626189785518833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1793074608864825490, guid: 2f8b89e7057650a4aa5732007c5525ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 3358676435991544419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3926626189785518831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1793074608864825484, guid: 2f8b89e7057650a4aa5732007c5525ed,
     type: 3}
   m_PrefabInstance: {fileID: 3358676435991544419}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3926626189785518832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1793074608864825491, guid: 2f8b89e7057650a4aa5732007c5525ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 3358676435991544419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926626189785518833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4d50fbeed5dbb4ba2515b6f3a6306d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
